@@ -25,7 +25,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -52,6 +52,7 @@ public class Book extends BaseEntity{
 	private double discountedPrice;
 	
 	@ManyToOne
+//	@Column(name = "author_id")
 	private Author author;
 
 	
@@ -62,7 +63,11 @@ public class Book extends BaseEntity{
 	private String imagePath;
 	
 	@OneToMany(mappedBy="book",cascade = CascadeType.ALL,orphanRemoval=true)
-	private List<Review> reviews=new ArrayList<>();
+	private List<Review> reviews = new ArrayList<>();
+	
+//	@OneToMany(mappedBy="cartItembook",cascade = CascadeType.ALL,orphanRemoval=true)
+//	private List<CartItem> cartItems = new ArrayList<>(); 
+	
 	
 //	@OneToMany
 //	private Wishlist wishlist;
