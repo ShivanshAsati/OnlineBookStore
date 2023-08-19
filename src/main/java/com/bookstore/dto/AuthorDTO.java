@@ -1,14 +1,17 @@
 package com.bookstore.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class AddAuthorDTO {
+@AllArgsConstructor
+public class AuthorDTO {
+	private Long id;
 	private String name;
 	private String bio;
+	private List<BookDTO> bookList;
 }
