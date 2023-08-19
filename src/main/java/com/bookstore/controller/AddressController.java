@@ -3,30 +3,27 @@ package com.bookstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.bookstore.dto.AddUserDTO;
-
-import com.bookstore.service.UserService;
+import com.bookstore.dto.AddressDetailsDTO;
+import com.bookstore.service.AddressService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-
 @RestController
-@RequestMapping("/user")
-public class UserController
-{
-	@Autowired
-	private UserService userService;
+@RequestMapping("/address")
+public class AddressController {
 	
-	@PostMapping("/register")
-	public ResponseEntity<?> addUser(@RequestBody AddUserDTO userDTO)
+	@Autowired
+	public AddressService addressService;
+	
+	@PostMapping("/details")
+	public ResponseEntity<?> addressDetails(@RequestBody AddressDetailsDTO addressDTO)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(userService.addUser(userDTO));
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.addressDetails(addressDTO));
 	}
 	
+
 }

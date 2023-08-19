@@ -31,7 +31,7 @@ import lombok.ToString;
 @Table(name = "user")
 public class User extends BaseEntity{
 	
-	@Column(name = "first_name", length = 40, nullable = false)
+	@Column(name = "first_name", length = 40)
 	private String firstName;
 	
 	@Column(name = "last_name", length = 40)
@@ -43,11 +43,11 @@ public class User extends BaseEntity{
 	@Column(name = "mobile", length = 40)
 	private String mobile;
 	
-	@Column(name = "password", length = 40, nullable = false)
+	@Column(name = "password", length = 40)
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
+	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
 	@OneToOne(cascade=CascadeType.ALL,orphanRemoval=true)
