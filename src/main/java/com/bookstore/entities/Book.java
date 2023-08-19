@@ -54,7 +54,6 @@ public class Book extends BaseEntity{
 	@ManyToOne
 //	@Column(name = "author_id")
 	private Author author;
-
 	
 	@Column(nullable = false)
 	private int quantity;
