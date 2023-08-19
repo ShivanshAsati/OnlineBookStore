@@ -14,6 +14,7 @@ import com.bookstore.dto.AddUserDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.OnlyAuthorDTO;
 import com.bookstore.entities.Author;
+import com.bookstore.entities.RoleType;
 import com.bookstore.entities.User;
 import com.bookstore.repository.AuthorRepository;
 import com.bookstore.repository.UserRepository;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService
 	public ApiResponse addUser(AddUserDTO userDTO) 
 	{
 		User user = mapper.map(userDTO, User.class);
+		user.setRole(RoleType.USER);
 		userRepository.save(user);
 		ApiResponse apiResponse = new ApiResponse("USER ADDED SUCCESSFULLY..!!");
 		return apiResponse;
