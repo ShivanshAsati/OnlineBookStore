@@ -28,6 +28,12 @@ public class BookServiceImpl implements BookService{
 		return apiResponse;
 	}
 
+	@Override
+	public BookDTO getBookDetails(Long bookId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	@Override
 //	public BookDTO getBookDetails(Long bookId) {
 //		Book book = bookRepository.findById(bookId).
