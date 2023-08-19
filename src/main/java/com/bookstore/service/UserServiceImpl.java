@@ -1,5 +1,8 @@
 package com.bookstore.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.AddUserDTO;
 import com.bookstore.dto.ApiResponse;
+import com.bookstore.dto.OnlyAuthorDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.User;
 import com.bookstore.repository.AuthorRepository;
@@ -36,4 +40,21 @@ public class UserServiceImpl implements UserService
 		return apiResponse;
 	}
 	
+	@Override
+	public List<AddUserDTO> getAllUsers() {
+		List<AddUserDTO> userList = new ArrayList<>();
+		userRepository.findAll().forEach(i -> userList.add(new AddUserDTO(i.getFirstName(), i.getLastName(), i.getEmail(), i.getMobile(), i.getPassword())));;
+		return userList;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
