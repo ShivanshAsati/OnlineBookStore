@@ -13,7 +13,7 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.AuthorDTO;
-import com.bookstore.dto.BookDTO;
+import com.bookstore.dto.AuthorBookDTO;
 import com.bookstore.dto.OnlyAuthorDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.repository.AuthorRepository;
@@ -53,9 +53,9 @@ public class AuthorServiceImpl implements AuthorService{
 	@Override
 	public AuthorDTO getAuthor(Long id) {
 		Author author =  authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author id invalid!"));
-		AuthorDTO authorDTO = new AuthorDTO(author.getId(),author.getName(),author.getBio(), new ArrayList<BookDTO>());
-		List<BookDTO> bookDTOList = authorDTO.getBookList();
-		author.getBook().forEach(i -> bookDTOList.add(new BookDTO(i.getId(),i.getTitle())));
+		AuthorDTO authorDTO = new AuthorDTO(author.getId(),author.getName(),author.getBio(), new ArrayList<AuthorBookDTO>());
+		List<AuthorBookDTO> bookDTOList = authorDTO.getBookList();
+		author.getBook().forEach(i -> bookDTOList.add(new AuthorBookDTO(i.getId(),i.getTitle())));
 		return authorDTO;
 	}
 
