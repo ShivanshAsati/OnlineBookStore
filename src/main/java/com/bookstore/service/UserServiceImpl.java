@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.AddUserDTO;
 import com.bookstore.dto.ApiResponse;
@@ -45,6 +46,14 @@ public class UserServiceImpl implements UserService
 		List<AddUserDTO> userList = new ArrayList<>();
 		userRepository.findAll().forEach(i -> userList.add(new AddUserDTO(i.getFirstName(), i.getLastName(), i.getEmail(), i.getMobile(), i.getPassword())));;
 		return userList;
+	}
+	
+	@Override
+	public ApiResponse deleteUser(Long id) {
+		User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid ID!"));
+		userRepository.delete(user);
+		ApiResponse apiResponse = new ApiResponse("User deleted successfully!");
+		return apiResponse;
 	}
 }
 

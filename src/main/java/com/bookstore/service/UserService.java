@@ -10,4 +10,6 @@ public interface UserService
 	public ApiResponse addUser(AddUserDTO userDTO);
 	
 	public List<AddUserDTO> getAllUsers();
+	
+	public ApiResponse deleteUser(Long id);
 }
