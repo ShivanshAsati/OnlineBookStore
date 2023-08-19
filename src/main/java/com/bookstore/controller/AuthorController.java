@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.AuthorDTO;
 import com.bookstore.dto.OnlyAuthorDTO;
-import com.bookstore.entities.Author;
 import com.bookstore.service.AuthorService;
 
 @RestController

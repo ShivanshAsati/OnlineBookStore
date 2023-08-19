@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -50,8 +49,7 @@ public class User extends BaseEntity{
 	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
-	@OneToOne(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name = "address_id")
+	@OneToOne
 	private Address address;
 	
 	@JsonIgnore //NOT SURE

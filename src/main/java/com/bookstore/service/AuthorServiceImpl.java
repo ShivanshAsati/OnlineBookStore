@@ -41,7 +41,6 @@ public class AuthorServiceImpl implements AuthorService{
 		return authorList;
 	}
 
-
 	@Override
 	public ApiResponse deleteAuthor(Long id) {
 		Author author = authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid ID!"));
