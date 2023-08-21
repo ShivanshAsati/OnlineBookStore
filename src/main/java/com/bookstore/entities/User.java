@@ -30,13 +30,13 @@ import lombok.ToString;
 @Table(name = "user")
 public class User extends BaseEntity{
 	
-	@Column(name = "first_name", length = 40)
+	@Column(name = "first_name", length = 40, nullable = false)
 	private String firstName;
 	
 	@Column(name = "last_name", length = 40)
 	private String lastName;
 	
-	@Column(name = "email", length = 40, unique = true)
+	@Column(name = "email", length = 40, unique = true, nullable = false)
 	private String email;
 	
 	@Column(name = "mobile", length = 40)
