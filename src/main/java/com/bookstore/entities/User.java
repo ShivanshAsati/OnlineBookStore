@@ -49,8 +49,10 @@ public class User extends BaseEntity{
 	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
+
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Address> addressList = new ArrayList<>();
+
 	
 	@JsonIgnore //NOT SURE
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,orphanRemoval=true)

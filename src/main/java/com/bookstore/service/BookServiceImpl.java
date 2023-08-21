@@ -9,11 +9,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddBookDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.OnlyBookDTO;
+
 import com.bookstore.entities.Book;
 import com.bookstore.entities.Review;
 import com.bookstore.repository.AuthorRepository;
@@ -40,7 +43,7 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public ApiResponse updateBook(OnlyBookDTO detachedBook) {
 		Book book = bookRepository.findById(detachedBook.getId()).orElseThrow(() -> new ResourceNotFoundException("Something went wrong!"));
 		book.setIsbn(detachedBook.getIsbn());
@@ -81,11 +84,7 @@ public class BookServiceImpl implements BookService{
 
 
 
-=======
-	public BookDTO getBookDetails(Long bookId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 //	@Override
 //	public BookDTO getBookDetails(Long bookId) {
@@ -93,7 +92,7 @@ public class BookServiceImpl implements BookService{
 //		orElseThrow(() -> new ResourceNotFoundException("Invalid Book ID !!!"));
 //		return mapper.map(book, BookDTO.class);
 //	}
->>>>>>> main
+
 	
 	
 	

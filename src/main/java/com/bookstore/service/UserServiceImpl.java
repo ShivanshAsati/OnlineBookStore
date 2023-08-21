@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.AddUserDTO;
@@ -24,6 +25,8 @@ import com.bookstore.entities.RoleType;
 import com.bookstore.entities.User;
 import com.bookstore.repository.UserRepository;
 
+import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
+
 
 @Service
 @Transactional
@@ -32,6 +35,8 @@ public class UserServiceImpl implements UserService
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	//private JwtTokenProvider jwtTokenProvider;
 	
 	@Autowired
 	private ModelMapper mapper;
@@ -61,8 +66,35 @@ public class UserServiceImpl implements UserService
 		ApiResponse apiResponse = new ApiResponse("User deleted successfully!");
 		return apiResponse;
 	}
-	
+	/*
 	@Override
+	public User findUserById(Long userId)
+	{
+		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("Invalid ID!"));
+		return user;
+	}
+	*/
+	/*
+	@Override
+	public User findUserProfileByJwt(String jwt) throws ResourceNotFoundException {
+		System.out.println("user service");
+		String email=jwtTokenProvider.getEmailFromJwtToken(jwt);
+		
+		System.out.println("email"+email);
+		
+		User user=userRepository.findByEmail(email);
+		
+		
+		
+		if(user==null) {
+			throw new ResourceNotFoundException("user not exist with email "+email);
+		}
+		System.out.println("email user"+user.getEmail());
+		return user;
+	}
+	*/
+	
+
 	public ApiResponse updateUser(UpdateUserDTO detachedUser) {
 		User user = userRepository.findById(detachedUser.getId()).orElseThrow(() -> new ResourceNotFoundException("Something went wrong!"));
 		user.setFirstName(detachedUser.getFirstName());
@@ -82,6 +114,7 @@ public class UserServiceImpl implements UserService
 //		author.getBook().forEach(i -> bookDTOList.add(new AuthorBookDTO(i.getId(),i.getTitle())));
 //		return authorDTO;
 //	}
+
 }
 
 

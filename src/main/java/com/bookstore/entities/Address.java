@@ -44,8 +44,10 @@ public class Address extends BaseEntity{
 	@Column(name = "zipcode", length = 10)
 	private String zipcode;
 	
+
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
+
 }
