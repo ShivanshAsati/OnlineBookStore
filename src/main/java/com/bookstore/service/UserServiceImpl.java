@@ -14,6 +14,7 @@ import com.bookstore.dto.AddAuthorDTO;
 import com.bookstore.dto.AddUserDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.OnlyAuthorDTO;
+import com.bookstore.dto.UserDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.RoleType;
 import com.bookstore.entities.User;
@@ -44,9 +45,9 @@ public class UserServiceImpl implements UserService
 	}
 	
 	@Override
-	public List<AddUserDTO> getAllUsers() {
-		List<AddUserDTO> userList = new ArrayList<>();
-		userRepository.findAll().forEach(i -> userList.add(new AddUserDTO(i.getFirstName(), i.getLastName(), i.getEmail(), i.getMobile(), i.getPassword())));;
+	public List<UserDTO> getAllUsers() {
+		List<UserDTO> userList = new ArrayList<>();
+		userRepository.findAll().forEach(i -> userList.add(new UserDTO(i.getId(), i.getFirstName(), i.getLastName(), i.getEmail(), i.getMobile(), i.getPassword())));;
 		return userList;
 	}
 	

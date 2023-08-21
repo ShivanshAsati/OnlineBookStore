@@ -32,12 +32,12 @@ public class UserController
 	}
 	
 	@GetMapping("/getall")
-	public List<AddUserDTO> getAllAuthor() {
-		return userService.getAllUsers();
+	public ResponseEntity<?> getAllUser() {
+		return ResponseEntity.status(HttpStatus.FOUND).body(userService.getAllUsers());
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteAuthor(@PathVariable Long id) {
+	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
 		return ResponseEntity.status(HttpStatus.FOUND).body(userService.deleteUser(id));
 	}
 }
