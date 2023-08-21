@@ -40,6 +40,7 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public ApiResponse updateBook(OnlyBookDTO detachedBook) {
 		Book book = bookRepository.findById(detachedBook.getId()).orElseThrow(() -> new ResourceNotFoundException("Something went wrong!"));
 		book.setIsbn(detachedBook.getIsbn());
@@ -80,6 +81,19 @@ public class BookServiceImpl implements BookService{
 
 
 
+=======
+	public BookDTO getBookDetails(Long bookId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public BookDTO getBookDetails(Long bookId) {
+//		Book book = bookRepository.findById(bookId).
+//		orElseThrow(() -> new ResourceNotFoundException("Invalid Book ID !!!"));
+//		return mapper.map(book, BookDTO.class);
+//	}
+>>>>>>> main
 	
 	
 	

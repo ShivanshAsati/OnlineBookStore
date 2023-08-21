@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -31,7 +30,7 @@ import lombok.ToString;
 @Table(name = "user")
 public class User extends BaseEntity{
 	
-	@Column(name = "first_name", length = 40, nullable = false)
+	@Column(name = "first_name", length = 40)
 	private String firstName;
 	
 	@Column(name = "last_name", length = 40)
@@ -43,16 +42,15 @@ public class User extends BaseEntity{
 	@Column(name = "mobile", length = 40)
 	private String mobile;
 	
-	@Column(name = "password", length = 40, nullable = false)
+	@Column(name = "password", length = 40)
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
+	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
-	@OneToOne(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name = "address_id")
-	private Address address;
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Address> addressList = new ArrayList<>();
 	
 	@JsonIgnore //NOT SURE
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,orphanRemoval=true)
