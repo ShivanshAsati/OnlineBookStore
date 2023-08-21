@@ -1,10 +1,6 @@
 package com.bookstore.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bookstore.entities.BookCategory;
-import com.bookstore.entities.Review;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookDTO {
+public class OnlyBookDTO {
 
 	private Long id;
 	private long isbn;
@@ -27,6 +23,5 @@ public class BookDTO {
 	private long authorId;
 	private int quantity;
 	private String imagePath;
-	private List<Review> reviews = new ArrayList<>();
 	
 }
