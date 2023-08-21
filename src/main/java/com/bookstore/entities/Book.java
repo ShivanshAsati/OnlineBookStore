@@ -61,6 +61,7 @@ public class Book extends BaseEntity{
 	@Column(name="image_path")
 	private String imagePath;
 	
+	
 	@OneToMany(mappedBy="book",cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Review> reviews = new ArrayList<>();
 	

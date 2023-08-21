@@ -27,12 +27,15 @@ import lombok.ToString;
 @Table(name="review")
 public class Review extends BaseEntity
 {
+	
+
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id",nullable=false)
 	private User user;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore //NOT SURE
+	//@JsonIgnore //NOT SURE
 	@JoinColumn(name="book_id",nullable=false)
 	private Book book;
 	

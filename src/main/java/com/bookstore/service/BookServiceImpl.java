@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookstore.dto.BookDTO;
+import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.ApiResponse;
+import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
 import com.bookstore.repository.BookRepository;
 
@@ -34,6 +36,11 @@ public class BookServiceImpl implements BookService{
 		return null;
 	}
 
+	
+	public Book findBookById(Long id) {
+		Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book not found!"));
+		return book;
+	}
 //	@Override
 //	public BookDTO getBookDetails(Long bookId) {
 //		Book book = bookRepository.findById(bookId).

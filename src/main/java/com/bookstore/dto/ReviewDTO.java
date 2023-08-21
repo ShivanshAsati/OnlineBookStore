@@ -1,5 +1,6 @@
 package com.bookstore.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -9,10 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AuthorDTO {
-	private Long id;
-	private String name;
-	private String bio;
-	private List<AuthorBookDTO> bookList;
+public class ReviewDTO  {
+
+	private double rating;
+	private String review;
+	private LocalDateTime createdAt;
+	
 	
 }
+
