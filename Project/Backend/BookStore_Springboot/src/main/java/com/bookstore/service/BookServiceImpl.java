@@ -16,7 +16,7 @@ import com.bookstore.dto.AddBookDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.OnlyBookDTO;
-
+import com.bookstore.dto.ReviewDTO;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.Review;
 import com.bookstore.repository.AuthorRepository;
@@ -31,13 +31,15 @@ public class BookServiceImpl implements BookService{
 	@Autowired
 	private AuthorRepository authorRepository;
 	
+	
 	@Autowired
 	private ModelMapper mapper;
 
 	@Override
 	public ApiResponse addBook(AddBookDTO bookDTO) {
 		Book book = mapper.map(bookDTO, Book.class);
-		bookRepository.save(book);
+		book.setAuthor(authorRepository.findById(bookDTO.getAuthorId()).orElseThrow(() -> new ResourceNotFoundException("invalid author id!")));
+		bookRepository.save(book);		
 		ApiResponse apiResponse = new ApiResponse("Book Added Successfully!!");
 		return apiResponse;
 	}
@@ -62,17 +64,17 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<OnlyBookDTO> getAllBooks() {
 		List<OnlyBookDTO> bookList = new ArrayList<>();
-//		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor(), i.getQuantity(), i.getImagePath())));
 		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor().getId(), i.getQuantity(), i.getImagePath())));
 		return bookList;
 	}
 
 	@Override
-	public AddBookDTO getBook(Long id) {
+	public BookDTO getBook(Long id) {
 		Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid Book ID!!"));
-		BookDTO bookDTO = new BookDTO(book.getId(), book.getIsbn(), book.getTitle(), book.getDescription(), book.getCategory(), book.getPrice(), book.getDiscountedPrice(), book.getAuthor().getId(), book.getQuantity(), book.getImagePath(), new ArrayList<Review>());
-		
-		return null;
+		BookDTO bookDTO = new BookDTO(book.getId(), book.getIsbn(), book.getTitle(), book.getDescription(), book.getCategory(), book.getPrice(), book.getDiscountedPrice(), book.getAuthor().getId(), book.getQuantity(), book.getImagePath(), new ArrayList<ReviewDTO>());
+		List<ReviewDTO> reviewList = bookDTO.getReviews();
+		book.getReviews().forEach(i -> reviewList.add(new ReviewDTO(i.getRating(), i.getReview(), i.getCreatedAt())));
+		return bookDTO;
 	}
 
 	@Override
