@@ -19,6 +19,7 @@ import com.bookstore.dto.AuthorDTO;
 import com.bookstore.dto.GetUserDTO;
 import com.bookstore.dto.OnlyAuthorDTO;
 import com.bookstore.dto.UpdateUserDTO;
+import com.bookstore.dto.UserAddressDTO;
 import com.bookstore.dto.UserDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.RoleType;
@@ -105,16 +106,6 @@ public class UserServiceImpl implements UserService
 		userRepository.save(user);
 		return new ApiResponse("User updated successfully!");
 	}
-	
-//	@Override
-//	public GetUserDTO getUser(Long id) {
-//		User user =  userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User id invalid!"));
-//		AddUserDTO userDTO = new AddUserDTO(user.getId(),author.getName(),author.getBio(), new ArrayList<AuthorBookDTO>());
-//		List<AuthorBookDTO> bookDTOList = authorDTO.getBookList();
-//		author.getBook().forEach(i -> bookDTOList.add(new AuthorBookDTO(i.getId(),i.getTitle())));
-//		return authorDTO;
-//	}
-
 }
 
 
