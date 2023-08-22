@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
+import com.bookstore.dto.GetReviewDTO;
 import com.bookstore.dto.ReviewDTO;
 import com.bookstore.entities.Review;
 import com.bookstore.entities.User;
@@ -38,8 +39,8 @@ public class ReviewController
 	
 
 
-	@GetMapping("/book/{bookId}")
-	public List<Review> getBooksReviewHandler(@PathVariable Long bookId){
+	@GetMapping("/get/{bookId}")
+	public List<GetReviewDTO> getBooksReviewHandler(@PathVariable Long bookId){
 	
 		return reviewService.getAllReview(bookId);
 		
