@@ -7,6 +7,7 @@ import java.util.List;
 import com.bookstore.dto.AddBookDTO;
 
 import com.bookstore.dto.ApiResponse;
+import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.OnlyBookDTO;
 
 public interface BookService {
@@ -17,8 +18,7 @@ public interface BookService {
 
 	List<OnlyBookDTO> getAllBooks();
 
-	AddBookDTO getBook(Long id);
-
+	BookDTO getBook(Long id);
 
 	ApiResponse deleteBook(Long id);
 
