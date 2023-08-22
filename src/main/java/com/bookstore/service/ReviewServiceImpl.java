@@ -1,6 +1,7 @@
 package com.bookstore.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.ApiResponse;
+import com.bookstore.dto.GetReviewDTO;
 import com.bookstore.dto.ReviewDTO;
+import com.bookstore.dto.UserReviewDTO;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.Review;
 import com.bookstore.entities.User;
@@ -48,9 +51,24 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> getAllReview(Long bookId) {
+	public List<GetReviewDTO> getAllReview(Long bookId)
+	{
 		
-		return reviewRepository.getAllbooksReview(bookId);
+		Book book=bookRepository.findById(bookId).orElseThrow(()-> new ResourceNotFoundException("invalid book id!"));
+		List<Review>review=book.getReviews();
+		
+		List<GetReviewDTO> getReviewDTO=new ArrayList<>();
+		
+		GetReviewDTO getReview;
+		
+		
+	
+		
+		review.forEach(i -> getReviewDTO.add(new GetReviewDTO(i.getRating(),i.getReview(),new UserReviewDTO(i.getUser().getFirstName(), i.getUser().getLastName()))));
+		return getReviewDTO;
+		
+
+		
 	}
 	
 	
