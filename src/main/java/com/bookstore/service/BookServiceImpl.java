@@ -64,7 +64,7 @@ public class BookServiceImpl implements BookService{
 		List<OnlyBookDTO> bookList = new ArrayList<>();
 //		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor(), i.getQuantity(), i.getImagePath())));
 		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor().getId(), i.getQuantity(), i.getImagePath())));
-		return null;
+		return bookList;
 	}
 
 	@Override
