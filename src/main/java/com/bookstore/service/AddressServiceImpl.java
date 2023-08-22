@@ -34,47 +34,52 @@ public class AddressServiceImpl implements AddressService {
 	private ModelMapper mapper;
 	
 	@Override
-	public ApiResponse addressDetails(Long userId, AddressDTO addressDTO) {
+	public ApiResponse addAddress(Long userId, AddressDTO addressDTO) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		Address address = mapper.map(addressDTO, Address.class);
 		address.setUser(user);
-//		System.out.println(address);
 		addressRepository.save(address);
 		ApiResponse apiResponse = new ApiResponse("Address ADDED");
 		return apiResponse;
 	}
 
-//	@Override
-//	public List<AddressDTO> getAddress(Long userId) {
-//		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
-//		List<AddressDTO> addressList = new ArrayList<>();
-//		user.getAddressList().forEach(i -> addressList.add(mapper.map(i, AddressDTO.class)));
-//		return addressList;
-//	}
 	
 	@Override
 	public List<DetachedAddressDTO> getAddress(Long userId) {
-//		System.out.println("Bug pointer <----------------");
 		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		List<DetachedAddressDTO> addressList = new ArrayList<>();
 		user.getAddressList().forEach(i -> addressList.add(mapper.map(i, DetachedAddressDTO.class)));
 		return addressList;
 	}
 
+//	@Override
+//	public ApiResponse deleteAddress(Long userId, Long addressId) {
+//		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+//		List<Address> addressList = user.getAddressList();
+//		for(int i = 0; i < addressList.size(); i++) {
+//			if(addressList.get(i).getId() == Integer.parseInt(Long.toString(addressId)))
+//				addressList.remove(i);
+//		}
+//		return new ApiResponse("Address "+addressId+" Deleted Successfully for userId " + userId );
+//	}
+	
 	@Override
-	public ApiResponse deleteAddress(Long userId, Long addressId) {
-		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
-		List<Address> addressList = user.getAddressList();
-		
-		for(int i = 0; i < addressList.size(); i++) {
-			if(addressList.get(i).getId() == Integer.parseInt(Long.toString(addressId)))
-				addressList.remove(i);
-		}
-		return new ApiResponse("Address "+addressId+" Deleted Successfully for userId " + userId );
+	public ApiResponse updateAddress(Long addressId, AddressDTO addressDTO) {
+		Address address = addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
+		address.setCity(addressDTO.getCity());
+		address.setCountry(addressDTO.getCountry());
+		address.setLandmark(addressDTO.getLandmark());
+		address.setState(addressDTO.getState());
+		address.setStreet(addressDTO.getStreet());
+		address.setZipcode(addressDTO.getZipcode());
+		return new ApiResponse("Address "+addressId+" Updated Successfully!");
 	}
-	
-	
-	
-	
 
+
+	@Override
+	public ApiResponse deleteAddress(Long addressId) {
+		Address address = addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
+		addressRepository.delete(address);
+		return new ApiResponse("Address "+addressId+" Deleted Successfully");
+	}
 }
