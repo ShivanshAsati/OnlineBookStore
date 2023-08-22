@@ -37,7 +37,7 @@ public class AddressController {
 		return ResponseEntity.status(HttpStatus.FOUND).body(addressService.deleteAddress(addressId));
 	}
 	
-	@PutMapping("/addressid{addressId}")
+	@PutMapping("/addressid/{addressId}")
 	public ResponseEntity<?>  updateAddress(@PathVariable Long addressId, @RequestBody AddressDTO addressDTO) {
 		return ResponseEntity.status(HttpStatus.FOUND).body(addressService.updateAddress(addressId, addressDTO));
 	}
