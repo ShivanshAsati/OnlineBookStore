@@ -30,13 +30,13 @@ import lombok.ToString;
 @Table(name = "user")
 public class User extends BaseEntity{
 	
-	@Column(name = "first_name", length = 40)
+	@Column(name = "first_name", length = 40, nullable = false)
 	private String firstName;
 	
 	@Column(name = "last_name", length = 40)
 	private String lastName;
 	
-	@Column(name = "email", length = 40, unique = true)
+	@Column(name = "email", length = 40, unique = true, nullable = false)
 	private String email;
 	
 	@Column(name = "mobile", length = 40)
@@ -49,11 +49,10 @@ public class User extends BaseEntity{
 	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
-//	@OneToOne
-//	private Address address;
-	
-	   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	    private List<Address> addresses=new ArrayList<>();
+
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Address> addressList = new ArrayList<>();
+
 	
 	@JsonIgnore //NOT SURE
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,orphanRemoval=true)
