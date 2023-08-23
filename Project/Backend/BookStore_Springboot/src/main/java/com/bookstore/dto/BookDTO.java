@@ -18,15 +18,15 @@ import lombok.Setter;
 public class BookDTO {
 
 	private Long id;
-	private long isbn;
+	private Long isbn;
 	private String title;
 	private String description;
 	private BookCategory category;
 	private double price;
 	private double discountedPrice;
-	private long authorId;
+	private Long authorId;
 	private int quantity;
 	private String imagePath;
-	private List<Review> reviews = new ArrayList<>();
+	private List<ReviewDTO> reviews = new ArrayList<>();
 	
 }
