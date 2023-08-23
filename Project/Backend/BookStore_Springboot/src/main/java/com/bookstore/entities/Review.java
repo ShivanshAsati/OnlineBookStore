@@ -39,7 +39,7 @@ public class Review extends BaseEntity
 	@JoinColumn(name="book_id",nullable=false)
 	private Book book;
 	
-	@Column(name="review")
+	@Column(name="review", length = 1500)
 	private String review;
 	
 	@Column(name="rating")

@@ -32,7 +32,7 @@ public class Author extends BaseEntity
 	@Column(name="image_path",length=512)
 	private String imagePath;
 	
-	@Column(name="biography", length=512)
+	@Column(name="biography", length=1500)
 	private String bio;
 	
 	@OneToMany(mappedBy="author")

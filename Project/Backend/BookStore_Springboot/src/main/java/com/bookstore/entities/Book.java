@@ -36,10 +36,10 @@ public class Book extends BaseEntity{
 	@Column(name = "isbn")
 	private long isbn;
 	
-	@Column(name = "title", length = 30, nullable = false)
+	@Column(name = "title", length = 50, nullable = false)
 	private String title;
 	
-	@Column(name = "description")
+	@Column(name = "description", length = 1500)
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
