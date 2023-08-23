@@ -14,4 +14,6 @@ import lombok.Setter;
 public class GetAuthorDTO {
 
 	private String name;
+	private String imagePath;
+	private String bio;
 }

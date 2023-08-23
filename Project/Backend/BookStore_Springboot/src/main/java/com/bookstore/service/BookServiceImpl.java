@@ -92,7 +92,7 @@ public class BookServiceImpl implements BookService{
 		
 		List<GetBookDTO> getBookDTO=new ArrayList<>();
 		
-		bookRepository.findAll().forEach(i->getBookDTO.add(new GetBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(),new GetAuthorDTO(i.getAuthor().getName()), i.getQuantity(), i.getImagePath())));
+		bookRepository.findAll().forEach(i->getBookDTO.add(new GetBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(),new GetAuthorDTO(i.getAuthor().getName(),i.getAuthor().getImagePath(),i.getAuthor().getBio()), i.getQuantity(), i.getImagePath())));
 		
 		return getBookDTO;
 	}
