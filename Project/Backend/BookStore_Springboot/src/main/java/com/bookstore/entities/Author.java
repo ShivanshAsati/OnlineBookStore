@@ -29,7 +29,7 @@ public class Author extends BaseEntity
 	@Column(name="name",length=25)
 	private String name;
 	
-	@Column(name="biography", length=512)
+	@Column(name="biography", length=1500)
 	private String bio;
 	
 	@OneToMany(mappedBy="author")
