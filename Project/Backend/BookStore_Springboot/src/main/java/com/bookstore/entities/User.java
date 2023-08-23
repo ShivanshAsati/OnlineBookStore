@@ -46,7 +46,7 @@ public class User extends BaseEntity{
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "role",length = 20, columnDefinition = "varchar(20) default 'USER'")
+	@Column(name = "role",columnDefinition = "varchar(20) default 'USER'")
 	private RoleType role;
 	
 
