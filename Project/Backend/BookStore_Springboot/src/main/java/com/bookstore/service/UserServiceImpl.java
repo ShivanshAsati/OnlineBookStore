@@ -19,7 +19,6 @@ import com.bookstore.dto.AuthorDTO;
 import com.bookstore.dto.GetUserDTO;
 import com.bookstore.dto.OnlyAuthorDTO;
 import com.bookstore.dto.UpdateUserDTO;
-import com.bookstore.dto.UserAddressDTO;
 import com.bookstore.dto.UserDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.RoleType;
