@@ -57,7 +57,9 @@ public class BookController {
 	
 	@GetMapping("/get/{id}")
 	public ResponseEntity<?> getBook(@PathVariable Long id) {
+
 		return ResponseEntity.status(HttpStatus.FOUND).body(bookService.getBook(id)); 
+
 	}
 	
 	@DeleteMapping("/delete/{id}")

@@ -22,7 +22,7 @@ const selectBooks = async () =>
     else{
         toast.error("UNABLE TO LOAD DATA");
     }
-
+}
 
 
 
@@ -68,5 +68,6 @@ return(
 
 
  }
+ 
 
 export default BookGallery

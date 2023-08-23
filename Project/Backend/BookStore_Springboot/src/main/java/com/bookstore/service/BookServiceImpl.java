@@ -34,13 +34,15 @@ public class BookServiceImpl implements BookService{
 	@Autowired
 	private AuthorRepository authorRepository;
 	
+	
 	@Autowired
 	private ModelMapper mapper;
 
 	@Override
 	public ApiResponse addBook(AddBookDTO bookDTO) {
 		Book book = mapper.map(bookDTO, Book.class);
-		bookRepository.save(book);
+		book.setAuthor(authorRepository.findById(bookDTO.getAuthorId()).orElseThrow(() -> new ResourceNotFoundException("invalid author id!")));
+		bookRepository.save(book);		
 		ApiResponse apiResponse = new ApiResponse("Book Added Successfully!!");
 		return apiResponse;
 	}
@@ -65,7 +67,6 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<OnlyBookDTO> getAllBooks() {
 		List<OnlyBookDTO> bookList = new ArrayList<>();
-//		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor(), i.getQuantity(), i.getImagePath())));
 		bookRepository.findAll().forEach(i -> bookList.add(new OnlyBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(), i.getAuthor().getId(), i.getQuantity(), i.getImagePath())));
 		return bookList;
 	}

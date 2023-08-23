@@ -24,7 +24,7 @@ public class BookDTO {
 	private BookCategory category;
 	private double price;
 	private double discountedPrice;
-	private long authorId;
+	private Long authorId;
 	private int quantity;
 	private String imagePath;
 	private List<ReviewDTO> reviews = new ArrayList<>();
