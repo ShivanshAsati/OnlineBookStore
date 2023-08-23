@@ -18,7 +18,7 @@ import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.GetAuthorDTO;
 import com.bookstore.dto.GetBookDTO;
 import com.bookstore.dto.OnlyBookDTO;
-
+import com.bookstore.dto.ReviewDTO;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.BookCategory;
 import com.bookstore.entities.Review;
@@ -71,11 +71,12 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public AddBookDTO getBook(Long id) {
+	public BookDTO getBook(Long id) {
 		Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid Book ID!!"));
-		BookDTO bookDTO = new BookDTO(book.getId(), book.getIsbn(), book.getTitle(), book.getDescription(), book.getCategory(), book.getPrice(), book.getDiscountedPrice(), book.getAuthor().getId(), book.getQuantity(), book.getImagePath(), new ArrayList<Review>());
-		
-		return null;
+		BookDTO bookDTO = new BookDTO(book.getId(), book.getIsbn(), book.getTitle(), book.getDescription(), book.getCategory(), book.getPrice(), book.getDiscountedPrice(), book.getAuthor().getId(), book.getQuantity(), book.getImagePath(), new ArrayList<ReviewDTO>());
+		List<ReviewDTO> reviewList = bookDTO.getReviews();
+		book.getReviews().forEach(i -> reviewList.add(new ReviewDTO(i.getRating(), i.getReview(), i.getCreatedAt())));
+		return bookDTO;
 	}
 
 	@Override

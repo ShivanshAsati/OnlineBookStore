@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.bookstore.dto.AddBookDTO;
 
 import com.bookstore.dto.ApiResponse;
+import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.GetBookDTO;
 import com.bookstore.dto.OnlyBookDTO;
 
@@ -20,7 +21,7 @@ public interface BookService {
 
 	List<OnlyBookDTO> getAllBooks();
 
-	AddBookDTO getBook(Long id);
+	BookDTO getBook(Long id);
 	
 	List<GetBookDTO> getBooks();
 
