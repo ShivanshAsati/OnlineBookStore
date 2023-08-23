@@ -15,9 +15,12 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddBookDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.BookDTO;
+import com.bookstore.dto.GetAuthorDTO;
+import com.bookstore.dto.GetBookDTO;
 import com.bookstore.dto.OnlyBookDTO;
 
 import com.bookstore.entities.Book;
+import com.bookstore.entities.BookCategory;
 import com.bookstore.entities.Review;
 import com.bookstore.repository.AuthorRepository;
 import com.bookstore.repository.BookRepository;
@@ -82,7 +85,15 @@ public class BookServiceImpl implements BookService{
 		return new ApiResponse("Book Deleted Successfully!!");
 	}
 
-
+	public List<GetBookDTO> getBooks()
+	{
+		
+		List<GetBookDTO> getBookDTO=new ArrayList<>();
+		
+		bookRepository.findAll().forEach(i->getBookDTO.add(new GetBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(),new GetAuthorDTO(i.getAuthor().getName()), i.getQuantity(), i.getImagePath())));
+		
+		return getBookDTO;
+	}
 
 
 
