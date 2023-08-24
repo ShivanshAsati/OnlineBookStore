@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginUser as loginUserApi } from "../services/user";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
+import { login } from "../features/authSlice";
 
 //import "../node_modules/bootstrap/dist/css/bootstrap.css";
 // import profile from "/image/a.jpeg";
@@ -17,7 +18,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const loginUser = async () => {
     if (email.length == "") {
@@ -27,29 +28,30 @@ function Login() {
     } else {
       // call register api
       const response = await loginUserApi(email, password);
-
+      console.log(response);
       // parse the response
-      if (response["status"] === "success") {
+      if (response["status"] === 200) {
         const token1 = response["data"]["jwt"];
         const decodedToken = jwtDecode(token1);
         // Clog(decodedToken);
         console.log(decodedToken);
+        // toast.success("Successfully logged in!")
         // parse the response's data and extract the token
         // const { token, name, mobile, profileImage } = response["data"];
 
         // // store the token for making other apis
-        // sessionStorage["token"] = token;
-        // sessionStorage["name"] = name;
+        sessionStorage["token"] = token1;
+        sessionStorage["name"] = decodedToken.sub;
         // sessionStorage["mobile"] = mobile;
         // sessionStorage["profileImage"] = profileImage;
 
-        // // update global store's authSlice with status = true
-        // dispatch(login());
+        // update global store's authSlice with status = true
+        dispatch(login());
 
-        // toast.success(`Welcome ${name} to store application`);
+        toast.success(`Welcome to bookstore.com, ${decodedToken.sub}!`);
 
         // go back to login
-        // navigate("/product-gallery");
+        navigate("/");
       } else {
         toast.error("Invalid user name or password");
       }

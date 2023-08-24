@@ -8,8 +8,19 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import "./styles/style.css";
 import Login from "./components/login";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+
+  const loginStatus = useSelector((state) => state.auth.status)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    
+  })
+
+
   return (
     <>
       {/* <div className="container-fluid"> */}
