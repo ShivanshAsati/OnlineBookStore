@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -33,6 +34,8 @@ import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 @Transactional
 public class UserServiceImpl implements UserService
 {
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -47,6 +50,7 @@ public class UserServiceImpl implements UserService
 	public ApiResponse addUser(AddUserDTO userDTO) 
 	{
 		User user = mapper.map(userDTO, User.class);
+		user.setPassword(encoder.encode(userDTO.getPassword()));
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
 		ApiResponse apiResponse = new ApiResponse("USER ADDED SUCCESSFULLY..!!");
