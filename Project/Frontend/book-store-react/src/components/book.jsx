@@ -44,50 +44,15 @@ const dataObj = {
                }
                navigate('/bookDetails',{state:{dataObj:dataObj}});
      }
-     
-    
-//     // navigate('/bookDetails'); // Navigate to '/bookDetails' route
-//     return (<><Book
-//         key={book['id']}
-//         category={book['category']}
-//         description={book['description']}
-//         discountedPrice={book['discountedPrice']}
-//         imagePath={book['imagePath']}
-//         isbn={book['isbn']}
-//         title={book['title']}
-//         price={book['price']}
-//         authorName={book['authorName']}
-//       />
-//     </>
-      
-//     );
 
+     const author = (book) => {
 
-    //      return <></>
-    //navigate('/bookDetails', { state: book });
-
-
-//   return (
-//     <div>
-//       {books.map(book => (
-//         <Book
-//           key={book.id}
-//           onClick={() => handleBookClick(book)}
-//           // ... other props
-//         />
-//       ))}
-//     </div>
-//   );
-// }
-
-
-// function MyComponent() {
-//     
-  
-   
-  
-//     // Render your book list and handle clicks
-//   }
+        const dataObj = {
+            key:book.id,
+            authorName:book['authorName']
+                       }
+                       navigate('/authorDetails',{state:{dataObj:dataObj}});
+             }
 
 
 
@@ -107,7 +72,7 @@ return(
                                      <h5 className="card-title">{book['title']}</h5>
                                      <ul className="list-group list-group-flush">
                                     <li className="list-group-item">ISBN: {book['isbn']}</li>
-                                         <li className="list-group-item">Author : {book.authorName.name}</li>
+                                         <li className="list-group-item">Author : <button className="btn btn-link" onClick={()=>{author(book)}}>{book.authorName.name}</button></li>
                                          <li className="list-group-item">Price: ₹ {book['discountedPrice']} <s> {book['price']}</s></li>
                                        <li className="list-group-item">
                                         <button className="btn btn-info" onClick={()=>{details(book)}}>Quick View</button>

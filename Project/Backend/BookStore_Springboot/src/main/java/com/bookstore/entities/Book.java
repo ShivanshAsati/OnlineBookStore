@@ -58,7 +58,7 @@ public class Book extends BaseEntity{
 	@Column(nullable = false)
 	private int quantity;
 	
-	@Column(name="image_path")
+	@Column(name="image_path",length=512)
 	private String imagePath;
 	
 	

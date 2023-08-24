@@ -3,9 +3,6 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-
-
-
 function Book() {
 
     const location = useLocation();
