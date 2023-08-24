@@ -4,10 +4,13 @@ import 'react-toastify/dist/ReactToastify.css'
 import BookGallery from './components/book';
 import Book from './components/bookDetails';
 import Author from './components/authorDetails';
+import Footer from './components/footer';
 
 function App() {
   return (
     <div className='container-fluid'>
+      {/* <Header/> */}
+
       <div className='container'>
         <Routes>
           <Route exact path="/" element = {<BookGallery/>} />
@@ -16,6 +19,8 @@ function App() {
         </Routes>
       </div>
       <ToastContainer />
+      
+      <Footer/>
     </div>
   );
 }
