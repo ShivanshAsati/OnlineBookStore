@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Book() {
 
@@ -9,6 +9,19 @@ function Book() {
     const book = location.state.dataObj;
     console.log(book); // Access the passed book details
     // console.log(props);
+
+    const navigate = useNavigate();
+
+
+    const author = (book) => {
+
+        const dataObj = {
+            key:book.key,
+            authorName:book['authorName']
+                       }
+                       navigate('/authorDetails',{state:{dataObj:dataObj}});
+            }
+
     return ( 
         <>
         
@@ -25,7 +38,8 @@ function Book() {
                     <br/>
                     <div>
                         <label>
-                            By:&nbsp;<a href='#' className="text-danger" style={{textDecoration:"none"}}>{book.authorName.name}</a>
+                            {/* By:&nbsp;<a href='#' className="text-danger" style={{textDecoration:"none"}}>{book.authorName.name}</a> */}
+                            By:&nbsp;<button onClick={()=>{author(book)}}  className="btn btn-link" style={{textDecoration:"none"}}>{book.authorName.name}</button>
                         </label>
                         <label className='fs-6'>&nbsp;(Author)&nbsp;&nbsp;</label>
                     </div>
