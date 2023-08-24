@@ -34,7 +34,8 @@ public class SecurityConfig {
 				resp.sendError(HttpStatus.UNAUTHORIZED.value(), "Not yet authenticated"))
 				.and()
 			.csrf().disable(). // disable CSRF to continue with REST APIs
-				authorizeRequests() // specify all authorization rules (i.e authorize all requests)
+			
+			authorizeRequests() // specify all authorization rules (i.e authorize all requests)
 				.antMatchers("/author/getall", 
 						"/users/signin", 
 						"/users/signup",
