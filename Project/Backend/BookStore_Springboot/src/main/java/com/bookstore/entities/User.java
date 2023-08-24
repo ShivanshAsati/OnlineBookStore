@@ -42,7 +42,7 @@ public class User extends BaseEntity{
 	@Column(name = "mobile", length = 40)
 	private String mobile;
 	
-	@Column(name = "password", length = 40)
+	@Column(name = "password", length = 4000)
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
