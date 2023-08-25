@@ -1,9 +1,17 @@
 // import '../node_modules/bootstrap/dist/js/bootstrap.js';
 // import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
+import { useNavigate, Link } from 'react-router-dom';
 import React from "react";
 
 function Footer() {
+
+  const navigate = useNavigate();
+
+  // const home = () =>{
+  //   navigate('/');
+  // }
+
   return (
     <>
       <div>
@@ -55,7 +63,7 @@ function Footer() {
                   color: "black",
                 }}
               >
-                Home
+                <Link to='/' > Home </Link>
               </h4>
             </a>
           </div>
@@ -81,7 +89,7 @@ function Footer() {
                   color: "black",
                 }}
               >
-                AboutUs
+                <Link to='/aboutUs' >AboutUs </Link>
               </h4>
             </a>
           </div>
@@ -107,7 +115,7 @@ function Footer() {
                   color: "black",
                 }}
               >
-                PaymentHelp
+                <Link to='/paymentHelp' > PaymentHelp </Link>
               </h4>
             </a>
           </div>
@@ -133,7 +141,7 @@ function Footer() {
                   color: "black",
                 }}
               >
-                ContactUs
+                <Link to='/contactUs' > ContactUs </Link>
               </h4>
             </a>
           </div>
@@ -159,7 +167,7 @@ function Footer() {
                   color: "black",
                 }}
               >
-                FAQ
+                <Link to='/faq' > FAQ </Link>
               </h4>
             </a>
           </div>
