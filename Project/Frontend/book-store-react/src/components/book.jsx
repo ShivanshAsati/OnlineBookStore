@@ -11,9 +11,6 @@ function BookGallery()
     const [books,setBooks] = useState([]);
     
     const navigate = useNavigate();
-    
-    
-   
 
     useEffect(()=>{
         selectBooks();
