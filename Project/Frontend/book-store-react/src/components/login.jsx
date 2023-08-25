@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginUser as loginUserApi } from "../services/user";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
-import { login } from "../features/authSlice";
+import { login, loginWithToken } from "../features/authSlice";
 
 //import "../node_modules/bootstrap/dist/css/bootstrap.css";
 // import profile from "/image/a.jpeg";
@@ -35,18 +35,25 @@ function Login() {
         const decodedToken = jwtDecode(token1);
         // Clog(decodedToken);
         console.log(decodedToken);
+
+        dispatch(loginWithToken(token1));
         // toast.success("Successfully logged in!")
         // parse the response's data and extract the token
         // const { token, name, mobile, profileImage } = response["data"];
 
         // // store the token for making other apis
-        sessionStorage["token"] = token1;
-        sessionStorage["name"] = decodedToken.sub;
+        // sessionStorage["token"] = token1;
+        // sessionStorage["name"] = decodedToken.sub;
         // sessionStorage["mobile"] = mobile;
         // sessionStorage["profileImage"] = profileImage;
 
         // update global store's authSlice with status = true
-        dispatch(login());
+        dispatch({type:login, 
+          payload:{
+            token : token1,
+            name : decodedToken.sub
+          }
+        });
 
         toast.success(`Welcome to bookstore.com, ${decodedToken.sub}!`);
 

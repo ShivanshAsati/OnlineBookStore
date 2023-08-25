@@ -37,8 +37,8 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/getall")
-	public List<OnlyAuthorDTO> getAllAuthor() {
-		return authorService.getAllAuthors();
+	public ResponseEntity<?> getAllAuthor() {
+		return ResponseEntity.status(HttpStatus.OK).body(authorService.getAllAuthors());
 	}
 	
 	@GetMapping("/get/{id}")
