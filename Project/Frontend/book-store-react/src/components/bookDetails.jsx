@@ -22,6 +22,10 @@ function Book() {
                        navigate('/authorDetails',{state:{dataObj:dataObj}});
             }
 
+    const cartItem = (book) => {
+        console.log(book);
+    }
+
     return ( 
         <>
         
@@ -84,7 +88,7 @@ function Book() {
                     </span>
                     <br/><br/>
                     <div>
-                        <button className='btn btn-danger'>Add to Cart</button>&nbsp;
+                        <button onClick={()=>cartItem(book)} className='btn btn-danger'>Add to Cart</button>&nbsp;
                         <button className='btn btn-outline-danger'>Add to Wishlist</button>
                     </div>
                 </div>
