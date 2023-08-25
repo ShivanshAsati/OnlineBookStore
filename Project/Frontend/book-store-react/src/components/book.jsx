@@ -3,15 +3,21 @@ import { toast } from 'react-toastify';
 import { getBookList } from '../services/bookService';
 import { useNavigate ,Link } from 'react-router-dom';
 import Book from './bookDetails';
+import { useSelector } from 'react-redux';
+
 
 function BookGallery()
- {
+{
     const [books,setBooks] = useState([]);
-  
+    
     const navigate = useNavigate();
+    
+    
+   
 
     useEffect(()=>{
         selectBooks();
+        
     },[])
 
  
