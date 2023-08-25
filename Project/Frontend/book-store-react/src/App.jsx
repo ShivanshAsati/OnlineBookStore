@@ -15,25 +15,33 @@ import AboutUs from "./components/aboutUs";
 import PaymentHelp from "./components/paymentHelp";
 import ContactUs from "./components/contactUs";
 import Registration from "./components/registration";
+import {useSelector } from "react-redux";
+import Cart from "./components/cart";
+import Logout from "./components/logout";
 
 function App() {
 
-  const loginStatus = useSelector((state) => state.auth.status)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    
-  })
+  const token = useSelector((state) => state.auth.token);
+  
 
 
   return (
     <>
-      {/* <div className="container-fluid"> */}
       <Header />
-
-      {/* <div className="container"> */}
       <Routes>
-        <Route exact path="/login" element={<Login />} />
+        
+        {token !== null ? (
+                    <>
+                        <Route exact path="/cart" element={<Cart/>} />
+                        {/* Other routes */}
+                    </>
+                ) : (
+                    <>
+                        <Route exact path="/cart" element={<Login/>} />
+                        {/* Other routes */}
+                    </>
+                )}
+                <Route exact path="/login" element={<Login />} />
         <Route exact path="/" element={<BookGallery />} />
         <Route exact path="/bookDetails" element={<Book />} />
         <Route exact path="/authorDetails" element={<Author />} />
@@ -42,12 +50,10 @@ function App() {
         <Route exact path="/paymentHelp" element={<PaymentHelp />} />
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/login/signup" element={<Registration />} />
+        <Route exact path="/logout" element={<Logout/>}/>
       </Routes>
-      {/* </div> */}
       <ToastContainer />
-
       <Footer />
-      {/* </div> */}
     </>
   );
 }

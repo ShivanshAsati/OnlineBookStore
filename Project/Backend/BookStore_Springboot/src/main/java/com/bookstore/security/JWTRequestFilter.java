@@ -44,6 +44,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 					new UsernamePasswordAuthenticationToken(email, null,
 					authorities);
 			//save above auth object in the spric sec ctx
+			System.out.println(authentication);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 			
 		} else
