@@ -164,7 +164,7 @@ function Header() {
                 </div>
                 <h2 style={{ color: "GrayText", marginRight: "5px" }}>|</h2>
                 <div className="p-2">
-                  <a href="#!">
+                  <Link to="/address">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="28"
@@ -179,7 +179,7 @@ function Header() {
                         stroke-width=".2"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

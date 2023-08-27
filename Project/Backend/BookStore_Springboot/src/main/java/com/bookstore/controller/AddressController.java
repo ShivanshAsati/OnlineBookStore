@@ -3,6 +3,7 @@ package com.bookstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.bookstore.service.AddressService;
 
 @RestController
 @RequestMapping("/address")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
 	
 	@Autowired
@@ -29,7 +31,7 @@ public class AddressController {
 	
 	@GetMapping("/user/{userId}")
 	public ResponseEntity<?> getAddress(@PathVariable Long userId) {
-		return ResponseEntity.status(HttpStatus.FOUND).body(addressService.getAddress(userId));
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(userId));
 	}
 	
 	@DeleteMapping("/addressid/{addressId}")

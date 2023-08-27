@@ -12,7 +12,6 @@ function BookGallery()
     
     const navigate = useNavigate();
     
-    
    
 
     useEffect(()=>{

@@ -11,6 +11,8 @@ import Login from "./components/login";
 import {useSelector } from "react-redux";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
+import AddressTemp from "./components/addresstemp";
+import MyComponent from "./components/addresstemp";
 
 function App() {
 
@@ -26,11 +28,13 @@ function App() {
         {token !== null ? (
                     <>
                         <Route exact path="/cart" element={<Cart/>} />
+                        <Route exact path="/address" element={<MyComponent/>} />
                         {/* Other routes */}
                     </>
                 ) : (
                     <>
                         <Route exact path="/cart" element={<Login/>} />
+                        <Route exact path="/address" element={<Login/>} />
                         {/* Other routes */}
                     </>
                 )}
