@@ -10,6 +10,7 @@ import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.GetUserDTO;
 import com.bookstore.dto.UpdateUserDTO;
 import com.bookstore.dto.UserDTO;
+import com.bookstore.entities.User;
 
 
 public interface UserService 
@@ -22,4 +23,8 @@ public interface UserService
 
 	public ApiResponse updateUser(UpdateUserDTO detachedUser);
 
+	public User findUserProfileByJwt(String jwt);
+
+	public User findUserById(Long userId);
+	
 }

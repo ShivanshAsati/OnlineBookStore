@@ -25,6 +25,7 @@ import com.bookstore.dto.UserDTO;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.RoleType;
 import com.bookstore.entities.User;
+import com.bookstore.jwt_utils.JwtUtils;
 import com.bookstore.repository.UserRepository;
 
 import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
@@ -39,6 +40,9 @@ public class UserServiceImpl implements UserService
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired	// not sure
+	private JwtUtils jwtUtils;
 	
 	//private JwtTokenProvider jwtTokenProvider;
 	
@@ -109,6 +113,29 @@ public class UserServiceImpl implements UserService
 		user.setPassword(detachedUser.getPassword());
 		userRepository.save(user);
 		return new ApiResponse("User updated successfully!");
+	}
+
+	@Override
+	public User findUserProfileByJwt(String jwt) throws ResourceNotFoundException{
+		System.out.println("user service");
+		String email=jwtUtils.getEmailFromJwtToken(jwt);
+		
+		System.out.println("email"+email);
+		
+		User user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Invalid email!"));
+		
+
+		if(user==null) {
+			throw new ResourceNotFoundException("user not exist with email "+email);
+		}
+		System.out.println("email user"+user.getEmail());
+		return user;
+	}
+
+	@Override
+	public User findUserById(Long userId) {
+		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found by Id!"));
+		return user;
 	}
 }
 

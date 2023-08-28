@@ -1,9 +1,13 @@
 package com.bookstore.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +23,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CartItem extends BaseEntity{
+	
+	@JoinColumn(name = "user_id", nullable = false)	
+	private Long userId;
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
@@ -28,4 +37,8 @@ public class CartItem extends BaseEntity{
 	private Book book;
 	
 	private int quantity;
+	
+	private double price;
+	
+	private double discountedPrice;
 }

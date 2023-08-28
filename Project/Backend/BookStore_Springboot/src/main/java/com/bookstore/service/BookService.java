@@ -13,6 +13,7 @@ import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.GetBookDTO;
 import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.OnlyBookDTO;
+import com.bookstore.entities.Book;
 
 public interface BookService {
 
@@ -23,6 +24,8 @@ public interface BookService {
 	List<OnlyBookDTO> getAllBooks();
 
 	BookDTO getBook(Long id);
+	
+	Book findBookById(Long id);
 	
 	List<GetBookDTO> getBooks();
 

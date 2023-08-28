@@ -48,8 +48,10 @@ public class SecurityConfig {
 																								// with /products/view :
 																								// no authentication n
 																								// authorization needed
-				.antMatchers("/products").hasRole("USER")// CUSTOMERonly customer can purchase the products //"/products/purchase", "/address/user/*", 
-				.antMatchers("/products/add").hasRole("ADMIN") // only admin can add the products
+				.antMatchers("/book").hasRole("USER")// CUSTOMERonly customer can purchase the products //"/products/purchase", "/address/user/*", 
+				.antMatchers("/cart/**").hasRole("USER")
+				.antMatchers("/cart_items/**").hasRole("USER")
+				.antMatchers("/book/add").hasRole("ADMIN") // only admin can add the products
 				.anyRequest().authenticated() // all remaining end points accessible only to authenticated users
 				.and().sessionManagement() // configure HttpSession management
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // DO NOT use HttpSession for storing any sec
