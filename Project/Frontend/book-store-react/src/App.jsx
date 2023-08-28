@@ -51,6 +51,7 @@ function App() {
         <Route exact path="/contactUs" element={<ContactUs />} />
         <Route exact path="/logout" element={<Logout/>}/>
         <Route exact path="/register" element={<Register/>}></Route>
+        <Route exact path="/order" element={<Order/>}></Route>
       </Routes>
       {/* <ToastContainer /> */}
       <Footer />
