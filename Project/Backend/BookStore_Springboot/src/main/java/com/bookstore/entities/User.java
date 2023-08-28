@@ -47,7 +47,7 @@ public class User extends BaseEntity{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role",columnDefinition = "varchar(20) default 'USER'")
-	private RoleType role;
+	private Role role;
 	
 
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
@@ -58,7 +58,7 @@ public class User extends BaseEntity{
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Review> reviews=new ArrayList<>();
 	
-//	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-//	@JoinColumn(name = "cart_id")
-//	private Cart cart;
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
 }

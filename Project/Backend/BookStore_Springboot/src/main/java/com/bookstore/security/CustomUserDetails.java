@@ -59,5 +59,9 @@ public class CustomUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	public User getUser() {
+		return user;
+	}
+	
 
 }

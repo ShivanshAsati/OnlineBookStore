@@ -53,19 +53,19 @@ function Footer() {
               width: "150px",
             }}
           >
-            <a style={{ textDecoration: "none" }} href="#!">
+            <Link style={{ textDecoration: "none" }} to="/">
               <h4
                 style={{
                   fontFamily:
                     "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",
                   fontStyle: "inherit",
                   fontWeight: "lighter",
-                  color: "black",
+                  color: "Gray",
                 }}
               >
-                <Link to='/' > Home </Link>
+                Home
               </h4>
-            </a>
+            </Link>
           </div>
 
           <div
@@ -79,19 +79,19 @@ function Footer() {
               width: "150px",
             }}
           >
-            <a style={{ textDecoration: "none" }} href="#!">
+            <Link style={{ textDecoration: "none" }} to="/about_us">
               <h4
                 style={{
                   fontFamily:
                     "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",
                   fontStyle: "inherit",
                   fontWeight: "lighter",
-                  color: "black",
+                  color: "gray",
                 }}
               >
-                <Link to='/aboutUs' >AboutUs </Link>
+                About Us
               </h4>
-            </a>
+            </Link>
           </div>
 
           <div
@@ -105,19 +105,19 @@ function Footer() {
               width: "150px",
             }}
           >
-            <a style={{ textDecoration: "none" }} href="#!">
+            <Link style={{ textDecoration: "none" }} to="/payment_help">
               <h4
                 style={{
                   fontFamily:
                     "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",
                   fontStyle: "inherit",
                   fontWeight: "lighter",
-                  color: "black",
+                  color: "gray",
                 }}
               >
-                <Link to='/paymentHelp' > PaymentHelp </Link>
+                Payment Help
               </h4>
-            </a>
+            </Link>
           </div>
 
           <div
@@ -131,19 +131,19 @@ function Footer() {
               width: "150px",
             }}
           >
-            <a style={{ textDecoration: "none" }} href="#!">
+            <Link style={{ textDecoration: "none" }} to="/contact_us">
               <h4
                 style={{
                   fontFamily:
                     "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",
                   fontStyle: "inherit",
                   fontWeight: "lighter",
-                  color: "black",
+                  color: "gray",
                 }}
               >
-                <Link to='/contactUs' > ContactUs </Link>
+                Contact Us
               </h4>
-            </a>
+            </Link>
           </div>
 
           <div
@@ -157,19 +157,19 @@ function Footer() {
               width: "150px",
             }}
           >
-            <a style={{ textDecoration: "none" }} href="#!">
+            <Link style={{ textDecoration: "none" }} to="/faq">
               <h4
                 style={{
                   fontFamily:
                     "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif",
                   fontStyle: "inherit",
                   fontWeight: "lighter",
-                  color: "black",
+                  color: "gray",
                 }}
               >
-                <Link to='/faq' > FAQ </Link>
+                FAQ
               </h4>
-            </a>
+            </Link>
           </div>
           <div style={{ flexBasis: " 100%" }}></div>
 

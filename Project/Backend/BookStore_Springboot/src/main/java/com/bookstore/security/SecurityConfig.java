@@ -30,7 +30,7 @@ public class SecurityConfig {
 	// configures spring security for authorization (role based)
 	@Bean
 	public SecurityFilterChain authorizeRequests(HttpSecurity http) throws Exception {
-		http
+		http.cors().and()
 		.exceptionHandling()
 		.authenticationEntryPoint(
 				(request, resp, exc) -> 
@@ -41,8 +41,8 @@ public class SecurityConfig {
 			authorizeRequests()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()// specify all authorization rules (i.e authorize all requests)
 				.antMatchers( 
-						"/users/signin", 
-						"/users/signup",
+						"/users/signup", 
+						"/users/signin",
 						"/swagger*/**", 
 						"/v*/api-docs/**",
 						"/book/getbooks",
@@ -71,13 +71,15 @@ public class SecurityConfig {
 		return config.getAuthenticationManager();
 	}
 	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("*");
-			}
-		};
-	}
+
+	//for global CORS enabling
+		@Bean
+		public WebMvcConfigurer corsConfigurer() {
+			return new WebMvcConfigurer() {
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("*");
+				}
+			};
+		}
 }

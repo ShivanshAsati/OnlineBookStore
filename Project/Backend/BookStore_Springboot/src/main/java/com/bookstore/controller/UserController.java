@@ -30,6 +30,7 @@ public class UserController
 	@PostMapping("/register")
 	public ResponseEntity<?> addUser(@RequestBody AddUserDTO userDTO)
 	{
+		System.out.println("inside register controller");
 		return ResponseEntity.status(HttpStatus.OK).body(userService.addUser(userDTO));
 	}
 	

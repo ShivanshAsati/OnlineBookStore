@@ -15,26 +15,30 @@ export async function getBookList(){
 }
 
 
-export async function getAddressList(id) {
-    const url = createUrl( `/address/user/${id}` );
-
-    const config = {
-        headers: { Authorization: `Bearer ${id}` }
+export async function getAddressList(id,token) {
+    
+console.log(token)
+    const header = {
+        headers: { 
+            "content-type" : "application/json",
+            Authorization: `Bearer ${token}`,
+        }
     };
     
-    const bodyParameters = {
-       key: "value"
-    };
+    // const bodyParameters = {
+    //    key: "value"
+    // };
 
     try {
-        const response = await axios.post( 
-            'http://localhost:8000/api/v1/get_token_payloads',
-            bodyParameters,
-            config
+        const response = await axios.get( 
+            'http://localhost:7788/address/user/1',
+            header
           );
+        return response;
 
     } catch (ex) {
         log(ex);
         return ex
     }
 }
+

@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -38,11 +39,19 @@ public class Order extends BaseEntity{
 	@Column(name = "total_amount")
 	private double totalAmount;
 	
-	@Column(name = "status")
-	private Status status;
+	@Column(name = "order_status")
+	private Status orderStatus;
+	
+	@Column(name = "shipping_address")
+	@OneToOne
+	private Address shippingAddress;
 	
 	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderItem> orderItems = new ArrayList<>();
-	
-	
 }
+
+
+
+
+
+
