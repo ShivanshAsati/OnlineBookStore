@@ -15,7 +15,6 @@ import AboutUs from "./components/aboutUs";
 import PaymentHelp from "./components/paymentHelp";
 import ContactUs from "./components/contactUs";
 import Registration from "./components/registration";
-import {useSelector } from "react-redux";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
 

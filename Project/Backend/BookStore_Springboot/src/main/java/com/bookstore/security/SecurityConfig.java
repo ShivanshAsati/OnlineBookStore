@@ -3,6 +3,7 @@ package com.bookstore.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -12,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //Entry point of spring sec configuration
 @EnableWebSecurity // to enable web security frmwork
@@ -35,7 +38,8 @@ public class SecurityConfig {
 				.and()
 			.csrf().disable(). // disable CSRF to continue with REST APIs
 			
-			authorizeRequests() // specify all authorization rules (i.e authorize all requests)
+			authorizeRequests()
+			.antMatchers(HttpMethod.OPTIONS).permitAll()// specify all authorization rules (i.e authorize all requests)
 				.antMatchers( 
 						"/users/signin", 
 						"/users/signup",
@@ -49,7 +53,7 @@ public class SecurityConfig {
 																								// no authentication n
 																								// authorization needed
 				.antMatchers("/book").hasRole("USER")// CUSTOMERonly customer can purchase the products //"/products/purchase", "/address/user/*", 
-				.antMatchers("/cart/**").hasRole("USER")
+				.antMatchers("/cart/add/").hasRole("USER")
 				.antMatchers("/cart_items/**").hasRole("USER")
 				.antMatchers("/book/add").hasRole("ADMIN") // only admin can add the products
 				.anyRequest().authenticated() // all remaining end points accessible only to authenticated users
@@ -65,5 +69,15 @@ public class SecurityConfig {
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
+	}
+	
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("*");
+			}
+		};
 	}
 }

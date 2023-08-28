@@ -24,8 +24,7 @@ import lombok.ToString;
 @ToString
 public class CartItem extends BaseEntity{
 	
-	@JoinColumn(name = "user_id", nullable = false)	
-	private Long userId;
+	
 	
 	@JsonIgnore
 	@ManyToOne
@@ -41,4 +40,9 @@ public class CartItem extends BaseEntity{
 	private double price;
 	
 	private double discountedPrice;
+	
+//	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)	
+	private Long userId;		
+//	private User user;
 }

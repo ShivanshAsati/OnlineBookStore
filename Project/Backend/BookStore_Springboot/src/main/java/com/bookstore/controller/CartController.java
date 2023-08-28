@@ -34,14 +34,6 @@ public class CartController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/get")
-	public ResponseEntity<Cart> findUserCartHandler(@RequestHeader("Authorization") String jwt) throws ResourceNotFoundException{
-		User user=userService.findUserProfileByJwt(jwt);
-		Cart cart=cartService.findUserCart(user.getId());
-		System.out.println("cart - "+cart.getUser().getEmail());
-		return new ResponseEntity<Cart>(cart,HttpStatus.OK);
-	}
-	
 	@PostMapping("/add")
 	public ResponseEntity<ApiResponse> addItemToCart(@RequestBody AddItemDTO request, @RequestHeader("Authorization") String jwt) throws ResourceNotFoundException{
 		User user=userService.findUserProfileByJwt(jwt);
@@ -51,4 +43,15 @@ public class CartController {
 		
 	}
 
+	
+	
+	@GetMapping("/get")
+	public ResponseEntity<Cart> findUserCartHandler(@RequestHeader("Authorization") String jwt) throws ResourceNotFoundException{
+		User user=userService.findUserProfileByJwt(jwt);
+		Cart cart=cartService.findUserCart(user.getId());
+		System.out.println("cart - "+cart.getUser().getEmail());
+		return new ResponseEntity<Cart>(cart,HttpStatus.OK);
+	}
+	
+	
 }
