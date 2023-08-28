@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { registerUser } from "../services/register";
 import { useNavigate } from "react-router-dom";
 
-function Registration() {
+function Register() {
 
     const navigate = useNavigate();
     
@@ -55,10 +55,9 @@ function Registration() {
     <center>
         <br/>
     <div className='centres' style={{paddingTop:"110px", paddingBottom:"60px"}}>
-        <div className='regis' style={{backgroundColor : "skyblue", height : "700px", width : "600px", padding : "40px", borderRadius : "40px"}}>
-            <div className="container" style={{
-                backgroundImage: "URL('/image/b4.png')", backgroundSize:"100% 100%",backgroundRepeat: "no-repeat",
-                height: "600px", width: "400px"
+        <div className='regis' style={{backgroundColor : '#ECEFF1' , height : "700px", width : "600px", padding : "40px", borderRadius : "40px", border : "5px solid red"}}>
+            <div className="container" style={{ backgroundSize:"100% 100%",backgroundRepeat: "no-repeat",
+                height: "600px", width: "400px", borderRadius : '15px'
             }}>
 
             <div className="mb-3">
@@ -92,8 +91,8 @@ function Registration() {
                 <input type="password" className="form-control" name="password" value={user.password} placeholder="Atleast 6 characters" onChange={(e) => handleChange(e)} />
             </div>
 
-            <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
-                <button className="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px" }} disabled={loading}>Register</button>
+            <div class="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
+                <button class="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px", backgroundColor : 'white', border : 'none', color : 'red' }} disabled={loading}>Register</button>
             </div>
 
             <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
@@ -106,8 +105,8 @@ function Registration() {
             <hr className="border border-danger border-2 opacity-50" style={{ size: "5px", color: "black" }} />
              </div>
 
-             <div className="mb-3">
-                <h6>Already have account?<a style={{ textDecoration: "none" }} href="#!">SignIn</a></h6>
+             <div class="mb-3">
+                <h6>Already have account?<a style={{ textDecoration: "none", color : 'red' }} href="#!">SignIn</a></h6>
              </div>
              </div>
             </div>
@@ -118,4 +117,4 @@ function Registration() {
 
 }
 
-export default Registration;
+export default Register;

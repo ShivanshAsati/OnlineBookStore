@@ -29,8 +29,8 @@ import lombok.ToString;
 @ToString
 public class Cart extends BaseEntity{
 	
-	@OneToOne(fetch = FetchType.LAZY) 	// cascade ????
-//	@MapsId
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
 	@JoinColumn(name = "user_id", nullable = false)	
 	private User user;
 	

@@ -47,6 +47,7 @@ public class UserAuthController {
 		CustomUserDetails userDetails = (CustomUserDetails)principal.getPrincipal();
 		User user = userDetails.getUser();
 		AuthResp res = mapper.map(user, AuthResp.class);
+
 		// generate JWT
 		res.setToken(utils.generateJwtToken(principal));
 		return ResponseEntity.ok(res);
