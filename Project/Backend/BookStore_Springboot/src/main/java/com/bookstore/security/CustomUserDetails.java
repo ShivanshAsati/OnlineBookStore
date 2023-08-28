@@ -7,34 +7,59 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.bookstore.entities.Person;
 import com.bookstore.entities.User;
 
 public class CustomUserDetails implements UserDetails {
 	private User user;
+	private Person person;
 	
 
 	public CustomUserDetails(User user) {
 		super();
 		this.user = user;
 	}
-
+	
+	public CustomUserDetails(Person person) {
+		super();
+		this.person = person;
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// Can I return List<SimpleGrantedAuthority> ? YESS
-		return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+		return List.of(new SimpleGrantedAuthority(person.getRole().name()));
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return user.getPassword();
+		return person.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getEmail();
+		return person.getEmail();
 	}
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		// Can I return List<SimpleGrantedAuthority> ? YESS
+//		return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+//	}
+//
+//	@Override
+//	public String getPassword() {
+//		// TODO Auto-generated method stub
+//		return user.getPassword();
+//	}
+//
+//	@Override
+//	public String getUsername() {
+//		// TODO Auto-generated method stub
+//		return user.getEmail();
+//	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -59,9 +84,12 @@ public class CustomUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	public User getUser() {
-		return user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
 	
+	public Person getPerson() {
+		return person;
+	}
 
 }
