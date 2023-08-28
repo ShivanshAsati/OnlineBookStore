@@ -23,8 +23,10 @@ import com.bookstore.dto.UpdateUserDTO;
 import com.bookstore.dto.UserAddressDTO;
 import com.bookstore.dto.UserDTO;
 import com.bookstore.entities.Author;
+import com.bookstore.entities.Person;
 import com.bookstore.entities.Role;
 import com.bookstore.entities.User;
+import com.bookstore.repository.PersonRepository;
 import com.bookstore.repository.UserRepository;
 
 import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
@@ -45,17 +47,33 @@ public class UserServiceImpl implements UserService
 	@Autowired
 	private ModelMapper mapper;
 	
+	@Autowired
+	private PersonRepository personRepository;
+	
 	
 	@Override
 	public ApiResponse addUser(AddUserDTO userDTO) 
 	{
+		
+		if(personRepository.existsByEmail(userDTO.getEmail())) {
+			throw new UserAlreadyExistsException("User Already Exists");
+		}
+		Person person = new Person();
+		person.setEmail(userDTO.getEmail());
+		person.setPassword(encoder.encode(userDTO.getPassword()));
+		person.setRole(userDTO.getRole());
+		Person person1 = personRepository.save(person);
+		
+		
 		User user = mapper.map(userDTO, User.class);
+		
+		user.setPerson(person1);
 		if(userRepository.existsByEmail(user.getEmail())) {
 			throw new UserAlreadyExistsException("User Already Exists");
 		}
 		
-		user.setPassword(encoder.encode(userDTO.getPassword()));
-		user.setRole(Role.USER);
+//		user.setPassword(encoder.encode(userDTO.getPassword()));
+//		user.setRole(Role.USER);
 		userRepository.save(user);
 		ApiResponse apiResponse = new ApiResponse("USER ADDED SUCCESSFULLY..!!");
 		return apiResponse;

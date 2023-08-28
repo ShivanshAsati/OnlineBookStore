@@ -123,7 +123,7 @@ function Header() {
                         ) : (
                           <>
                           <li>
-                          <Link to={"/profile"} className="dropdown-item">
+                          <Link to={"/userProfile"} className="dropdown-item">
                             Profile
                           </Link>
                           </li>
@@ -138,7 +138,14 @@ function Header() {
                           <li>
                             <Link to={"/order"}
                             className="dropdown-item">
-                              Your Order
+                              My Order
+                            </Link>
+                          </li>
+
+                          <li>
+                            <Link to={"/address"}
+                            className="dropdown-item">
+                              Address
                             </Link>
                           </li>
                           </>
