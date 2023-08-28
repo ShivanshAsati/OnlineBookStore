@@ -41,9 +41,13 @@
 // )
 import { Link } from 'react-router-dom';
 import '../styles/cart.css';
+import { useSelector } from 'react-redux';
 
 function Cart() {
     
+    const firstName = useSelector((state) => state.user.firstName);
+    const lastName = useSelector((state) => state.user.lastName);
+
     return(<>
     <br></br>
     <br></br>
@@ -64,7 +68,7 @@ function Cart() {
                     <div class="panel-heading">
                         <h3>
                             <img class="img-circle img-thumbnail" src="https://bootdey.com/img/Content/user_3.jpg"/>
-                            &nbsp;&nbsp;&nbsp; Matew darfkmoun
+                            &nbsp;&nbsp;&nbsp; {firstName} {lastName}
                         </h3>
                     </div>
                     <div class="panel-body"> 
