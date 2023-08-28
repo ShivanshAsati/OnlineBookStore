@@ -1,15 +1,13 @@
-import React from "react";
 
-function Registration() {
+function Login1() {
 
-    return (<>
-    <center>
+        return(<>
+        <center>
         <br/>
     <div className='centres' style={{paddingTop:"110px", paddingBottom:"60px"}}>
-        <div className='regis' style={{backgroundColor : "skyblue", height : "700px", width : "600px", padding : "40px", borderRadius : "40px"}}>
-            <div className="container" style={{
-                backgroundImage: "URL('/image/b4.png')", backgroundSize:"100% 100%",backgroundRepeat: "no-repeat",
-                height: "600px", width: "400px"
+        <div className='regis' style={{backgroundColor : '#ECEFF1' , height : "700px", width : "600px", padding : "40px", borderRadius : "40px", border : "5px solid red"}}>
+            <div className="container" style={{ backgroundSize:"100% 100%",backgroundRepeat: "no-repeat",
+                height: "600px", width: "400px", borderRadius : '15px'
             }}>
 
             <div class="mb-3">
@@ -42,7 +40,7 @@ function Registration() {
             </div>
 
             <div class="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
-                <button type="button" class="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px" }}>Register</button>
+                <button type="button" class="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px", backgroundColor : 'white', border : 'none', color : 'red' }}>Register</button>
             </div>
 
             <div class="mb-3">
@@ -50,15 +48,13 @@ function Registration() {
              </div>
 
              <div class="mb-3">
-                <h6>Already have account?<a style={{ textDecoration: "none" }} href="#!">SignIn</a></h6>
+                <h6>Already have account?<a style={{ textDecoration: "none", color : 'red' }} href="#!">SignIn</a></h6>
              </div>
              </div>
             </div>
         </div>
         </center>
-    
     </>)
-
 }
 
-export default Registration;
+export default Login1;

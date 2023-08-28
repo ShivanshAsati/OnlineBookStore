@@ -1,11 +1,11 @@
 import axios from "axios"
 import { createUrl, log } from "../utils/utils"
 
-export async function loginUser(email, password) {
+export async function loginUser(e, p) {
   const url = createUrl('/users/signin')
   const body = {
-    email,
-    password,
+    email:e,
+    password:p,
   }
 
   try {

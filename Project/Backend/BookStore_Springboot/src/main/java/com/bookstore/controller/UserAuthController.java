@@ -36,8 +36,9 @@ public class UserAuthController {
 	public ResponseEntity<?> signIn(@RequestBody @Valid SigninRequest request) {
 		System.out.println("in sign in " + request);
 		// invoke autheticate(...) of Authenticate for auth
-		Authentication principal = mgr
-				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		Authentication principal = 
+				
+				mgr.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 		// generate JWT
 		String jwtToken = utils.generateJwtToken(principal);
 		return ResponseEntity.ok(

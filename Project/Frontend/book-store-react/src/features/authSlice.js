@@ -5,19 +5,20 @@ export const authSlice = createSlice({
     name : 'auth',
     initialState : {
         token : null,
-        name : "Account"
+        name : "Account",
     },
     reducers: {
         // action : action handler
         login : (state,action) => {
             state.token = action.payload.token
-            state.name = action.payload["name"]
+            state.name = action.payload['name']
+
         },
         //action : action handler
         logout : (state) => {
             state.token = null
             state.name = "Account"
-        }
+        }   
     }
 })
 

@@ -18,7 +18,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const loginUser = async () => {
     if (email.length == "") {
@@ -36,7 +36,15 @@ function Login() {
         // Clog(decodedToken);
         console.log(decodedToken);
 
-        dispatch(loginWithToken(token1));
+        // loginWithToken(token1);
+
+        // const x = (dispatch) => {
+        //   dispatch(login(token1));
+        // }
+        // x(dispatch)
+
+        // dispatch(login(token1));
+
         // toast.success("Successfully logged in!")
         // parse the response's data and extract the token
         // const { token, name, mobile, profileImage } = response["data"];
@@ -66,10 +74,10 @@ function Login() {
   };
 
   return (
-    <div className="main" style={{ paddingTop: "200px" }}>
-      <div className="sub-main">
+    <div className="main" style={{ paddingTop: "100px" }}>
+      <div className="sub-main" style={{ border : "5px solid red", backgroundColor : '#ECEFF1'}}>
         <div>
-          <div className="imgs">
+          <div className="imgs" >
             <div className="container-image">
               <img
                 src="/image/mainBook.png"
@@ -108,14 +116,14 @@ function Login() {
               />
             </div>
             <div className="login-button">
-              <button className="button1" onClick={loginUser}>
+              <button className="button1" onClick={loginUser} style={{backgroundColor : 'white', color : 'red'}}>
                 Login
               </button>
             </div>
 
             <p className="link">
               <a href="#">Forgot password ?</a> Or
-              <a href="/login/signup">Sign Up</a>
+              <a href="/register">Sign Up</a>
             </p>
           </div>
         </div>
