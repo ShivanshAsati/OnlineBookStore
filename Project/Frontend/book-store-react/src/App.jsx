@@ -17,6 +17,8 @@ import ContactUs from "./components/contactUs";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
 import Register from "./components/register";
+import AddressTemp from "./components/addresstemp";
+import MyComponent from "./components/addresstemp";
 
 function App() {
 
@@ -31,11 +33,13 @@ function App() {
         {token !== null ? (
                     <>
                         <Route exact path="/cart" element={<Cart/>} />
+                        <Route exact path="/address" element={<MyComponent/>} />
                         {/* Other routes */}
                     </>
                 ) : (
                     <>
                         <Route exact path="/cart" element={<Login/>} />
+                        <Route exact path="/address" element={<Login/>} />
                         {/* Other routes */}
                     </>
                 )}
