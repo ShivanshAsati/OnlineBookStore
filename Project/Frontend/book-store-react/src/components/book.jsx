@@ -12,6 +12,8 @@ function BookGallery()
     
     const navigate = useNavigate();
 
+    const name = useSelector((state) => state.auth.name);
+
     useEffect(()=>{
         selectBooks();
         
@@ -61,6 +63,7 @@ const dataObj = {
 
 return(
 <>
+    <div><h1>{name}</h1></div>
      <div className='container'> 
         <div className='row'style={{ marginTop: 50 }}>
                 {

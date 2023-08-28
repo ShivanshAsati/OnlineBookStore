@@ -45,7 +45,7 @@ public class BookController {
 	
 	@GetMapping("/getbooks")
 	public ResponseEntity<?> getBooks() {
-		return ResponseEntity.status(HttpStatus.OK).body(bookService.getBooks());
+		return ResponseEntity.ok(bookService.getBooks()); //short cut of line 38
 		
 	}
 	
