@@ -1,5 +1,5 @@
 package com.bookstore.entities;
 
-public enum RoleType {
+public enum Role {
 	ADMIN, USER
 }

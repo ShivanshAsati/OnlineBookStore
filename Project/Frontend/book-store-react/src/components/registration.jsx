@@ -1,6 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
+import { registerUser } from "../services/register";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
+
+    const navigate = useNavigate();
+    
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        mobile: '',
+        password: '',
+    })
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setUser((prevState => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        }))
+    }
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+        console.log(user);
+        if(!user.firstName || !user.lastName || !user.password || !user.email || !user.mobile) {
+            return
+        }
+        setLoading(true);
+        const response = await registerUser(user.firstName, user.lastName,user.email,user.mobile, user.password);
+
+        if(response.status === 200) {
+            navigate("/login")
+        } else if(response.response.status === 409){
+            setErrorMessage("User Already Exists!")
+        } else {
+            console.log(response.status)
+            setErrorMessage("Unexpected Error")
+        }
+        setLoading(false);
+
+    }
+    
 
     return (<>
     <center>
@@ -12,44 +61,52 @@ function Registration() {
                 height: "600px", width: "400px"
             }}>
 
-            <div class="mb-3">
-                <p class="h2">Create Account</p>
+            <div className="mb-3">
+                <p className="h2">Create Account</p>
+            </div>
+            <form 
+                onSubmit={(e) => handleRegister(e)}
+                >
+            <div className="mb-3">
+                <label className="form-label">First Name</label>
+                <input type="text" className="form-control" name="firstName" value={user.firstName} placeholder="First name" onChange={(e) => handleChange(e)}/>
             </div>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first_name" placeholder="First name" />
+            <div className="mb-3">
+                <label className="form-label">Last Name</label>
+                <input type="text" className="form-control" name="lastName" value={user.lastName} placeholder="Last name" onChange={(e) => handleChange(e)}/>
             </div>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last_name" placeholder="Last name" />
+            <div className="mb-3">
+                <label className="form-label">Email address</label>
+                <input type="email" className="form-control" name="email" value={user.email} placeholder="name@example.com" onChange={(e) => handleChange(e)} />
             </div>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+            <div className="mb-3">
+                <label className="form-label">Mobile</label>
+                <input type="number" className="form-control" name="mobile" value={user.mobile} placeholder="name@example.com" onChange={(e) => handleChange(e)} />
             </div>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-                <input type="text" class="form-control" id="phone_no" placeholder="Mobile number" />
+            <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input type="password" className="form-control" name="password" value={user.password} placeholder="Atleast 6 characters" onChange={(e) => handleChange(e)} />
             </div>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Atleast 6 characters" />
+            <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
+                <button className="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px" }} disabled={loading}>Register</button>
             </div>
 
-            <div class="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
-                <button type="button" class="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px" }}>Register</button>
+            <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
+                <h5 style={{color:"red"}}>{errorMessage}</h5>
             </div>
 
-            <div class="mb-3">
-            <hr class="border border-danger border-2 opacity-50" style={{ size: "5px", color: "black" }} />
+            </form>
+
+            <div className="mb-3">
+            <hr className="border border-danger border-2 opacity-50" style={{ size: "5px", color: "black" }} />
              </div>
 
-             <div class="mb-3">
+             <div className="mb-3">
                 <h6>Already have account?<a style={{ textDecoration: "none" }} href="#!">SignIn</a></h6>
              </div>
              </div>

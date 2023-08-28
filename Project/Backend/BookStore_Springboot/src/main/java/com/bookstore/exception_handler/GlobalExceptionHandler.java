@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
+import com.bookstore.custom_exceptions.UserAlreadyExistsException;
 import com.bookstore.dto.ApiResponse;
 
 
@@ -59,6 +60,14 @@ public class GlobalExceptionHandler {
 		public ResponseEntity<?> handleBadCredentialsException(BadCredentialsException e) {
 			System.out.println("in bad creden exc!");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse(e.getMessage()));
+		}
+		
+		@ExceptionHandler(UserAlreadyExistsException.class)
+		public ResponseEntity<?> handleUserAlreadyExistsException(UserAlreadyExistsException e)
+		{
+			System.out.println("err " + e);
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+
 		}
 	
 

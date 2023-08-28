@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //Entry point of spring sec configuration
 @EnableWebSecurity // to enable web security frmwork
@@ -28,7 +30,7 @@ public class SecurityConfig {
 	// configures spring security for authorization (role based)
 	@Bean
 	public SecurityFilterChain authorizeRequests(HttpSecurity http) throws Exception {
-		http
+		http.cors().and()
 		.exceptionHandling()
 		.authenticationEntryPoint(
 				(request, resp, exc) -> 
@@ -39,8 +41,8 @@ public class SecurityConfig {
 			authorizeRequests()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()// specify all authorization rules (i.e authorize all requests)
 				.antMatchers( 
-						"/users/signin", 
-						"/users/signup",
+						"/users/signup", 
+						"/users/signin",
 						"/swagger*/**", 
 						"/v*/api-docs/**",
 						"/book/getbooks",
@@ -66,4 +68,15 @@ public class SecurityConfig {
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
+	
+	//for global CORS enabling
+		@Bean
+		public WebMvcConfigurer corsConfigurer() {
+			return new WebMvcConfigurer() {
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("*");
+				}
+			};
+		}
 }

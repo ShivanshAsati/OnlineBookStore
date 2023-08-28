@@ -1,24 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
-import sessionStorage from 'redux-persist/lib/storage/session';
 import { useDispatch } from 'react-redux';
-
-// Import your reducers here
- // Update the path
-// ... other reducers
+import cookieStorage from '../utils/cookieStorage';// Adjust the path
+import sessionStorage from 'redux-persist/es/storage/session';
 import authSlice from './authSlice';
+import userSlice from './userSlice';
 
 const rootReducer = combineReducers({
-    auth: authSlice
+    auth: authSlice,
+    user: userSlice
     // ... other reducers
 });
 
 const persistConfig = {
     key: 'root',
-    storage: sessionStorage,
+    storage: sessionStorage, // Use the cookieStorage utility
 };
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

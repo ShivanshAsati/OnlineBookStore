@@ -1,6 +1,5 @@
 import axios from "axios";
 import {createUrl,log} from '../utils/utils';
-import { useSelector } from "react-redux";
 
 export async function getBookList(){
     const url = createUrl('/book/getbooks');
@@ -17,7 +16,7 @@ export async function getBookList(){
 
 
 export async function getAddressList(id,token) {
-    const url = createUrl( `/address/user/${id}` );
+    
 console.log(token)
     const header = {
         headers: { 
