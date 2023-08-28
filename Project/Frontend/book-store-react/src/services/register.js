@@ -1,28 +1,27 @@
 import axios from "axios"
-
-
+import { createUrl, log } from "../utils/utils"
 
 export async function registerUser(
     firstName,
     lastName,
     email,
+    mobile,
     password,
-    mobile
   ) {
     const url = createUrl('/user/register')
     const body = {
       firstName,
       lastName,
       email,
-      password,
       mobile,
+      password,
     }
-  
     // wait till axios is making the api call and getting response from server
     try {
+      console.log(url)
       const response = await axios.post(url, body)
       log(response.data)
-      return response.data
+      return response
     } catch (ex) {
       log(ex)
       return ex

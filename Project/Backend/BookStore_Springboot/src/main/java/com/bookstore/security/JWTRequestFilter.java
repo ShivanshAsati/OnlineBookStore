@@ -49,6 +49,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 			
 		} else
 			System.out.println("req did not contain any bearer token");
+		System.out.println(request);
 		filterChain.doFilter(request, response);// passing the control to the nexyt filter in the chain
 
 	}

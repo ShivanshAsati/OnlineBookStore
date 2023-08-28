@@ -2,6 +2,7 @@ package com.bookstore.controller;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookstore.dto.AuthResp;
 import com.bookstore.dto.SigninRequest;
-import com.bookstore.dto.SigninResponse;
+import com.bookstore.entities.User;
 import com.bookstore.jwt_utils.JwtUtils;
+import com.bookstore.security.CustomUserDetails;
 
 @RestController
 @RequestMapping("/users")
@@ -26,6 +29,9 @@ public class UserAuthController {
 	private AuthenticationManager mgr;
 	@Autowired
 	private JwtUtils utils;
+	
+	@Autowired
+	private ModelMapper mapper;
 
 	/*
 	 * request payload : Auth req DTO : email n password resp payload : In case of
@@ -36,13 +42,15 @@ public class UserAuthController {
 	public ResponseEntity<?> signIn(@RequestBody @Valid SigninRequest request) {
 		System.out.println("in sign in " + request);
 		// invoke autheticate(...) of Authenticate for auth
-		Authentication principal = 
-				
-				mgr.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		Authentication principal = mgr
+				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+		CustomUserDetails userDetails = (CustomUserDetails)principal.getPrincipal();
+		User user = userDetails.getUser();
+		AuthResp res = mapper.map(user, AuthResp.class);
+
 		// generate JWT
-		String jwtToken = utils.generateJwtToken(principal);
-		return ResponseEntity.ok(
-				new SigninResponse(jwtToken, "User authentication success!!!"));
+		res.setToken(utils.generateJwtToken(principal));
+		return ResponseEntity.ok(res);
 	}
 	
 }

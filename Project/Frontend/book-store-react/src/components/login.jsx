@@ -1,16 +1,13 @@
 import { Component, useState } from "react";
 import "../styles/login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser as loginUserApi } from "../services/user";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
-import { login, loginWithToken } from "../features/authSlice";
+import { login} from "../features/authSlice";
+import { setUser } from "../features/userSlice";
 
-//import "../node_modules/bootstrap/dist/css/bootstrap.css";
-// import profile from "/image/a.jpeg";
-// import email from "../../public/image/goodemail.png";
-// import pass from "../../public/image/pass.jpeg";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,41 +28,33 @@ function Login() {
       console.log(response);
       // parse the response
       if (response["status"] === 200) {
-        const token1 = response["data"]["jwt"];
-        const decodedToken = jwtDecode(token1);
-        // Clog(decodedToken);
+        console.log(response);
+
+        const token = response["data"]["token"];
+        const decodedToken = jwtDecode(token);
+        
         console.log(decodedToken);
 
-        // loginWithToken(token1);
-
-        // const x = (dispatch) => {
-        //   dispatch(login(token1));
-        // }
-        // x(dispatch)
-
-        // dispatch(login(token1));
-
-        // toast.success("Successfully logged in!")
-        // parse the response's data and extract the token
-        // const { token, name, mobile, profileImage } = response["data"];
-
-        // // store the token for making other apis
-        // sessionStorage["token"] = token1;
-        // sessionStorage["name"] = decodedToken.sub;
-        // sessionStorage["mobile"] = mobile;
-        // sessionStorage["profileImage"] = profileImage;
-
-        // update global store's authSlice with status = true
-        dispatch({type:login, 
+        dispatch({type:login,
           payload:{
-            token : token1,
-            name : decodedToken.sub
+            token: response.data.token
+          }
+        })
+        
+        dispatch({type:setUser, 
+          payload:{
+            id : response.data.id,
+            firstName: response.data.firstName,
+            lastName: response.data.lastName,
+            email: response.data.email,
+            role: response.data.role
           }
         });
 
+
+
         toast.success(`Welcome to bookstore.com, ${decodedToken.sub}!`);
 
-        // go back to login
         navigate("/");
       } else {
         toast.error("Invalid user name or password");
@@ -123,7 +112,7 @@ function Login() {
 
             <p className="link">
               <a href="#">Forgot password ?</a> Or
-              <a href="/register">Sign Up</a>
+              <Link to="/signup"> Register </Link>
             </p>
           </div>
         </div>

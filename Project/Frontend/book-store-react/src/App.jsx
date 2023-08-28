@@ -14,11 +14,9 @@ import Faq from "./components/faq";
 import AboutUs from "./components/aboutUs";
 import PaymentHelp from "./components/paymentHelp";
 import ContactUs from "./components/contactUs";
+import Register from "./components/register";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
-import Register from "./components/register";
-import AddressTemp from "./components/addresstemp";
-import MyComponent from "./components/addresstemp";
 
 function App() {
 
@@ -33,7 +31,6 @@ function App() {
         {token !== null ? (
                     <>
                         <Route exact path="/cart" element={<Cart/>} />
-                        <Route exact path="/address" element={<MyComponent/>} />
                         {/* Other routes */}
                     </>
                 ) : (
@@ -43,7 +40,8 @@ function App() {
                         {/* Other routes */}
                     </>
                 )}
-        <Route exact path="/login" element={<Login />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/signup" element={<Register />}/>
         <Route exact path="/" element={<BookGallery />} />
         <Route exact path="/bookDetails" element={<Book />} />
         <Route exact path="/authorDetails" element={<Author />} />

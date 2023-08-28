@@ -9,13 +9,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { persistor, store } from './features/persistore.js';
 import { PersistGate } from 'redux-persist/integration/react';
-import Appy from './services/address';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate persistor={persistor}>
       <BrowserRouter>
       <App/>
       </BrowserRouter>

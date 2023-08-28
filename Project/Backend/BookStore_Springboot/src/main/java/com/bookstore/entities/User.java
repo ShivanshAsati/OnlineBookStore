@@ -47,7 +47,7 @@ public class User extends BaseEntity{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role",columnDefinition = "varchar(20) default 'USER'")
-	private RoleType role;
+	private Role role;
 	
 
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
