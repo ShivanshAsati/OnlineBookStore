@@ -123,14 +123,22 @@ function Header() {
                         ) : (
                           <>
                           <li>
-                      <Link to={"/profile"} className="dropdown-item">
-                        Profile
-                      </Link>
-                    </li>
+                          <Link to={"/profile"} className="dropdown-item">
+                            Profile
+                          </Link>
+                          </li>
+
                           <li>
                             <Link to={"/logout"}
                             className="dropdown-item">
                               Logout
+                            </Link>
+                          </li>
+
+                          <li>
+                            <Link to={"/order"}
+                            className="dropdown-item">
+                              Your Order
                             </Link>
                           </li>
                           </>
