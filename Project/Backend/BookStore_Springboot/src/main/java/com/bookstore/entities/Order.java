@@ -42,8 +42,8 @@ public class Order extends BaseEntity{
 	@Column(name = "order_status")
 	private Status orderStatus;
 	
-	@Column(name = "shipping_address")
 	@OneToOne
+//	@Column(name = "shipping_address")
 	private Address shippingAddress;
 	
 	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -56,9 +56,12 @@ public class User extends BaseEntity{
 	
 	@JsonIgnore //NOT SURE
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,orphanRemoval=true)
-	private List<Review> reviews=new ArrayList<>();
+	private List<Review> reviews = new ArrayList<>();
 	
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
+//	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinColumn(name = "cart_id")
+//	private Cart cart;
+	
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CartItem> cartItems = new ArrayList<>(); 
 }
