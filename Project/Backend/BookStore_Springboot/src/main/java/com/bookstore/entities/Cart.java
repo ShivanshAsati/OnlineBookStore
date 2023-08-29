@@ -31,8 +31,8 @@ public class Cart extends BaseEntity{
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@JoinColumn(name = "user_id", nullable = false)	
-	private User user;
+	@JoinColumn(name = "customer_id", nullable = false)	
+	private Customer customer;
 	
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)	// not shown in db
 	private Set<CartItem> cartItems = new HashSet<>();

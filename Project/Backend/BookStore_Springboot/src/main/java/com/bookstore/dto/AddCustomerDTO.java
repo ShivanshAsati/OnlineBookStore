@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class AddUserDTO 
+public class AddCustomerDTO 
 {
 	private Role role;
 	private String firstName;

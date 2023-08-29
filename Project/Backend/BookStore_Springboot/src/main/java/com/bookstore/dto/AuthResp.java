@@ -22,6 +22,7 @@ public class AuthResp {
 
 	private String firstName;
 	private String lastName;
+	private String mobile;
 	
 
 	private Role role;

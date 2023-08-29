@@ -46,8 +46,7 @@ public class SecurityConfig {
 						"/swagger*/**", 
 						"/v*/api-docs/**",
 						"/book/getbooks",
-						"/user/getall",
-						"/user/register"
+						"/customer/getall"
 						).permitAll() // for incoming req ending
 																								// with /products/view :
 																								// no authentication n

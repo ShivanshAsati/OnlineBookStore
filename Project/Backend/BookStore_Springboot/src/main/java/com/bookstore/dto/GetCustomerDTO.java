@@ -9,9 +9,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class UserReviewDTO 
-{
+public class GetCustomerDTO {
+
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String mobile;
+	private String password;
 }

@@ -1,7 +1,5 @@
 package com.bookstore.dto;
 
-import com.bookstore.entities.Role;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +8,12 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-public class UserDTO {
-	private Role role;
+public class CustomerDTO 
+{
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
