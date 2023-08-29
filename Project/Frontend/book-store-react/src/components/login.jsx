@@ -56,7 +56,10 @@ function Login() {
         toast.success(`Welcome to bookstore.com, ${decodedToken.sub}!`);
 
         navigate("/");
-      } else {
+      } else if(response.status === 400) {
+        toast.error(response.data.message);
+      } 
+      else {
         toast.error("Invalid user name or password");
       }
     }
