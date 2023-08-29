@@ -19,7 +19,8 @@ import Cart from "./components/cart";
 import Logout from "./components/logout";
 import MyProfile from "./components/profile";
 import Order from "./components/order";
-import Address from "./components/address";
+import Address from "./components/address/addresses";
+import AddAddress from "./components/address/addAddress";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
                         <Route exact path="/userProfile" element={<MyProfile/>}/>
                         <Route exact path="/cart" element={<Cart/>} />
                         <Route exact path="/address" element={<Address/>} />
+                        <Route exact path="/add_address" element={<AddAddress/>}/>
                         {/* Other routes */}
                     </>
                 ) : (
@@ -43,6 +45,7 @@ function App() {
                         <Route exact path="/userProfile" element={<Login/>}/>
                         <Route exact path="/cart" element={<Login/>} />
                         <Route exact path="/address" element={<Login/>} />
+                        <Route exact path="/add_address" element={<Login/>}/>
                         {/* Other routes */}
                     </>
                 )}
