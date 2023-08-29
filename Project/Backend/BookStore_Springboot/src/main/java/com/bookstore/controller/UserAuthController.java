@@ -73,6 +73,10 @@ public class UserAuthController {
 		CustomUserDetails userDetails = (CustomUserDetails)principal.getPrincipal();
 		
 		User user = userDetails.getUser();
+		if(user.getRole() == Role.ROLE_ADMIN) {
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Unauthorized"));
+		}
 //		AuthResp res = mapper.map(person, AuthResp.class);
 		AuthResp res = mapper.map(user.getCustomer(), AuthResp.class);
 		// generate JWT
