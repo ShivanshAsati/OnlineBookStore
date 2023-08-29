@@ -9,7 +9,7 @@ import userSlice from './userSlice';
 
 const rootReducer = combineReducers({
     auth: authSlice,
-    user: userSlice
+    user: userSlice,
     // ... other reducers
 });
 

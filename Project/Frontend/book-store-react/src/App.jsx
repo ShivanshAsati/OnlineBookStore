@@ -17,6 +17,9 @@ import ContactUs from "./components/contactUs";
 import Register from "./components/register";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
+import MyProfile from "./components/profile";
+import Order from "./components/order";
+import Address from "./components/address";
 
 function App() {
 
@@ -30,11 +33,14 @@ function App() {
         
         {token !== null ? (
                     <>
+                        <Route exact path="/userProfile" element={<MyProfile/>}/>
                         <Route exact path="/cart" element={<Cart/>} />
+                        <Route exact path="/address" element={<Address/>} />
                         {/* Other routes */}
                     </>
                 ) : (
-                    <>
+                    <>  
+                        <Route exact path="/userProfile" element={<Login/>}/>
                         <Route exact path="/cart" element={<Login/>} />
                         <Route exact path="/address" element={<Login/>} />
                         {/* Other routes */}
@@ -52,8 +58,9 @@ function App() {
         <Route exact path="/logout" element={<Logout/>}/>
         <Route exact path="/register" element={<Register/>}></Route>
         <Route exact path="/order" element={<Order/>}></Route>
+        
       </Routes>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Footer />
     </>
   );

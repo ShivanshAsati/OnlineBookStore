@@ -15,6 +15,6 @@ public class GetReviewDTO
 {
 	private double rating;
 	private String review;
-	private UserReviewDTO userReviewDTO;
+	private CustomerReviewDTO userReviewDTO;
 	//List<BookReviewDTO> bookReviewDTO;
 }

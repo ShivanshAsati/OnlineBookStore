@@ -15,30 +15,4 @@ export async function getBookList(){
 }
 
 
-export async function getAddressList(id,token) {
-    
-console.log(token)
-    const header = {
-        headers: { 
-            "content-type" : "application/json",
-            Authorization: `Bearer ${token}`,
-        }
-    };
-    
-    // const bodyParameters = {
-    //    key: "value"
-    // };
-
-    try {
-        const response = await axios.get( 
-            'http://localhost:7788/address/user/1',
-            header
-          );
-        return response;
-
-    } catch (ex) {
-        log(ex);
-        return ex
-    }
-}
 

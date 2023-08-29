@@ -91,8 +91,8 @@ function Register() {
                 <input type="password" className="form-control" name="password" value={user.password} placeholder="Atleast 6 characters" onChange={(e) => handleChange(e)} />
             </div>
 
-            <div class="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
-                <button class="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px", backgroundColor : 'white', border : 'none', color : 'red' }} disabled={loading}>Register</button>
+            <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
+                <button className="btn btn-info btn-lg" style={{ width:"250px",borderRadius: "20px", backgroundColor : 'white', border : 'none', color : 'red' }} disabled={loading}>Register</button>
             </div>
 
             <div className="mb-3" style={{ display: 'flex', alignContent: "center", justifyContent: "center" }}>
@@ -105,7 +105,7 @@ function Register() {
             <hr className="border border-danger border-2 opacity-50" style={{ size: "5px", color: "black" }} />
              </div>
 
-             <div class="mb-3">
+             <div className="mb-3">
                 <h6>Already have account?<a style={{ textDecoration: "none", color : 'red' }} href="#!">SignIn</a></h6>
              </div>
              </div>

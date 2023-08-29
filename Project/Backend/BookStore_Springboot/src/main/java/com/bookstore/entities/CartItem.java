@@ -25,26 +25,14 @@ import lombok.ToString;
 @ToString
 public class CartItem extends BaseEntity{
 	
-//	@JsonIgnore
-//	@ManyToOne
-//	@JoinColumn(name = "cart_id")
-//	private Cart cart;
-	
-	public CartItem(Book book, User user, double totalPrice, double totalDiscountedPrice) {
-		this.book = book;
-		this.user = user;
-		this.totalPrice = totalPrice;
-		this.totalDiscountedPrice = totalDiscountedPrice;
-	}
-	
 	@ManyToOne
 	@JoinColumn(name = "book_id")
 	private Book book;
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user;
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 	
 	@Column(name = "quantity",columnDefinition = "int default 1")
 	private int quantity;
@@ -53,5 +41,10 @@ public class CartItem extends BaseEntity{
 	
 	private double totalDiscountedPrice;
 	
-	
+	public CartItem(Book book, Customer customer, double totalPrice, double totalDiscountedPrice) {
+		this.book = book;
+		this.customer = customer;
+		this.totalPrice = totalPrice;
+		this.totalDiscountedPrice = totalDiscountedPrice;
+	}
 }

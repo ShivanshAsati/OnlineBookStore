@@ -23,7 +23,7 @@ import com.bookstore.dto.DisplayCartItemDTO;
 import com.bookstore.entities.CartItem;
 import com.bookstore.entities.User;
 import com.bookstore.service.CartItemService;
-import com.bookstore.service.UserService;
+import com.bookstore.service.CustomerService;
 
 
 	@RestController
@@ -33,7 +33,7 @@ import com.bookstore.service.UserService;
 		@Autowired
 		private CartItemService cartItemService;
 		@Autowired
-		private UserService userService;
+		private CustomerService customerService;
 		
 		@PostMapping("/add")
 		public ResponseEntity<?> addItemsToCart(@RequestBody CartItemDTO cartItemDTO) throws ResourceNotFoundException{
@@ -42,11 +42,11 @@ import com.bookstore.service.UserService;
 			return ResponseEntity.status(HttpStatus.OK).body(cartItemService.addItem(cartItemDTO));
 		}
 		
-		@GetMapping("/get_cart/{userId}")
-		public List<DisplayCartItemDTO> getCartItems(@PathVariable Long userId) throws ResourceNotFoundException{
+		@GetMapping("/get_cart/{customerId}")
+		public List<DisplayCartItemDTO> getCartItems(@PathVariable Long customerId) throws ResourceNotFoundException{
 			System.out.println("inside getCartItems(): ");
-			System.out.println("userId passed : " + userId);
-			return cartItemService.getCartItems(userId);
+			System.out.println("customerId passed : " + customerId);
+			return cartItemService.getCartItems(customerId);
 		}
 		
 //		@DeleteMapping("/{cartItemId}")

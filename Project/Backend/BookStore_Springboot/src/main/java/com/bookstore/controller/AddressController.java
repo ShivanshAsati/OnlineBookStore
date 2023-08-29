@@ -24,14 +24,14 @@ public class AddressController {
 	@Autowired
 	public AddressService addressService;
 	
-	@PostMapping("/addtouser/{userId}")
-	public ResponseEntity<?> addressDetails(@PathVariable Long userId, @RequestBody AddressDTO addressDTO) {
-		return ResponseEntity.status(HttpStatus.OK).body(addressService.addAddress(userId, addressDTO));
+	@PostMapping("/addtocustomer/{customerId}")
+	public ResponseEntity<?> addressDetails(@PathVariable Long customerId, @RequestBody AddressDTO addressDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.addAddress(customerId, addressDTO));
 	}
 	
-	@GetMapping("/user/{userId}")
-	public ResponseEntity<?> getAddress(@PathVariable Long userId) {
-		return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(userId));
+	@GetMapping("/customer/{customerId}")
+	public ResponseEntity<?> getAddress(@PathVariable Long customerId) {
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddress(customerId));
 	}
 	
 	@DeleteMapping("/addressid/{addressId}")

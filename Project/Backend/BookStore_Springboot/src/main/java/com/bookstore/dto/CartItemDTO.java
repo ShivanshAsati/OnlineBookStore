@@ -17,5 +17,5 @@ import lombok.ToString;
 public class CartItemDTO {
 
 	private Long bookId;
-	private Long userId;
+	private Long customerId;
 }

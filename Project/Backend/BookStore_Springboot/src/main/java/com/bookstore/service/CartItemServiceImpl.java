@@ -18,9 +18,11 @@ import com.bookstore.dto.DisplayCartItemDTO;
 import com.bookstore.entities.Address;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.CartItem;
+import com.bookstore.entities.Customer;
 import com.bookstore.entities.User;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.CartItemRepository;
+import com.bookstore.repository.CustomerRepository;
 import com.bookstore.repository.UserRepository;
 
 @Service
@@ -30,9 +32,9 @@ public class CartItemServiceImpl implements CartItemService {
 	@Autowired
 	private CartItemRepository cartItemRepository;
 	@Autowired
-	private UserService userService;
+	private CustomerService customerService;
 	@Autowired
-	private UserRepository userRepository;
+	private CustomerRepository customerRepository;
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
@@ -41,13 +43,13 @@ public class CartItemServiceImpl implements CartItemService {
 	@Override
 	public ApiResponse addItem(CartItemDTO cartItemDTO) {
 		System.out.println(cartItemDTO);
-		User user = userRepository.findById(cartItemDTO.getUserId()).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		Customer customer = customerRepository.findById(cartItemDTO.getCustomerId()).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		Book book = bookRepository.findById(cartItemDTO.getBookId()).orElseThrow(() -> new ResourceNotFoundException("invalid book id!"));
 		System.out.println("<--------------------");
 		double tPrice = book.getPrice();
 		double tDiscPrice = book.getDiscountedPrice();
 //		CartItem cartItem = new CartItem(book, user, qty, book.getPrice()*qty, book.getDiscountedPrice()*qty);
-		CartItem cartItem = new CartItem(book, user, tPrice, tDiscPrice);
+		CartItem cartItem = new CartItem(book, customer, tPrice, tDiscPrice);
 		cartItem.setQuantity(1);
 //		System.out.println("Cart item: " + cartItem.toString());
 		cartItemRepository.save(cartItem);
@@ -57,10 +59,10 @@ public class CartItemServiceImpl implements CartItemService {
 	}
 
 	@Override
-	public List<DisplayCartItemDTO> getCartItems(Long userId) {
-		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+	public List<DisplayCartItemDTO> getCartItems(Long customerId) {
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		List<DisplayCartItemDTO> cartItemList = new ArrayList<>();
-		user.getCartItems().forEach(i -> cartItemList.add(new DisplayCartItemDTO(i.getId(), new CartBookDTO(i.getBook().getId(),i.getBook().getTitle(),i.getBook().getAuthor().getName(),i.getBook().getImagePath()) , userId, i.getQuantity(), i.getTotalPrice(), i.getTotalDiscountedPrice())));
+		customer.getCartItems().forEach(i -> cartItemList.add(new DisplayCartItemDTO(i.getId(), new CartBookDTO(i.getBook().getId(),i.getBook().getTitle(),i.getBook().getAuthor().getName(),i.getBook().getImagePath()) , customerId, i.getQuantity(), i.getTotalPrice(), i.getTotalDiscountedPrice())));
 		return cartItemList;
 	}
 

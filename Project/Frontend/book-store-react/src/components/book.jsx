@@ -16,13 +16,12 @@ function BookGallery()
 
     useEffect(()=>{
         selectBooks();
-        
     },[])
 
  
 const selectBooks = async () =>
 {
-    const response=await getBookList()
+    const response = await getBookList()
     if(response['status']===200){
         setBooks(response.data)
         console.log("here")

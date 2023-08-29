@@ -16,7 +16,7 @@ public class DisplayCartItemDTO {
 	
 	private Long cartItemId;
 	private CartBookDTO book;
-	private Long userId;
+	private Long customerId;
 	private int quantity;
 	private double totalPrice;
 	private double totalDiscountedPrice;

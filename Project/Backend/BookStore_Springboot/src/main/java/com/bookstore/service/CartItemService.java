@@ -14,7 +14,7 @@ public interface CartItemService {
 
 	public ApiResponse addItem(CartItemDTO cartItemDTO);
 
-	public List<DisplayCartItemDTO> getCartItems(Long userId);
+	public List<DisplayCartItemDTO> getCartItems(Long customerId);
 
 //	public CartItem createCartItem(CartItem cartItem);
 //	

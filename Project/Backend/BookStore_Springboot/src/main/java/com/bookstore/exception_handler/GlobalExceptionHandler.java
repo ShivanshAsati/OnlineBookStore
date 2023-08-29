@@ -47,14 +47,14 @@ public class GlobalExceptionHandler {
 				body(new ApiResponse(e.getMessage()));
 	}
 	//add exc handling method : for all remaining excs
-		@ExceptionHandler(RuntimeException.class)
-		public ResponseEntity<?> handleRuntimeException
-		(RuntimeException e){
-			System.out.println("in catch-all  exc");
-			return ResponseEntity.status
-					(HttpStatus.INTERNAL_SERVER_ERROR).
-					body(new ApiResponse(e.getMessage()));
-		}
+//		@ExceptionHandler(RuntimeException.class)
+//		public ResponseEntity<?> handleRuntimeException
+//		(RuntimeException e){
+//			System.out.println("in catch-all  exc");
+//			return ResponseEntity.status
+//					(HttpStatus.INTERNAL_SERVER_ERROR).
+//					body(new ApiResponse(e.getMessage()));
+//		}
 		
 		@ExceptionHandler(BadCredentialsException.class) 
 		public ResponseEntity<?> handleBadCredentialsException(BadCredentialsException e) {
