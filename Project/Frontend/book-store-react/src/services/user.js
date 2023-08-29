@@ -14,6 +14,6 @@ export async function loginUser(e, p) {
     return response;
   } catch (ex) {
     log(ex)
-    return ex;
+    return ex.response;
   }
 }

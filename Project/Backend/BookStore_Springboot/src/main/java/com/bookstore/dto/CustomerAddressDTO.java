@@ -4,18 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class GetUserDTO {
-
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String mobile;
-	private String password;
+public class CustomerAddressDTO {
+	private Long id;
+	private String street;
+	private String landmark;
+	private String city;
+	private String state;
+	private String country;
+	private String zipcode;
 }

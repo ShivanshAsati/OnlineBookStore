@@ -1,6 +1,5 @@
 package com.bookstore.dto;
 
-import com.bookstore.entities.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,11 +12,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserDTO {
-	private Role role;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String mobile;
-	private String password;
+public class DisplayCartItemDTO {
+	
+	private Long cartItemId;
+	private CartBookDTO book;
+	private Long customerId;
+	private int quantity;
+	private double totalPrice;
+	private double totalDiscountedPrice;
 }

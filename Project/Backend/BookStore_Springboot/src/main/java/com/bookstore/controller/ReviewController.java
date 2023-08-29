@@ -16,9 +16,8 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.GetReviewDTO;
 import com.bookstore.dto.ReviewDTO;
 import com.bookstore.entities.Review;
-import com.bookstore.entities.User;
 import com.bookstore.service.ReviewService;
-import com.bookstore.service.UserService;
+import com.bookstore.service.CustomerService;
 
 
 @RestController
@@ -29,13 +28,13 @@ public class ReviewController
 	public ReviewService reviewService;
 	
 	
-	@PostMapping("/add/{userId}/{bookId}")
-	public ResponseEntity<?> addReview(@PathVariable Long userId,@PathVariable Long bookId,@RequestBody ReviewDTO reviewDTO)
+	@PostMapping("/add/{customerId}/{bookId}")
+	public ResponseEntity<?> addReview(@PathVariable Long customerId,@PathVariable Long bookId,@RequestBody ReviewDTO reviewDTO)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(reviewService.createReview(userId,bookId,reviewDTO));
+		return ResponseEntity.status(HttpStatus.OK).body(reviewService.createReview(customerId,bookId,reviewDTO));
 	}
 	
-	private UserService userService;
+	private CustomerService customerService;
 	
 
 

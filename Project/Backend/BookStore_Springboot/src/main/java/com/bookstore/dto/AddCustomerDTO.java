@@ -10,10 +10,11 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-public class UserDTO {
+public class AddCustomerDTO 
+{
 	private Role role;
 	private String firstName;
 	private String lastName;

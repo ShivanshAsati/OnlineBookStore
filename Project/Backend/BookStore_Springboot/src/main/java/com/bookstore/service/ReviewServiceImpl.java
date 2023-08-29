@@ -13,13 +13,13 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.GetReviewDTO;
 import com.bookstore.dto.ReviewDTO;
-import com.bookstore.dto.UserReviewDTO;
+import com.bookstore.dto.CustomerReviewDTO;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.Review;
-import com.bookstore.entities.User;
+import com.bookstore.entities.Customer;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.ReviewRepository;
-import com.bookstore.repository.UserRepository;
+import com.bookstore.repository.CustomerRepository;
 
 
 @Service
@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
 	
 
 	private ModelMapper mapper;
-	private UserRepository userRepository;
+	private CustomerRepository userRepository;
 	private BookRepository bookRepository;
 	private ReviewRepository reviewRepository;
 	
@@ -41,10 +41,10 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		reviewDTO.setCreatedAt(LocalDateTime.now());
 		Review review = mapper.map(reviewDTO,Review.class);
-		User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("invalid user id!"));
+		Customer user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("invalid user id!"));
 		Book book=bookRepository.findById(bookId).orElseThrow(()-> new ResourceNotFoundException("invalid book id!"));
 		review.setBook(book);
-		review.setUser(user);
+		review.setCustomer(user);
 		reviewRepository.save(review);
 		ApiResponse apiResponse=new ApiResponse("Review saved");
 		return apiResponse;
@@ -64,7 +64,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 	
 		
-		review.forEach(i -> getReviewDTO.add(new GetReviewDTO(i.getRating(),i.getReview(),new UserReviewDTO(i.getUser().getFirstName(), i.getUser().getLastName()))));
+		review.forEach(i -> getReviewDTO.add(new GetReviewDTO(i.getRating(),i.getReview(),new CustomerReviewDTO(i.getCustomer().getFirstName(), i.getCustomer().getLastName()))));
 		return getReviewDTO;
 		
 

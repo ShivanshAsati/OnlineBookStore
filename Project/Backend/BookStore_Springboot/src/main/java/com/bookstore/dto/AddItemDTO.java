@@ -1,5 +1,7 @@
 package com.bookstore.dto;
 
+import com.bookstore.entities.BookCategory;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +10,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
-public class UserReviewDTO 
-{
-	private String firstName;
-	private String lastName;
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddItemDTO {
+
+	private Long bookId;
+	private int quantity;
+	private double discountedPrice;
+	
 }

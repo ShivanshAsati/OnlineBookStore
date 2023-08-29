@@ -69,7 +69,7 @@ function App() {
         <Route exact path="/order" element={<Order/>}></Route>
         
       </Routes>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Footer />
     </>
   );

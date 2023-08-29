@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
+import {addCartItem} from '../services/cartService';
 
 function Book() {
-
+    
+    
     const location = useLocation();
     const book = location.state.dataObj;
-    console.log(book); // Access the passed book details
-    // console.log(props);
+    const token = useSelector((state) => state.auth.token);
+    const userId = useSelector((state)=> state.user.id);
+    console.log(userId);
+    console.log(book); 
+    console.log(book['key']); 
 
     const navigate = useNavigate();
 
@@ -21,10 +27,27 @@ function Book() {
                        }
                        navigate('/authorDetails',{state:{dataObj:dataObj}});
             }
-
-    const cartItem = (book) => {
-        console.log(book);
+            
+const  insertCartItem = async (book)=>
+{   
+    
+    const bookId=book['key']
+    console.log(bookId);
+    
+    
+    
+    const response =  await addCartItem(userId,bookId,token)
+    if(response['status']===200)
+    {
+        toast.success("Item added to cart ");
+        console.log(response.data);
+        console.log("INSIDE ADDCARTITEM");
     }
+    else{
+        toast.error("UNABLE to add data");
+    }
+    
+}
 
     return ( 
         <>
@@ -88,7 +111,7 @@ function Book() {
                     </span>
                     <br/><br/>
                     <div>
-                        <button onClick={()=>cartItem(book)} className='btn btn-danger'>Add to Cart</button>&nbsp;
+                        <button onClick={()=>{insertCartItem(book)}} className='btn btn-danger'>Add to Cart</button>&nbsp;
                         <button className='btn btn-outline-danger'>Add to Wishlist</button>
                     </div>
                 </div>
@@ -107,3 +130,4 @@ function Book() {
 }
 
 export default Book;
+
