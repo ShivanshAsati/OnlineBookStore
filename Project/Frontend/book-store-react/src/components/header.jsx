@@ -211,8 +211,6 @@ function Header() {
     </nav> */}
       <div>
         <br />
-        <br />
-        <br />
       </div>
     </>
   );
