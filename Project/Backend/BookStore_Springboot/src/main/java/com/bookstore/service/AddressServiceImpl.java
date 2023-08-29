@@ -14,9 +14,9 @@ import com.bookstore.dto.AddressDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.DetachedAddressDTO;
 import com.bookstore.entities.Address;
-import com.bookstore.entities.User;
+import com.bookstore.entities.Customer;
 import com.bookstore.repository.AddressRepository;
-import com.bookstore.repository.UserRepository;
+import com.bookstore.repository.CustomerRepository;
 
 
 @Service
@@ -28,16 +28,16 @@ public class AddressServiceImpl implements AddressService {
 	private AddressRepository addressRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private CustomerRepository customerRepository;
 	
 	@Autowired
 	private ModelMapper mapper;
 	
 	@Override
 	public ApiResponse addAddress(Long userId, AddressDTO addressDTO) {
-		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		Address address = mapper.map(addressDTO, Address.class);
-		address.setUser(user);
+		address.setCustomer(customer);
 		addressRepository.save(address);
 		ApiResponse apiResponse = new ApiResponse("Address ADDED");
 		return apiResponse;
@@ -46,15 +46,15 @@ public class AddressServiceImpl implements AddressService {
 	
 	@Override
 	public List<DetachedAddressDTO> getAddress(Long userId) {
-		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		List<DetachedAddressDTO> addressList = new ArrayList<>();
-		user.getAddressList().forEach(i -> addressList.add(mapper.map(i, DetachedAddressDTO.class)));
+		customer.getAddressList().forEach(i -> addressList.add(mapper.map(i, DetachedAddressDTO.class)));
 		return addressList;
 	}
 
 //	@Override
 //	public ApiResponse deleteAddress(Long userId, Long addressId) {
-//		User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+//		Customer user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 //		List<Address> addressList = user.getAddressList();
 //		for(int i = 0; i < addressList.size(); i++) {
 //			if(addressList.get(i).getId() == Integer.parseInt(Long.toString(addressId)))

@@ -9,14 +9,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
-public class UpdateUserDTO {
-
-	private Long id;
+public class CustomerReviewDTO 
+{
 	private String firstName;
 	private String lastName;
-	private String email;
-	private String mobile;
-	private String password;
 }

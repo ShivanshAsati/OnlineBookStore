@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserAddressDTO {
+@ToString
+public class UpdateCustomerDTO {
+
 	private Long id;
-	private String street;
-	private String landmark;
-	private String city;
-	private String state;
-	private String country;
-	private String zipcode;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String mobile;
+	private String password;
 }

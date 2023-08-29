@@ -12,7 +12,7 @@ function Address() {
 
         const [address, setAddress] = useState([]);
 
-        // console.log(id)
+        
 
         useEffect(() => {
                 selectAddress();

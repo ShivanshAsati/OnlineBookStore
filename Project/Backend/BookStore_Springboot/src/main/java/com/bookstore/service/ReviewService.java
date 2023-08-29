@@ -7,7 +7,6 @@ import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.GetReviewDTO;
 import com.bookstore.dto.ReviewDTO;
 import com.bookstore.entities.Review;
-import com.bookstore.entities.User;
 
 public interface ReviewService {
 

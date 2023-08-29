@@ -8,7 +8,7 @@ export async function registerUser(
     mobile,
     password,
   ) {
-    const url = createUrl('/user/register')
+    const url = createUrl('/users/signup')
     const body = {
       firstName,
       lastName,

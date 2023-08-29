@@ -7,58 +7,60 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.bookstore.entities.Person;
+import com.bookstore.entities.Customer;
 import com.bookstore.entities.User;
 
 public class CustomUserDetails implements UserDetails {
+//	private Customer customer;
 	private User user;
-	private Person person;
 	
 
+//	public CustomUserDetails(Customer customer) {
+//		super();
+//		this.customer = customer;
+//	}
+	
 	public CustomUserDetails(User user) {
 		super();
 		this.user = user;
-	}
-	
-	public CustomUserDetails(Person person) {
-		super();
-		this.person = person;
+		System.out.println("<----------------here3");
 	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// Can I return List<SimpleGrantedAuthority> ? YESS
-		return List.of(new SimpleGrantedAuthority(person.getRole().name()));
+		System.out.println(user.getRole());
+		return List.of(new SimpleGrantedAuthority(user.getRole().name()));
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return person.getPassword();
+		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return person.getEmail();
+		return user.getEmail();
 	}
 
 //	@Override
 //	public Collection<? extends GrantedAuthority> getAuthorities() {
 //		// Can I return List<SimpleGrantedAuthority> ? YESS
-//		return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+//		return List.of(new SimpleGrantedAuthority(customer.getRole().name()));
 //	}
 //
 //	@Override
 //	public String getPassword() {
 //		// TODO Auto-generated method stub
-//		return user.getPassword();
+//		return customer.getPassword();
 //	}
 //
 //	@Override
 //	public String getUsername() {
 //		// TODO Auto-generated method stub
-//		return user.getEmail();
+//		return customer.getEmail();
 //	}
 
 	@Override
@@ -84,12 +86,12 @@ public class CustomUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-//	public User getUser() {
-//		return user;
+//	public Customer getCustomer() {
+//		return customer;
 //	}
 	
-	public Person getPerson() {
-		return person;
+	public User getUser() {
+		return user;
 	}
 
 }

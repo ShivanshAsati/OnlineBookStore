@@ -8,9 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.bookstore.entities.Person;
 import com.bookstore.entities.User;
-import com.bookstore.repository.PersonRepository;
+import com.bookstore.repository.CustomerRepository;
 import com.bookstore.repository.UserRepository;
 
 @Service
@@ -18,22 +17,23 @@ import com.bookstore.repository.UserRepository;
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
 	// dep user dao
 	@Autowired
-	private UserRepository userRepo;
+	private CustomerRepository customerRepo;
 	
 	@Autowired
-	private PersonRepository personRepository;
+	private UserRepository personRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		// invoke dao's method to get uer details form DB
-//		User user = userRepo.findByEmail(email)
+//		Customer customer = customerRepo.findByEmail(email)
 //				.orElseThrow(() ->
 //				new UsernameNotFoundException("Invalid Email !!!!!"));
 //		//=> user email exists
-//		return new CustomUserDetails(user);
+//		return new CustomUserDetails(customer);
 		
-		
-		Person person = personRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Invalid Email"));
-		return new CustomUserDetails(person);
+		System.out.println("<-------------------here2");
+		User user = personRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Invalid Email"));
+		System.out.println(user);
+		return new CustomUserDetails(user);
 	}
 }

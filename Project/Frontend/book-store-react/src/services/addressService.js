@@ -15,7 +15,7 @@ export async function getAddressList(id, token) {
         
             try {
                 const response = await axios.get( 
-                    `http://localhost:7788/address/user/${id}`,
+                    `http://localhost:7788/address/customer/${id}`,
                     header
                   );
                 return response;
