@@ -79,6 +79,8 @@ public class BookServiceImpl implements BookService{
 		book.getReviews().forEach(i -> reviewList.add(new ReviewDTO(i.getRating(), i.getReview(), i.getCreatedAt())));
 		return bookDTO;
 	}
+	
+	
 
 	@Override
 	public ApiResponse deleteBook(Long id) {
@@ -95,6 +97,12 @@ public class BookServiceImpl implements BookService{
 		bookRepository.findAll().forEach(i->getBookDTO.add(new GetBookDTO(i.getId(), i.getIsbn(), i.getTitle(), i.getDescription(), i.getCategory(), i.getPrice(), i.getDiscountedPrice(),new GetAuthorDTO(i.getAuthor().getName(),i.getAuthor().getImagePath(),i.getAuthor().getBio()), i.getQuantity(), i.getImagePath())));
 		
 		return getBookDTO;
+	}
+
+	@Override
+	public Book findBookById(Long id) {
+		Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author id invalid!"));
+		return book;
 	}
 
 

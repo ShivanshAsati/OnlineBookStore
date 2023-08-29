@@ -32,6 +32,7 @@ public class JwtUtils {
 	@Value("${EXP_TIMEOUT}")
 	private int jwtExpirationMs;
 	
+//	public static final String JWT_HEADER = "Authorization";
 	
 	private Key key;
 
@@ -94,4 +95,14 @@ public class JwtUtils {
 		return authorities;
 	}
 
+	// newly added 
+	public String getEmailFromJwtToken(String jwt) {
+		jwt=jwt.substring(7);
+		
+		Claims claims=Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
+		String email=String.valueOf(claims.get("email"));
+		
+		return email;
+	}
+	
 }

@@ -23,6 +23,7 @@ public class User extends BaseEntity{
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+
 	@OneToOne(mappedBy = "user")
 	private Customer customer;
 	@OneToOne(mappedBy = "user")
