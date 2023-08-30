@@ -27,8 +27,10 @@ import CarouselBooks from "./components/carouselBooks";
 import Test from "./components/test";
 import ScienceBooks from "./components/scienceFriction";
 import AdminDashboard from "./components/admin/admin";
+import AdminHeader  from "./components/admin/adminHeader";
 import Order from './components/order/order';
 import PlaceOrder from "./components/order/placeOrder";
+
 
 function App() {
 
@@ -39,10 +41,13 @@ function App() {
 
     return (
       <>
+      <AdminHeader/>
         <Routes>
             <Route exact path="/admin" element={<AdminDashboard/>}/>
             <Route exact path="/logout" element={<Logout />} />
         </Routes>
+        <ToastContainer />
+        <Footer />
       </>
     );
 
