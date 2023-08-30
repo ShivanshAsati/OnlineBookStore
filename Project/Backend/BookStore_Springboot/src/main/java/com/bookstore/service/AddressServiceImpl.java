@@ -117,7 +117,6 @@ public class AddressServiceImpl implements AddressService {
 		return detachedAddress;
 	}
 
-
 	@Override
 	public DetachedAddressDTO getDefaultAddress(Long customerId) {
 		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));

@@ -27,8 +27,14 @@ import CarouselBooks from "./components/carouselBooks";
 import Test from "./components/test";
 import ScienceBooks from "./components/scienceFriction";
 import AdminDashboard from "./components/admin/admin";
+import AdminHeader  from "./components/admin/adminHeader";
 import Order from './components/order/order';
 import PlaceOrder from "./components/order/placeOrder";
+import MakePayment from "./components/order/makePayment";
+import AdminShowBooks from "./components/admin/adminShowBooks";
+import UpdateBook from "./components/admin/updateForm";
+import AdminAddBook from "./components/admin/adminAddBook";
+
 
 function App() {
 
@@ -39,10 +45,16 @@ function App() {
 
     return (
       <>
+      <AdminHeader/>
         <Routes>
             <Route exact path="/admin" element={<AdminDashboard/>}/>
             <Route exact path="/logout" element={<Logout />} />
+            <Route exact path="/adminShowBooks" element={<AdminShowBooks />} />
+            <Route exact path="/updateBookForm" element={<UpdateBook />} />
+            <Route exact path="/adminAddBook" element={<AdminAddBook />} />
         </Routes>
+        <ToastContainer />
+        <Footer />
       </>
     );
 
@@ -90,6 +102,7 @@ function App() {
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/order" element={<Order />}></Route>
           <Route exact path="/placeOrder" element={<PlaceOrder />}></Route>
+          <Route exact path="/make_payment" element={<MakePayment />}></Route>
         </Routes>
         <ToastContainer />
         <Footer />
