@@ -1,0 +1,62 @@
+
+
+insert into author(biography,image_path,name) values("Robert Louis Stevenson (born Robert Lewis Balfour Stevenson; 13 November 1850 – 3 December 1894) was a Scottish novelist, essayist, poet and travel writer. He is best known for works such as Treasure Island, Strange Case of Dr Jekyll and Mr Hyde, Kidnapped and A Child's Garden of Verses.Born and educated in Edinburgh, Stevenson suffered from serious bronchial trouble for much of his life, but continued to write prolifically and travel widely in defiance of his poor health. ","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg/220px-Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg","Robert Louis Stevenson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("ACTION_AND_ADVENTURE","Embark on a thrilling adventure with Robert Louis Stevenson's "Treasure Island." Join young Jim Hawkins as he sets sail on a quest for buried treasure, encountering dangerous pirates and facing the ultimate test of bravery. A classic tale of excitement and intrigue..",365,"https://d2i0w0hu6hvxgc.cloudfront.net/B07W876QSC/e2abaa0b/cover.jpeg",1017,800,6,"Treasure Island",16);
+
+
+
+
+insert into author(biography,image_path,name) values("Robert Louis Stevenson (born Robert Lewis Balfour Stevenson; 13 November 1850 – 3 December 1894) was a Scottish novelist, essayist, poet and travel writer. He is best known for works such as Treasure Island, Strange Case of Dr Jekyll and Mr Hyde, Kidnapped and A Child's Garden of Verses.Born and educated in Edinburgh, Stevenson suffered from serious bronchial trouble for much of his life, but continued to write prolifically and travel widely in defiance of his poor health. ","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg/220px-Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg","Robert Louis Stevenson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("ACTION_AND_ADVENTURE","After losing his father, David Balfour sets out to meet his uncle with a letter in hand. His uncle turns out to be a cunning and miserly man. He conspires to take away David's inheritance. No sooner, the young and trusting David gets kidnapped on a slave ship. Will the amazingly unlucky David succeed to claim his destiny? Set in 18th century Scotland, Robert Louis stevenson's kidnapped is the story of David's struggle to claim his inheritance and find his place in the world. This timeless classic has it all: shipwrecks, crime, suspense, danger, adventure.",365,"https://m.media-amazon.com/images/I/51ZKwDjmV1L._SX355_BO1,204,203,200_.jpg",1018,800,6,"Kidnapped",17);
+
+
+
+
+insert into author(biography,image_path,name) values("Robert Louis Stevenson (born Robert Lewis Balfour Stevenson; 13 November 1850 – 3 December 1894) was a Scottish novelist, essayist, poet and travel writer. He is best known for works such as Treasure Island, Strange Case of Dr Jekyll and Mr Hyde, Kidnapped and A Child's Garden of Verses.Born and educated in Edinburgh, Stevenson suffered from serious bronchial trouble for much of his life, but continued to write prolifically and travel widely in defiance of his poor health. ","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg/220px-Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg","Robert Louis Stevenson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("ACTION_AND_ADVENTURE","It is the time of the reign of King Henry VI and the Wars of the roses is raging between the Lancastrian and the Yorkist armies. Richard ‘Dick’ Shelton reaches the village of Tunstall to garner support for his guardian Sir Daniel Brackley and witnesses one of his sworn soldiers shot down by a black arrow. Accompanying the killing arrow is a note that promises four black arrows for four black hearts: that of Sir Daniel’s and three of his most loyal supporters. Richard’s personal turmoil complicates his role within the framework of the larger political upheaval. Driven by curiosity about the circumstances of his father’s death and his suspicions about his guardian’s role in it.",365,"https://m.media-amazon.com/images/I/51tj1QO-8LL._SX357_BO1,204,203,200_.jpg",1019,800,6,"The Black Arrow",18);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

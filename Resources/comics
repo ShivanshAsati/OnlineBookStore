@@ -1,0 +1,66 @@
+
+
+insert into author(biography,image_path,name) values("Fred Van Lente is the New York Times-bestselling author of comics as varied as Archer & Armstrong (Harvey Award nominee, Best Series), Taskmaster, MODOK's 11, Amazing Spider-Man, Conan the Avenger, Weird Detective, and Cowboys & Aliens (upon which the 2011 movie was based), as well as the novels Ten Dead Comedians and The Con Artist.","https://m.media-amazon.com/images/I/B1-j97dBLES._SX450_.jpg","Fred Van Lente");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("COMICS","Who is IRON MAN, the world-renowned symbol of mega-conglomerate Stark International? And what terrible secret from his past forces billionaire inventor TONY STARK to become the Golden Guardian? Find out here!",365,"https://m.media-amazon.com/images/I/51gFt86kFAL.jpg",1024,870,6,"Marvel Adventures Iron Man",23);
+
+
+
+
+
+insert into author(biography,image_path,name) values("Fred Van Lente is the New York Times-bestselling author of comics as varied as Archer & Armstrong (Harvey Award nominee, Best Series), Taskmaster, MODOK's 11, Amazing Spider-Man, Conan the Avenger, Weird Detective, and Cowboys & Aliens (upon which the 2011 movie was based), as well as the novels Ten Dead Comedians and The Con Artist.","https://m.media-amazon.com/images/I/B1-j97dBLES._SX450_.jpg","Fred Van Lente");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("COMICS","Enter the shadowy world of the Assassins and Templars, two feuding factions who have battled over the centuries to decide the course of humanity! TWO all-new short stories, written and illustrated by the creative teams of the regular comics, highlight a shocking event in the life of new Assassin Charlotte de la Cruz, and reveal the true extent of the mysterious Templar Black Cross's terrifying skills! New readers or experienced fans: strap on your hidden blades, don your cowls, and blend into the crowd to discover secrets you won't read anywhere else!",365,"https://m.media-amazon.com/images/I/51-NP8Z8xLL.jpg",1025,870,6,"Assassin's Creed",24);
+
+
+
+insert into author(biography,image_path,name) values("Fred Van Lente is the New York Times-bestselling author of comics as varied as Archer & Armstrong (Harvey Award nominee, Best Series), Taskmaster, MODOK's 11, Amazing Spider-Man, Conan the Avenger, Weird Detective, and Cowboys & Aliens (upon which the 2011 movie was based), as well as the novels Ten Dead Comedians and The Con Artist.","https://m.media-amazon.com/images/I/B1-j97dBLES._SX450_.jpg","Fred Van Lente");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("COMICS","Thor and Captain America hit the big screen this summer, but their adventures don't end there! Enjoy two whole new stories starring Thor, Cap, and all your favorite characters from the films!",365,"https://m.media-amazon.com/images/I/61HL2p0YwxL.jpg",1026,870,6,"Captain America & Thor!: Avengers",25);
+
+
+
+
+
+
+
+insert into author(biography,image_path,name) values("Fred Van Lente is the New York Times-bestselling author of comics as varied as Archer & Armstrong (Harvey Award nominee, Best Series), Taskmaster, MODOK's 11, Amazing Spider-Man, Conan the Avenger, Weird Detective, and Cowboys & Aliens (upon which the 2011 movie was based), as well as the novels Ten Dead Comedians and The Con Artist.","https://m.media-amazon.com/images/I/B1-j97dBLES._SX450_.jpg","Fred Van Lente");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("COMICS","Professor X pairs up Kitty Pryde with Logan for a mision and neither of them are happy about it. But unless they learn to work together, neither of them will come back from their first mission together alive!",365,"https://m.media-amazon.com/images/I/61jpssHwGUL.jpg",1027,870,6,"Wolverine",26);
+
+
+
+
+insert into author(biography,image_path,name) values("Fred Van Lente is the New York Times-bestselling author of comics as varied as Archer & Armstrong (Harvey Award nominee, Best Series), Taskmaster, MODOK's 11, Amazing Spider-Man, Conan the Avenger, Weird Detective, and Cowboys & Aliens (upon which the 2011 movie was based), as well as the novels Ten Dead Comedians and The Con Artist.","https://m.media-amazon.com/images/I/B1-j97dBLES._SX450_.jpg","Fred Van Lente");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("COMICS","Retreating from the mad, mad world of mechanical overlords, Magnus descends into the SubStructure, where a bizarre collection of feral humans called Gophs live free from robot society. Winding up in the Uncanny Valley, a forbidden sex and death club, the timelost rebel discovers a gladiatorial pit where humans fight to the death, and the slain are dismembered for spare parts. Can Magnus hold his own against the merciless Goph hordes?",365,"https://m.media-amazon.com/images/I/51Tnu0oETqS.jpg",1028,870,6,"Magnus: Robot Fighter",27);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
