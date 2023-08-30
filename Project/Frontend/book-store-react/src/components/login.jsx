@@ -47,6 +47,7 @@ function Login() {
             firstName: response.data.firstName,
             lastName: response.data.lastName,
             email: response.data.email,
+            mobile: response.data.mobile,
             role: response.data.role
           }
         });
