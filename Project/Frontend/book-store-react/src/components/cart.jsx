@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../styles/cart.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState,useEffect  } from 'react';
-import {getItemList} from '../services/cartService';
+import {getItemList,updateCartItemQty,deleteCart} from '../services/cartService';
 import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 
@@ -12,7 +12,11 @@ function Cart()
 
     const token = useSelector((state) => state.auth.token);
     const userId = useSelector((state)=> state.user.id);
+    
+    
     const [items,setItems] = useState([]);
+
+    
     
     // const [quantity, setQuantity] = useState(items.quantity);
 
@@ -30,7 +34,7 @@ function Cart()
         selectItems();
         
     },[])
-
+    
     const selectItems = async () =>
 {
     const response=await getItemList(userId,token)
@@ -43,30 +47,73 @@ function Cart()
         toast.error("UNABLE TO LOAD DATA");
     }
 }
+console.log(items);
 
-const updateQtyDecr = async () =>
+console.log(items[2]);
+
+
+
+const updateQtyIncr = async (cartId,quantity,bookStock) =>
 {
-    const response=await getItemList(userId,token)
-    if(response['status']===200){
-        setItems(response.data)
-        console.log(response.data)
-        console.log("here")
+    console.log("BOOKSTOCK "+bookStock)
+    console.log(cartId)
+    console.log(quantity)
+
+    var qty=quantity+1;
+    if(qty <= bookStock) {
+        const response=await updateCartItemQty(cartId,qty,token)
+        if(response['status']===200){
+            //setItems(response.data)
+            console.log(response.data)
+            console.log("cart update")
+    
+            //selectItems();
+            console.log("IN UPDATE INCREMENT")
+        }
+        else{
+            toast.error("UNABLE TO Update Cart");
+        }
+
+    } else {
+        toast.error("")
     }
-    else{
-        toast.error("UNABLE TO LOAD DATA");
-    }
+
 }
 
-const updateQtyIncr = async () =>
+const updateQtyDecr = async (cartId,quantity,bookStock) =>
 {
-    const response=await getItemList(userId,token)
+    
+    console.log(cartId)
+    console.log(quantity)
+    var qty=quantity-1;
+    const response=await updateCartItemQty(cartId,qty,token)
     if(response['status']===200){
         setItems(response.data)
         console.log(response.data)
-        console.log("here")
+        console.log("cart update")
+
+        //selectItems();
+        console.log("IN UPDATE INCREMENT")
     }
     else{
-        toast.error("UNABLE TO LOAD DATA");
+        toast.error("UNABLE TO Update Cart");
+    }
+
+}
+
+const deleteCartItem = async (cartId)=>
+{
+    const response=await deleteCart(cartId,token)
+    if(response['status']===200){
+        setItems(response.data)
+        console.log(response.data)
+        console.log("cart Deleted")
+
+        //selectItems();
+        toast.info("CART ITEM DELETED");
+    }
+    else{
+        toast.error("UNABLE TO DELETE");
     }
 }
 
@@ -89,8 +136,8 @@ const updateQtyIncr = async () =>
                         <div className="panel panel-info panel-shadow">
                             <div className="panel-heading">
                                 <h3>
-                                    <img className="img-circle img-thumbnail" src="https://bootdey.com/img/Content/user_3.jpg" />
-                                    &nbsp;&nbsp;&nbsp; Matew darfkmoun
+                                    <img className="img-circle img-thumbnail" style={{height:"100px",width:"100px",border:"none"}} src="https://cdn-icons-png.flaticon.com/512/5544/5544117.png" />
+                                    &nbsp;&nbsp;&nbsp; MY CART
                                 </h3>
                             </div>
                             <div className="panel-body">
@@ -120,35 +167,34 @@ const updateQtyIncr = async () =>
     
     
                                                         <form className="form-inline">
-                                                            <input className="form-control" type="text" value={item.quantity} ></input>
+                                                            <input className="form-control" type="number" max={item.book.quantity} value={item.quantity} ></input>
     
-                                                            <button style={{border:"none"}} id={item.cartItemId} onClick={()=>{updateQtyIncr()}}>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green"
-                                                                
-                                                                className="bi bi-plus-square-fill" viewBox="0 0 16 16">
-                                                                
-                                                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
-                                                            </svg>
+                                                           
+
+                                                            <button style={{border : 'none', backgroundColor : 'white'}}  id={item.cartItemId} onClick={()=>{updateQtyIncr(item.cartItemId,item.quantity,item.book.quantity)}}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="green" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+</svg>                                                                                                      
                                                             </button>
                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-                                                            <button style={{border:"none"}} id={item.cartItemId} onClick={()=>{updateQtyDecr()}}>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red"
-                                                            
-                                                            className="bi bi-dash-square-fill" viewBox="0 0 16 16">
-                                                               
-                                                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 7.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1z" />
-                                                            </svg>
+                                                            <button style={{border : 'none', backgroundColor : 'white'}} id={item.cartItemId} onClick={()=>{updateQtyDecr(item.cartItemId,item.quantity)}}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red" class="bi bi-dash-square-fill" viewBox="0 0 16 16">
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 7.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1z"/>
+</svg>
                                                             </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     
                                                             
-                                                            
-                                                            <a href="#" className="btn btn-primary"><i className="fa fa-trash-o"></i></a>
+                                                            <button style={{border : 'none', backgroundColor : 'white'}} id={item.cartItemId} onClick={()=>{deleteCartItem(item.cartItemId)}}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+</svg>
+                                                            </button>
                                                         </form>
                                                     </td>
+                                                    <td>₹{item.book.discountedPrice}</td>
                                                     <td>₹{item.totalDiscountedPrice}</td>
-                                                    <td>₹{item.quantity*item.totalDiscountedPrice}</td>
                                                 </tr>
     
     
@@ -174,9 +220,11 @@ const updateQtyIncr = async () =>
                                                 <td colspan="4" className="text-right">Total Shipping</td>
                                                 <td>$2.00</td>
                                             </tr> */}
+                                            <br/>
+                                            <br/>
                                             <tr>
                                                 <td colspan="4" className="text-right"><strong>Total</strong></td>
-                                                <td>{items.reduce((acc, item) => acc + item.quantity * item.totalDiscountedPrice, 0)}</td>
+                                                <td>{items.reduce((acc, item) => acc +item.totalDiscountedPrice, 0)}</td>
                                             </tr>
 
                                         </tbody>
@@ -188,7 +236,7 @@ const updateQtyIncr = async () =>
                         <br></br>
 
                         <Link to={'/'} className="btn btn-success"><span className="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</Link>
-                        <Link href="#" className="btn btn-primary pull-right">Next<span className="glyphicon glyphicon-chevron-right"></span></Link>
+                        <Link href="#" className="btn btn-primary pull-right">Order<span className="glyphicon glyphicon-chevron-right"></span></Link>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,8 @@ const dataObj = {
     isbn:book['isbn'],
     title:book['title'],
     price:book['price'],
-    authorName:book['authorName']
+    authorName:book['authorName'],
+    quantity:book['quantity']
                }
                navigate('/bookDetails',{state:{dataObj:dataObj}});
      }
