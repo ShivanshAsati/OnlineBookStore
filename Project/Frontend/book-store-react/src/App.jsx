@@ -30,6 +30,7 @@ import AdminDashboard from "./components/admin/admin";
 import AdminHeader  from "./components/admin/adminHeader";
 import Order from './components/order/order';
 import PlaceOrder from "./components/order/placeOrder";
+import MakePayment from "./components/order/makePayment";
 import AdminShowBooks from "./components/admin/adminShowBooks";
 import UpdateBook from "./components/admin/updateForm";
 import AdminAddBook from "./components/admin/adminAddBook";
@@ -101,6 +102,7 @@ function App() {
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/order" element={<Order />}></Route>
           <Route exact path="/placeOrder" element={<PlaceOrder />}></Route>
+          <Route exact path="/make_payment" element={<MakePayment />}></Route>
         </Routes>
         <ToastContainer />
         <Footer />
