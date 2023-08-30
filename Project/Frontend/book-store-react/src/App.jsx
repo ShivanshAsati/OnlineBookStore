@@ -18,7 +18,6 @@ import Register from "./components/register";
 import Cart from "./components/cart";
 import Logout from "./components/logout";
 import MyProfile from "./components/profile";
-import Order from "./components/order";
 import Address from "./components/address/addresses";
 import AddAddress from "./components/address/addAddress";
 import EditAddress from "./components/address/editAddress";
@@ -28,6 +27,8 @@ import CarouselBooks from "./components/carouselBooks";
 import Test from "./components/test";
 import ScienceBooks from "./components/scienceFriction";
 import AdminDashboard from "./components/admin/admin";
+import Order from './components/order/order';
+import PlaceOrder from "./components/order/placeOrder";
 
 function App() {
 
@@ -88,7 +89,7 @@ function App() {
           <Route exact path="/logout" element={<Logout />} />
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/order" element={<Order />}></Route>
-
+          <Route exact path="/placeOrder" element={<PlaceOrder />}></Route>
         </Routes>
         <ToastContainer />
         <Footer />

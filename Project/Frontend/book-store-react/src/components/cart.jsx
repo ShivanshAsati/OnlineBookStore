@@ -236,7 +236,7 @@ const deleteCartItem = async (cartId)=>
                         <br></br>
 
                         <Link to={'/'} className="btn btn-success"><span className="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</Link>
-                        <Link href="#" className="btn btn-primary pull-right">Order<span className="glyphicon glyphicon-chevron-right"></span></Link>
+                        <Link to={'/placeOrder'} className="btn btn-primary pull-right">Place Order<span className="glyphicon glyphicon-chevron-right"></span></Link>
                     </div>
                 </div>
             </div>
