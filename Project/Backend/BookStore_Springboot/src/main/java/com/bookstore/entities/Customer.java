@@ -53,6 +53,10 @@ public class Customer extends BaseEntity{
 
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Address> addressList = new ArrayList<>();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="default_address_id")
+	private Address defaultAddress;
 
 	
 	@JsonIgnore //NOT SURE

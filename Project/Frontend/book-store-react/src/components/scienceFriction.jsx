@@ -6,17 +6,24 @@ import Book from './bookDetails';
 import { useSelector } from 'react-redux';
 
 
-function BookGallery()
-{
-    const [books,setBooks] = useState([]);
+function ScienceBooks() {
+
+
+        const [books,setBooks] = useState([]);
+        const [offer,setOffer] = useState([]);
+
     
-    const navigate = useNavigate();
+        const navigate = useNavigate();
 
-    const name = useSelector((state) => state.auth.name);
+        const name = useSelector((state) => state.auth.name);
 
-    useEffect(()=>{
-        selectBooks();
-    },[])
+        useEffect(()=>{
+                selectBooks();
+        },[])
+
+        useEffect(() => {
+                selectOffer(books);
+        },[books])
 
  
 const selectBooks = async () =>
@@ -31,7 +38,19 @@ const selectBooks = async () =>
     }
 }
 
-
+        const selectOffer = (books) =>
+        {
+                var arr = [];
+                var j = 0;
+                console.log(books)
+                for(var i = 0; i < books.length; i++){
+                        if(books[i]['category'] === 'SCIENCE_FICTION'){
+                                arr[j] = books[i];
+                                j++;
+                        }
+                }
+                setOffer(arr);
+        }
 
  const details = (book) => {
 
@@ -44,8 +63,7 @@ const dataObj = {
     isbn:book['isbn'],
     title:book['title'],
     price:book['price'],
-    authorName:book['authorName'],
-    quantity:book['quantity']
+    authorName:book['authorName']
                }
                navigate('/bookDetails',{state:{dataObj:dataObj}});
      }
@@ -60,28 +78,26 @@ const dataObj = {
              }
 
 
-
-return(
-<>
-    <div><h1>{name}</h1></div>
+        return (<>
+        <div><h1>{name}</h1></div>
      <div className='container'> 
         <div className='row'style={{ marginTop: 50 }}>
                 {
-                    books.map((book)=>{
+                    offer.map((offers)=>{
                         return(
                           
-                            <div className="col-sm-4" key={book['id']}>
+                            <div className="col-sm-4" key={offers['id']}>
                             <div className="card" style={{ width: "20rem", border : '2px solid red'}}>
-                             <img src={book['imagePath']} style={{height:"20rem"}} alt="img" className="img-thumbnail"/>
+                             <img src={offers['imagePath']} style={{height:"20rem"}} alt="img" className="img-thumbnail"/>
                            
                                  <div className="card-body">
-                                     <h5 className="card-title">{book['title']}</h5>
+                                     <h5 className="card-title">{offers['title']}</h5>
                                      <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">ISBN: {book['isbn']}</li>
-                                         <li className="list-group-item">Author : <button className="btn btn-link" onClick={()=>{author(book)}}>{book.authorName.name}</button></li>
-                                         <li className="list-group-item">Price: ₹ {book['discountedPrice']} <s> {book['price']}</s></li>
+                                    <li className="list-group-item">ISBN: {offers['isbn']}</li>
+                                         <li className="list-group-item">Author : <button className="btn btn-link" onClick={()=>{author(offers)}}>{offers.authorName.name}</button></li>
+                                         <li className="list-group-item">Price: ₹ {offers['discountedPrice']} <s> {offers['price']}</s></li>
                                        <li className="list-group-item">
-                                        <button style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-info" onClick={()=>{details(book)}}>Quick View</button>
+                                        <button style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-info" onClick={()=>{details(offers)}}>Quick View</button>
                                             
                                             </li>
                                      </ul>
@@ -98,9 +114,7 @@ return(
             
         </div>
     </div> 
-</>)
+        </>)
+}
 
- }
- 
-
-export default BookGallery
+export default ScienceBooks;
