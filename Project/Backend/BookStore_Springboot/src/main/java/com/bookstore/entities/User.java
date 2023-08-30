@@ -19,6 +19,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false, doNotUseGetters = true, of = "email")
 public class User extends BaseEntity{
+	
 	private String email;
 	private String password;
 	@Enumerated(EnumType.STRING)
