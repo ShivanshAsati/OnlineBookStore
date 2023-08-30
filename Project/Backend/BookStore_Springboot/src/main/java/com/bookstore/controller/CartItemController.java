@@ -19,6 +19,7 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddressDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.CartItemDTO;
+import com.bookstore.dto.CartItemQtyDTO;
 import com.bookstore.dto.DisplayCartItemDTO;
 import com.bookstore.entities.CartItem;
 import com.bookstore.entities.User;
@@ -49,21 +50,24 @@ import com.bookstore.service.CustomerService;
 			return cartItemService.getCartItems(customerId);
 		}
 		
-//		@DeleteMapping("/{cartItemId}")
-//		public ResponseEntity<ApiResponse>deleteCartItemHandler(@PathVariable Long cartItemId, @RequestHeader("Authorization")String jwt) throws ResourceNotFoundException{
-//			User user=userService.findUserProfileByJwt(jwt);
-//			cartItemService.removeCartItem(user.getId(), cartItemId);
-//			ApiResponse res=new ApiResponse("Item Remove From Cart");
-//			return new ResponseEntity<ApiResponse>(res, HttpStatus.ACCEPTED);
-//		}
-//		
-//		@PutMapping("/{cartItemId}")
-//		public ResponseEntity<CartItem>updateCartItemHandler(@PathVariable Long cartItemId, @RequestBody CartItem cartItem, @RequestHeader("Authorization")String jwt) throws ResourceNotFoundException{
-//			User user=userService.findUserProfileByJwt(jwt);
-//			CartItem updatedCartItem =cartItemService.updateCartItem(user.getId(), cartItemId, cartItem);
-//			//ApiResponse res=new ApiResponse("Item Updated");
-//			return new ResponseEntity<>(updatedCartItem,HttpStatus.ACCEPTED);
-//		}
-
+		@PutMapping("/cart_update/{cartItemId}")
+		public ResponseEntity<?>updateCartItemHandler(@PathVariable Long cartItemId, @RequestBody CartItemQtyDTO cartItemQtyDTO) throws ResourceNotFoundException{
+			return ResponseEntity.status(HttpStatus.OK).body(cartItemService.updateItemQty(cartItemId, cartItemQtyDTO));
+		}
+		
+		
+		@DeleteMapping("/cart_delete/{cartItemId}")
+		public ResponseEntity<?>deleteCartItemHandler(@PathVariable Long cartItemId) throws ResourceNotFoundException{
+			return ResponseEntity.status(HttpStatus.OK).body(cartItemService.deleteItem(cartItemId));
+		}
+		
+		@DeleteMapping("/cart_del/{bookId}/{customerId}")
+		public ResponseEntity<?>deleteCartItem(@PathVariable Long bookId, @PathVariable Long customerId) throws ResourceNotFoundException{
+			return ResponseEntity.status(HttpStatus.OK).body(cartItemService.deleteCart(bookId, customerId));
+		}
 	
+		@GetMapping("/cart_exists/{bookId}/{customerId}")
+		public Boolean isCartExists(@PathVariable Long bookId, @PathVariable Long customerId) throws ResourceNotFoundException{
+			return cartItemService.isCartExists(bookId, customerId);
+		}
 }

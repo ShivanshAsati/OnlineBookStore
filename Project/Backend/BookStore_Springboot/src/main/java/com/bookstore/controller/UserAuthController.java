@@ -80,6 +80,7 @@ public class UserAuthController {
 //		AuthResp res = mapper.map(person, AuthResp.class);
 		AuthResp res = mapper.map(user.getCustomer(), AuthResp.class);
 		// generate JWT
+		res.setRole(user.getRole());
 		res.setToken(utils.generateJwtToken(principal));
 		return ResponseEntity.ok(res);
 	}
