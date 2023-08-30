@@ -69,8 +69,8 @@ return(
                     books.map((book)=>{
                         return(
                           
-                             <div className="col-sm-4" key={book['id']}>
-                            <div className="card" style={{ width: "20rem" }}>
+                            <div className="col-sm-4" key={book['id']}>
+                            <div className="card" style={{ width: "20rem", border : '2px solid red'}}>
                              <img src={book['imagePath']} style={{height:"20rem"}} alt="img" className="img-thumbnail"/>
                            
                                  <div className="card-body">
@@ -80,9 +80,9 @@ return(
                                          <li className="list-group-item">Author : <button className="btn btn-link" onClick={()=>{author(book)}}>{book.authorName.name}</button></li>
                                          <li className="list-group-item">Price: ₹ {book['discountedPrice']} <s> {book['price']}</s></li>
                                        <li className="list-group-item">
-                                        <button className="btn btn-info" onClick={()=>{details(book)}}>Quick View</button>
+                                        <button style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-info" onClick={()=>{details(book)}}>Quick View</button>
                                             
-                                              </li>
+                                            </li>
                                      </ul>
                                  </div>
                              </div>

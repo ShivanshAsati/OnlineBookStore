@@ -27,6 +27,7 @@ import Dashboard from "./components/dashboard";
 import BestSelling from "./components/bestselling";
 import CarouselBooks from "./components/carouselBooks";
 import Test from "./components/test";
+import ScienceBooks from "./components/scienceFriction";
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
                     </>
                 )}
 
+        <Route exact path="/scienceBooks" element={<ScienceBooks />} />
         <Route exact path="/test" element={<Test />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/carouselBooks" element={<CarouselBooks />} />

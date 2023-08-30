@@ -9,9 +9,11 @@ function Header() {
   const BSearch = () => {
     nav.push("/search");
   };
+  
   const firstName = useSelector((state) => state.user.firstName);
   const lastName = useSelector((state) => state.user.lastName);
   const token = useSelector((state) => state.auth.token);
+  console.log(token);
 
   return (
     <>

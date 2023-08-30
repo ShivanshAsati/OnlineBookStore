@@ -8,7 +8,8 @@ import { getBookList } from '../services/bookService';
 function Dashboard()
 {
         const [books,setBooks] = useState([]);
-    
+        const [science,setScience] = useState([]);
+        
         const navigate = useNavigate();
 
         const name = useSelector((state) => state.auth.name);
@@ -17,6 +18,9 @@ function Dashboard()
                 selectBooks();
         },[])
 
+        useEffect(() => {
+                selectScience(books);
+        },[books])
  
         const selectBooks = async () =>
         {
@@ -31,11 +35,23 @@ function Dashboard()
                 else{
                         toast.error("UNABLE TO LOAD DATA");
                 }
-                
-                console.log(books);
 
         }
+        console.log(books);
 
+        const selectScience = (books) =>
+        {
+                var arr = [];
+                var j = 0;
+                console.log(books)
+                for(var i = 0; i < books.length; i++){
+                        if(books[i]['category'] === "SCIENCE_FICTION"){
+                                arr[j] = books[i];
+                                j++;
+                        }
+                }
+                setScience(arr);
+        }
 
 
         const details = (book) => {
@@ -179,7 +195,7 @@ return(<>
         <div className="card-Wrapper">
 
         {
-                books.slice(5, 8).map((book)=>{
+                books.slice(5, 10).map((book)=>{
                         return(
                                 <div className="card" style={{width: "18rem", border : '1px solid red', padding : '12px'}}>
                                 <img src={book['imagePath']} className="card-img-top cardImg"  alt="..."/>
@@ -202,50 +218,23 @@ return(<>
         <div class="carousel-item">       
         <div className="card-Wrapper">
 
-                <div className="card" style={{width: "18rem"}}>
-                        <img src="https://m.media-amazon.com/images/I/61eIQr8OB0L._AC_UY218_.jpg" className="card-img-top cardImg"  alt="..."/>
-                        <div className="card-body">
-                                <h5 className="card-title">Card title3</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
-
-                <div className="card" style={{width: "18rem"}}>
-                        <img src="https://m.media-amazon.com/images/I/41ERRKixKdL.AC_SX250.jpg" className="card-img-top cardImg"  alt="..."/>
-                        <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
-
-                <div className="card" style={{width: "18rem"}}>
-                        <img src="https://m.media-amazon.com/images/I/41djPUPc1ML._AC_UY218_.jpg" className="card-img-top cardImg"  alt="..."/>
-                        <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="/book" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
-
-                <div className="card" style={{width: "18rem"}}>
-                        <img src="https://m.media-amazon.com/images/I/71rYps2bfVL._AC_UY218_.jpg" className="card-img-top cardImg"  alt="..."/>
-                        <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
-
-                <div className="card" style={{width: "18rem"}}>
-                        <img src="https://rukminim1.flixcart.com/image/416/416/jgb5dow0/book/4/2/6/lal-bahadur-shastri-hindi-original-imaf4kxtxdbegmpf.jpeg?q=70" className="card-img-top cardImg"  alt="..."/>
-                        <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
+        {
+                books.slice(10, 15).map((book)=>{
+                        return(
+                                <div className="card" style={{width: "18rem", border : '1px solid red', padding : '12px'}}>
+                                <img src={book['imagePath']} className="card-img-top cardImg"  alt="..."/>
+                                <div className="card-body">
+                                        <h4 className="card-title">{book['title']}</h4>
+                                        <h6>Author : <button className="btn btn-link" onClick={()=>{author(book)}}>{book.authorName.name}</button></h6>
+                                        <h6>Price : ₹ {book['discountedPrice']} <s> {book['price']}</s></h6>
+                                        <br></br>
+                                        {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+                                        <button onClick={()=>{details(book)}} style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</button>
+                                 </div>
+                         </div>
+                        );
+                })
+        }
 
         </div>
         </div>
@@ -265,13 +254,104 @@ return(<>
 {/* All Books div End dynamic */}
 
 
-{/* Religious Books div start */}
+{/* Science Friction Books div start */}
         <hr></hr>
+<div>
         <div className="divCard-WrapperTop">
-                <h3 style={{fontFamily : "", color : "orangered"}}>Religous Books</h3>
-                <Link to={'/allBooks'} className="btn btn-link">See All</Link>
+                <h3 style={{fontFamily : "", color : "orangered"}}>Science Fiction</h3>
+                <Link to={'/scienceBooks'} className="btn btn-link">See All</Link>
         </div>
-{/* Religious Book Div End*/}
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+        <div class="carousel-item active">
+        <div className="card-Wrapper">
+
+        {
+                science.slice(0, 5).map((sciences)=>{
+                        return(
+                                <div className="card" style={{width: "18rem", border : '1px solid red', padding : '12px'}}>
+                                <img src={sciences['imagePath']} className="card-img-top cardImg"  alt="..."/>
+                                <div className="card-body">
+                                        <h4 className="card-title">{sciences['title']}</h4>
+                                        <h6>Author : <button className="btn btn-link" onClick={()=>{author(sciences)}}>{sciences.authorName.name}</button></h6>
+                                        <h6>Price : ₹ {sciences['discountedPrice']} <s> {sciences['price']}</s></h6>
+                                        <br></br>
+                                        {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+                                        <button onClick={()=>{details(sciences)}} style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</button>
+                                </div>
+                        </div>
+                        );
+                })
+        }
+        
+        
+        </div>
+        </div>
+
+        <div class="carousel-item active">
+        <div className="card-Wrapper">
+
+        {
+                science.slice(0, 5).map((sciences)=>{
+                        return(
+                                <div className="card" style={{width: "18rem", border : '1px solid red', padding : '12px'}}>
+                                <img src={sciences['imagePath']} className="card-img-top cardImg"  alt="..."/>
+                                <div className="card-body">
+                                        <h4 className="card-title">{sciences['title']}</h4>
+                                        <h6>Author : <button className="btn btn-link" onClick={()=>{author(sciences)}}>{sciences.authorName.name}</button></h6>
+                                        <h6>Price : ₹ {sciences['discountedPrice']} <s> {sciences['price']}</s></h6>
+                                        <br></br>
+                                        {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+                                        <button onClick={()=>{details(sciences)}} style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</button>
+                                </div>
+                        </div>
+                        );
+                })
+        }
+
+        </div>
+        </div>
+
+        <div class="carousel-item">       
+        <div className="card-Wrapper">
+
+        {
+                science.slice(0, 5).map((sciences)=>{
+                        return(
+                                <div className="card" style={{width: "18rem", border : '1px solid red', padding : '12px'}}>
+                                <img src={sciences['imagePath']} className="card-img-top cardImg"  alt="..."/>
+                                <div className="card-body">
+                                        <h4 className="card-title">{sciences['title']}</h4>
+                                        <h6>Author : <button className="btn btn-link" onClick={()=>{author(sciences)}}>{sciences.authorName.name}</button></h6>
+                                        <h6>Price : ₹ {sciences['discountedPrice']} <s> {sciences['price']}</s></h6>
+                                        <br></br>
+                                        {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+                                        <button onClick={()=>{details(sciences)}} style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</button>
+                                </div>
+                        </div>
+                        );
+                })
+        }
+
+        </div>
+        </div>
+
+        </div>
+
+        <button style={{width : '100px'}} class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span style={{backgroundColor : 'black'}} class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button style={{width : '100px'}} class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span style={{backgroundColor : 'black'}} class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+</div>
+</div>
+{/* Science Friction Book Div End*/}
 
 
 {/* Hindi Books Div start */}
