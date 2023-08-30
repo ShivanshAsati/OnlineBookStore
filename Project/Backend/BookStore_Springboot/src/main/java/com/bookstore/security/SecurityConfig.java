@@ -59,7 +59,9 @@ public class SecurityConfig {
 				.antMatchers("/cart_items/cart_delete/").hasRole("USER")
 				.antMatchers("/cart_items/cart_del/*/*/").hasRole("USER")
 				.antMatchers("/cart_items/cart_exists/*/*/").hasRole("USER")
-				.antMatchers("/book/add").hasRole("ADMIN") // only admin can add the products
+				.antMatchers("/book/add").hasRole("ADMIN") 
+				.antMatchers("/book/delete/").hasRole("ADMIN") 
+				.antMatchers("/book/update/").hasRole("ADMIN")// only admin can add the products
 				.anyRequest().authenticated() // all remaining end points accessible only to authenticated users
 				.and().sessionManagement() // configure HttpSession management
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // DO NOT use HttpSession for storing any sec
