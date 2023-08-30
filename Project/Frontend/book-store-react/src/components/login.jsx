@@ -55,8 +55,11 @@ function Login() {
 
 
         toast.success(`Welcome to bookstore.com, ${decodedToken.sub}!`);
-
-        navigate("/");
+        if(response.data.role === "ROLE_ADMIN") {
+          navigate("/admin");
+        } else if(response.data.role === "ROLE_CUSTOMER") {
+          navigate("/");
+        }
       } else if(response.status === 400) {
         toast.error(response.data.message);
       } 

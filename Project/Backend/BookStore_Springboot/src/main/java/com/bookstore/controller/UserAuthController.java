@@ -73,13 +73,14 @@ public class UserAuthController {
 		CustomUserDetails userDetails = (CustomUserDetails)principal.getPrincipal();
 		
 		User user = userDetails.getUser();
+		AuthResp res = new AuthResp();
 		if(user.getRole() == Role.ROLE_ADMIN) {
-			
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Unauthorized"));
+			res = mapper.map(user.getAdmin(), AuthResp.class);
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Unauthorized"));
+		}else if( user.getRole() == Role.ROLE_CUSTOMER) {
+			res = mapper.map(user.getCustomer(), AuthResp.class);			
 		}
-//		AuthResp res = mapper.map(person, AuthResp.class);
-		AuthResp res = mapper.map(user.getCustomer(), AuthResp.class);
-		// generate JWT
+		
 		res.setRole(user.getRole());
 		res.setToken(utils.generateJwtToken(principal));
 		return ResponseEntity.ok(res);

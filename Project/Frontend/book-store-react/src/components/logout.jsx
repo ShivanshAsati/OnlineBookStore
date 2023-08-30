@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../features/authSlice";
 import { persistor } from "../features/persistore";
 import { clearUser } from "../features/userSlice";
+import { useEffect } from "react";
 
 
 
@@ -14,8 +15,9 @@ function Logout() {
     dispatch(logout());
     dispatch(clearUser());
     persistor.purge();
-
-    navigate('/');
+    useEffect(() => {
+        navigate('/');
+    },[]);
 
     
 }
