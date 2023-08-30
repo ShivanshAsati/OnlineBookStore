@@ -30,6 +30,9 @@ import AdminDashboard from "./components/admin/admin";
 import AdminHeader  from "./components/admin/adminHeader";
 import Order from './components/order/order';
 import PlaceOrder from "./components/order/placeOrder";
+import AdminShowBooks from "./components/admin/adminShowBooks";
+import UpdateBook from "./components/admin/updateForm";
+import AdminAddBook from "./components/admin/adminAddBook";
 
 
 function App() {
@@ -45,6 +48,9 @@ function App() {
         <Routes>
             <Route exact path="/admin" element={<AdminDashboard/>}/>
             <Route exact path="/logout" element={<Logout />} />
+            <Route exact path="/adminShowBooks" element={<AdminShowBooks />} />
+            <Route exact path="/updateBookForm" element={<UpdateBook />} />
+            <Route exact path="/adminAddBook" element={<AdminAddBook />} />
         </Routes>
         <ToastContainer />
         <Footer />
