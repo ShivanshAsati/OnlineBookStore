@@ -67,4 +67,10 @@ public class BookController {
 		return ResponseEntity.status(HttpStatus.FOUND).body(bookService.deleteBook(id));
 	}
 	
+//	@PutMapping("/update")
+//	public ResponseEntity<?> updateBook(@RequestBody OnlyBookDTO detachedBook) {
+//		return ResponseEntity.status(HttpStatus.OK).body(bookService.updateBook(detachedBook));
+//	}	
+//	
+	
 }

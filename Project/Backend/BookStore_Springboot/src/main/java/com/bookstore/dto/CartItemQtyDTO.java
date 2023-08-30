@@ -4,17 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
 @NoArgsConstructor
-public class CartBookDTO {
+@AllArgsConstructor
+public class CartItemQtyDTO {
 
-	private Long id;
-	private String title;
-	private String authorName;
-	private String imagePath;
-	private double discountedPrice; 
 	private int quantity;
 }

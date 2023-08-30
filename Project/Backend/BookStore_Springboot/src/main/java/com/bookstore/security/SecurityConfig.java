@@ -55,7 +55,10 @@ public class SecurityConfig {
 				//.antMatchers("/book").hasRole("USER")// CUSTOMERonly customer can purchase the products //"/products/purchase", "/address/user/*", 
 				.antMatchers("/cart_items/add/", "address/addtocustomer/*/","address/customer/*/").hasRole("USER")
 				.antMatchers("/cart_items/get_cart/").hasRole("USER")
-				//.antMatchers("/cart_items/**").hasRole("USER")
+				.antMatchers("/cart_items/cart_update/").hasRole("USER")
+				.antMatchers("/cart_items/cart_delete/").hasRole("USER")
+				.antMatchers("/cart_items/cart_del/*/*/").hasRole("USER")
+				.antMatchers("/cart_items/cart_exists/*/*/").hasRole("USER")
 				.antMatchers("/book/add").hasRole("ADMIN") // only admin can add the products
 				.anyRequest().authenticated() // all remaining end points accessible only to authenticated users
 				.and().sessionManagement() // configure HttpSession management
