@@ -1,5 +1,5 @@
 import axios from "axios";
-import { log } from "../utils/utils";
+import { createUrl, log } from "../utils/utils";
 
 export async function getAddressList(id, token) {
 console.log(token)
@@ -10,10 +10,10 @@ console.log(token)
         }
     };
     
-
+    const url = createUrl(`/address/customer/${id}`);
     try {
         const response = await axios.get( 
-            `http://localhost:7788/address/customer/${id}`,
+            url,
             header
             );
         return response;
@@ -31,10 +31,10 @@ export async function addAddress(customerId, address, token) {
             Authorization: `Bearer ${token}`,
         }
     };
-
+    const url = createUrl(`/address/addtocustomer/${customerId}`);
     try {
         const response = await axios.post( 
-            `http://localhost:7788/address/addtocustomer/${customerId}`, address,
+            url, address,
             header
             );
         return response;
@@ -52,10 +52,10 @@ export async function deleteAddress(addressId, token) {
             Authorization: `Bearer ${token}`,
         }
     };
-
+    const url = createUrl(`/address/addressid/${addressId}`);
     try {
         const response = await axios.delete( 
-            `http://localhost:7788/address/addressid/${addressId}`,
+            url,
             header
             );
         return response;
@@ -75,10 +75,10 @@ export async function getAddressById(addressId,customerId, token) {
             }
         };
         
-    
+        const url = createUrl(`/address/address/customer/${addressId}/${customerId}`);
         try {
             const response = await axios.get( 
-                `http://localhost:7788/address/address/customer/${addressId}/${customerId}`,
+                url,
                 header
                 );
             return response;
@@ -98,9 +98,10 @@ export async function updateAddress(customerId, address, token) {
         }
     };
 
+    const url = createUrl(`/address/customer/${customerId}`);
     try {
         const response = await axios.put( 
-            `http://localhost:7788/address/customer/${customerId}`, address,
+            url, address,
             header
             );
         return response;
@@ -110,6 +111,24 @@ export async function updateAddress(customerId, address, token) {
         return ex
     }
 }
+
+export async function getDefaultAddress(customerId, token) {
+    const header = {
+        headers: { 
+            "content-type" : "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+
+    const url = createUrl(`/address/default/${customerId}`);
+    try {
+        const response = await axios.get(url,header);
+        return response;
+    } catch(ex) {
+        log(ex);
+        return ex;
+    }
+} 
         
 
 

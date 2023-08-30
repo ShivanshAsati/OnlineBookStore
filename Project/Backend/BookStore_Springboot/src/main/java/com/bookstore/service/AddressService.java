@@ -14,4 +14,5 @@ public interface AddressService
 	public ApiResponse deleteAddress(Long addressId);
 	public ApiResponse updateAddress(Long addressId, DetachedAddressDTO detachedAddressDTO);
 	public DetachedAddressDTO getAddressById(Long addressId, Long customerId);
+	public DetachedAddressDTO getDefaultAddress(Long customerId);
 }

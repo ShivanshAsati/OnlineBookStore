@@ -116,4 +116,8 @@ public class AddressServiceImpl implements AddressService {
 		}
 		return detachedAddress;
 	}
+	
+	public DetachedAddressDTO getDefaultAddress(Long customerId) {
+		return null;
+	}
 }

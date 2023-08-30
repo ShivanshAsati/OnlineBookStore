@@ -122,7 +122,7 @@ const deleteCartItem = async (cartId)=>
         <br></br>
         <br></br>
 
-        <div className="container bootstrap snippets bootdey">
+        <div className="container bootstrap snippets bootdey" style={{paddingLeft:"260px", paddingBottom:"20px", boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'}}>
             <div className="col-md-9 col-sm-8 content">
                 <div className="row">
                     <div className="col-md-12">
@@ -133,7 +133,7 @@ const deleteCartItem = async (cartId)=>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <div className="panel panel-info panel-shadow">
+                        <div className="panel panel-info shadow-lg p-3 mb-5 bg-white rounded">
                             <div className="panel-heading">
                                 <h3>
                                     <img className="img-circle img-thumbnail" style={{height:"100px",width:"100px",border:"none"}} src="https://cdn-icons-png.flaticon.com/512/5544/5544117.png" />

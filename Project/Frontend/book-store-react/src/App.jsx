@@ -29,6 +29,7 @@ import ScienceBooks from "./components/scienceFriction";
 import AdminDashboard from "./components/admin/admin";
 import Order from './components/order/order';
 import PlaceOrder from "./components/order/placeOrder";
+import MakePayment from "./components/order/makePayment";
 
 function App() {
 
@@ -90,6 +91,7 @@ function App() {
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/order" element={<Order />}></Route>
           <Route exact path="/placeOrder" element={<PlaceOrder />}></Route>
+          <Route exact path="/make_payment" element={<MakePayment />}></Route>
         </Routes>
         <ToastContainer />
         <Footer />
