@@ -36,7 +36,7 @@ public class Book extends BaseEntity{
 	@Column(name = "isbn")
 	private long isbn;
 	
-	@Column(name = "title", length = 50, nullable = false)
+	@Column(name = "title", nullable = false)
 	private String title;
 	
 	@Column(name = "description", length = 1500)
@@ -65,6 +65,7 @@ public class Book extends BaseEntity{
 	@OneToMany(mappedBy="book",cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Review> reviews = new ArrayList<>();
 	
+	
 //	@OneToMany(mappedBy="cartItembook",cascade = CascadeType.ALL,orphanRemoval=true)
 //	private List<CartItem> cartItems = new ArrayList<>(); 
 	
@@ -72,8 +73,8 @@ public class Book extends BaseEntity{
 //	@OneToMany
 //	private Wishlist wishlist;
 	
-//	@OneToMany(mappedBy="book", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<OrderItem> orderItems = new ArrayList<>();
+//	@OneToOne(mappedBy="book")
+//	private OrderItem orderItems;
 	
 }
 
