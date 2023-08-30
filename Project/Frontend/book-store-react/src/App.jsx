@@ -27,59 +27,74 @@ import BestSelling from "./components/bestselling";
 import CarouselBooks from "./components/carouselBooks";
 import Test from "./components/test";
 import ScienceBooks from "./components/scienceFriction";
+import AdminDashboard from "./components/admin/admin";
 
 function App() {
 
   const token = useSelector((state) => state.auth.token);
   console.log(token)
+  const role = useSelector((state) => state.user.role);
+  if (role === "ROLE_ADMIN") {
 
-  return (
-    <>
-      <Header />
-      <Routes>
-        
-        {token !== null ? (
-                    <>
-                        <Route exact path="/userProfile" element={<MyProfile/>}/>
-                        <Route exact path="/cart" element={<Cart/>} />
-                        <Route exact path="/address" element={<Address/>} />
-                        <Route exact path="/add_address" element={<AddAddress/>}/>
-                        <Route exact path="/address/edit" element={<EditAddress/>} />
-                        {/* Other routes */}
-                    </>
-                ) : (
-                    <>  
-                        <Route exact path="/userProfile" element={<Login/>}/>
-                        <Route exact path="/cart" element={<Login/>} />
-                        <Route exact path="/address" element={<Login/>} />
-                        <Route exact path="/address/edit" element={<Login/>} />
-                        {/* Other routes */}
-                    </>
-                )}
+    return (
+      <>
+        <Routes>
+            <Route exact path="/admin" element={<AdminDashboard/>}/>
+            <Route exact path="/logout" element={<Logout />} />
+        </Routes>
+      </>
+    );
 
-        <Route exact path="/scienceBooks" element={<ScienceBooks />} />
-        <Route exact path="/test" element={<Test />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/carouselBooks" element={<CarouselBooks />} />
-        <Route exact path="/bestSelling" element={<BestSelling />} />
-        <Route exact path="/signup" element={<Register />}/>
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/allBooks" element={<BookGallery />} />
-        <Route exact path="/bookDetails" element={<Book />} />
-        <Route exact path="/authorDetails" element={<Author />} />
-        <Route exact path="/faq" element={<Faq />} />
-        <Route exact path="/aboutUs" element={<AboutUs />} />
-        <Route exact path="/paymentHelp" element={<PaymentHelp />} />
-        <Route exact path="/contactUs" element={<ContactUs />} />
-        <Route exact path="/logout" element={<Logout/>}/>
-        <Route exact path="/register" element={<Register/>}></Route>
-        <Route exact path="/order" element={<Order/>}></Route>
-        
-      </Routes>
-      <ToastContainer />
-      <Footer />
-    </>
-  );
+   
+  } else {
+    return (
+      <>
+        <Header />
+        <Routes>
+
+          {token !== null ? (
+            <>
+              <Route exact path="/userProfile" element={<MyProfile />} />
+              <Route exact path="/cart" element={<Cart />} />
+              <Route exact path="/address" element={<Address />} />
+              <Route exact path="/add_address" element={<AddAddress />} />
+              <Route exact path="/address/edit" element={<EditAddress />} />
+              {/* Other routes */}
+            </>
+          ) : (
+            <>
+              <Route exact path="/userProfile" element={<Login />} />
+              <Route exact path="/cart" element={<Login />} />
+              <Route exact path="/address" element={<Login />} />
+              <Route exact path="/address/edit" element={<Login />} />
+              {/* Other routes */}
+            </>
+          )}
+
+          <Route exact path="/scienceBooks" element={<ScienceBooks />} />
+          <Route exact path="/test" element={<Test />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/carouselBooks" element={<CarouselBooks />} />
+          <Route exact path="/bestSelling" element={<BestSelling />} />
+          <Route exact path="/signup" element={<Register />} />
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/allBooks" element={<BookGallery />} />
+          <Route exact path="/bookDetails" element={<Book />} />
+          <Route exact path="/authorDetails" element={<Author />} />
+          <Route exact path="/faq" element={<Faq />} />
+          <Route exact path="/aboutUs" element={<AboutUs />} />
+          <Route exact path="/paymentHelp" element={<PaymentHelp />} />
+          <Route exact path="/contactUs" element={<ContactUs />} />
+          <Route exact path="/logout" element={<Logout />} />
+          <Route exact path="/register" element={<Register />}></Route>
+          <Route exact path="/order" element={<Order />}></Route>
+
+        </Routes>
+        <ToastContainer />
+        <Footer />
+      </>
+    );
+  } 
 }
 
 export default App;
