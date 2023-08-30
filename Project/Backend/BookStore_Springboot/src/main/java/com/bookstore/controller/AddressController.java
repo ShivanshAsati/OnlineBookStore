@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.dto.AddressDTO;
+import com.bookstore.dto.DetachedAddressDTO;
 import com.bookstore.service.AddressService;
 
 @RestController
@@ -36,12 +37,17 @@ public class AddressController {
 	
 	@DeleteMapping("/addressid/{addressId}")
 	public ResponseEntity<?> deleteAddress(@PathVariable Long addressId) {
-		return ResponseEntity.status(HttpStatus.FOUND).body(addressService.deleteAddress(addressId));
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.deleteAddress(addressId));
 	}
 	
-	@PutMapping("/addressid/{addressId}")
-	public ResponseEntity<?>  updateAddress(@PathVariable Long addressId, @RequestBody AddressDTO addressDTO) {
-		return ResponseEntity.status(HttpStatus.FOUND).body(addressService.updateAddress(addressId, addressDTO));
+	@PutMapping("/customer/{customerId}")
+	public ResponseEntity<?>  updateAddress(@PathVariable Long customerId, @RequestBody DetachedAddressDTO detachedAddressDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.updateAddress(customerId, detachedAddressDTO));
+	}
+	
+	@GetMapping("/address/customer/{addressId}/{customerId}")
+	public ResponseEntity<?> getAddressById(@PathVariable Long addressId, @PathVariable Long customerId) {
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddressById(addressId, customerId));
 	}
 	
 

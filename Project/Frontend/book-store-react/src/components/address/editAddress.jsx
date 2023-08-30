@@ -1,19 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./add_address.css"
-import { useState } from "react";
-import { addAddress } from "../../services/addressService";
+import { useEffect, useState } from "react";
+import { addAddress, getAddressById, updateAddress } from "../../services/addressService";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 
 
-function AddAddress() {
+function EditAddress() {
 
+    const location = useLocation();
     const navigate = useNavigate();
     const customerId = useSelector((state) => state.user.id);
     const token = useSelector((state) => state.auth.token)
     
     const [address, setAddress] = useState({
+        id: '',
         fullName: '',
         mobile: '',
         houseInfo: '',
@@ -22,13 +24,58 @@ function AddAddress() {
         zipcode: '',
         city: '',
         state: '',
-        isDefault: false
+        isDefault: "false"
     })
-
+    const addressId = location.state.addressId;
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const [checkbox, setCheckbox] =useState(false);
+    const [disabledCb, setDisableCb ] = useState(false);
     
+    useEffect(() => {
+        loadBook();
+    }, [])
+    
+    useEffect(() => {
+        console.log("isDefault state - "+address.isDefault);
+        
+    },[address])
+    
+    const loadBook = async () => {
+        const response = await getAddressById(addressId,customerId, token);
+        if(response.status === 200) {
+            const data = response.data;
+            setAddress({
+                id : data.id,
+                fullName : data.fullName,
+                mobile : data.mobile,
+                houseInfo : data.houseInfo,
+                street : data.street,
+                landmark : data.landmark,
+                zipcode : data.zipcode,
+                city : data.city,
+                state : data.state,
+                isDefault : 'false',
+            })
+            if(data.isDefault === "true") {
+                setDisableCb(true);
+                setCheckbox(true);
+                console.log("inside if")
+
+                
+
+                setAddress((prevState => {
+                    return {
+                        ...prevState,
+                        isDefault: 'true'
+                    }
+                }))
+            }
+        }else {
+            toast.error("Unexpected Error");
+        }
+        
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -47,7 +94,7 @@ function AddAddress() {
     }
     
 
-    const handleAddAddress =async (e) => {
+    const handleUpdateAddress =async (e) => {
         e.preventDefault();
 
         console.log(address);
@@ -55,12 +102,12 @@ function AddAddress() {
             return
         }
         setLoading(true);
-        const response = await addAddress(customerId,address,token);
-
+        const response = await updateAddress(customerId,address,token);
+        console.log(response);
         if(response.status === 200) {
             console.log(response.data.message)
-            toast.success("Address Added Successfully!")
             navigate("/address")
+            toast.success("Address updated")
         } else {
             console.log(response.status)
             setErrorMessage("Unexpected Error")
@@ -78,11 +125,11 @@ function AddAddress() {
         <div className="container customWidthSmall customWidthBig">
         <h6 style={{ fontWeight:300}}>
             <Link to="/my_account" style={{color:"#df2712", textDecoration:"none"}}>My Account</Link> &gt; 
-            <Link to="/address" style={{color:"#df2712", textDecoration:"none"}}> My Address</Link>  &gt; Add Address
+            <Link to="/address" style={{color:"#df2712", textDecoration:"none"}}> My Address</Link>  &gt; Edit Address
         </h6>
         <br/>
             <form 
-            onSubmit={(e) => handleAddAddress(e)}
+            onSubmit={(e) => handleUpdateAddress(e)}
             >
                 <div style={{marginBottom:"25px"}}>
                     <label className="form-label" style={{fontSize:"13px",fontWeight:"bold",position:"absolute",marginTop:"-10px",marginLeft:"20px",backgroundColor:"white"}}>
@@ -140,11 +187,13 @@ function AddAddress() {
                     </label>
                     <input type="text" name="state" onChange={(e) => handleChange(e)} value={address.state} class="form-control" style={{border:"1px solid gray", borderRadius:"0px", boxShadow:"none", fontSize:"16px", padding:"7px"}}/>
                 </div>
+
+
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" value = {!checkbox} name="isDefault" onChange={(e) => handleChange(e)} onClick={handleCheckbox} checked={checkbox} style={{boxShadow:"none"}}/>
+                    <input type="checkbox" class="form-check-input" value = {!checkbox} name="isDefault" onChange={(e) => handleChange(e)} onClick={handleCheckbox} checked={checkbox} style={{boxShadow:"none"}} disabled={disabledCb}/>
                     <label class="form-check-label" style={{fontSize:"13px", fontWeight:"bold"}}>Make this my default address</label>
                 </div>
-                <button type="submit" class="btn btn-sm btn-danger" style={{borderRadius:"0px"}}>Submit</button>
+                <button type="submit" class="btn btn-sm btn-danger" style={{borderRadius:"0px"}} disabled={loading}>Submit</button>
                 <Link to="/address" class="btn btn-sm btn-outline-danger" style={{borderRadius:"0px", marginLeft:"10px", backgroundColor:"white", color:"red"}}>Cancel</Link>
             </form>
             </div>
@@ -152,4 +201,4 @@ function AddAddress() {
     );
 }
 
-export default AddAddress;
+export default EditAddress;

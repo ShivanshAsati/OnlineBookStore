@@ -21,6 +21,7 @@ import MyProfile from "./components/profile";
 import Order from "./components/order";
 import Address from "./components/address/addresses";
 import AddAddress from "./components/address/addAddress";
+import EditAddress from "./components/address/editAddress";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                         <Route exact path="/cart" element={<Cart/>} />
                         <Route exact path="/address" element={<Address/>} />
                         <Route exact path="/add_address" element={<AddAddress/>}/>
+                        <Route exact path="/address/edit" element={<EditAddress/>} />
                         {/* Other routes */}
                     </>
                 ) : (
@@ -45,7 +47,7 @@ function App() {
                         <Route exact path="/userProfile" element={<Login/>}/>
                         <Route exact path="/cart" element={<Login/>} />
                         <Route exact path="/address" element={<Login/>} />
-                        <Route exact path="/add_address" element={<Login/>}/>
+                        <Route exact path="/address/edit" element={<Login/>} />
                         {/* Other routes */}
                     </>
                 )}

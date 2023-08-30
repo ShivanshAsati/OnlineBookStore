@@ -34,10 +34,15 @@ public class AddressServiceImpl implements AddressService {
 	private ModelMapper mapper;
 	
 	@Override
-	public ApiResponse addAddress(Long userId, AddressDTO addressDTO) {
-		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+	public ApiResponse addAddress(Long customerId, AddressDTO addressDTO) {
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		Address address = mapper.map(addressDTO, Address.class);
 		address.setCustomer(customer);
+		System.out.println(addressDTO);
+//		System.out.println(customer.getAddressList().size());
+		if(addressDTO.getIsDefault().equals("true") || customer.getAddressList().size() == 0) {
+			customer.setDefaultAddress(address);
+		}
 		addressRepository.save(address);
 		ApiResponse apiResponse = new ApiResponse("Address ADDED");
 		return apiResponse;
@@ -48,8 +53,19 @@ public class AddressServiceImpl implements AddressService {
 	public List<DetachedAddressDTO> getAddress(Long userId) {
 		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		List<DetachedAddressDTO> addressList = new ArrayList<>();
-		customer.getAddressList().forEach(i -> addressList.add(mapper.map(i, DetachedAddressDTO.class)));
-		return addressList;
+		if(customer.getAddressList().size() == 0) {
+			return addressList;
+		} else {
+			
+			Long defaultId =  customer.getDefaultAddress().getId();
+			customer.getAddressList().forEach(i -> addressList.add(mapper.map(i, DetachedAddressDTO.class)));
+			for(int i=0; i<addressList.size(); i++ ) {
+				if(addressList.get(i).getId() == defaultId) {
+					addressList.get(i).setIsDefault("true");
+				}
+			}
+			return addressList;
+		}
 	}
 
 //	@Override
@@ -64,15 +80,21 @@ public class AddressServiceImpl implements AddressService {
 //	}
 	
 	@Override
-	public ApiResponse updateAddress(Long addressId, AddressDTO addressDTO) {
-		Address address = addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
-		address.setCity(addressDTO.getCity());
-		address.setCountry(addressDTO.getCountry());
-		address.setLandmark(addressDTO.getLandmark());
-		address.setState(addressDTO.getState());
-		address.setStreet(addressDTO.getStreet());
-		address.setZipcode(addressDTO.getZipcode());
-		return new ApiResponse("Address "+addressId+" Updated Successfully!");
+	public ApiResponse updateAddress(Long customerId, DetachedAddressDTO detachedAddressDTO) {
+		Address address = addressRepository.findById(detachedAddressDTO.getId()).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		address.setCity(detachedAddressDTO.getCity());
+		address.setLandmark(detachedAddressDTO.getLandmark());
+		address.setState(detachedAddressDTO.getState());
+		address.setStreet(detachedAddressDTO.getStreet());
+		address.setZipcode(detachedAddressDTO.getZipcode());
+		address.setHouseInfo(detachedAddressDTO.getHouseInfo());
+		address.setMobile(detachedAddressDTO.getMobile());
+		address.setFullName(detachedAddressDTO.getFullName());
+		if(detachedAddressDTO.getIsDefault().equals("true")) {
+			customer.setDefaultAddress(address);
+		}
+		return new ApiResponse("Address "+detachedAddressDTO.getId()+" Updated Successfully!");
 	}
 
 
@@ -81,5 +103,17 @@ public class AddressServiceImpl implements AddressService {
 		Address address = addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
 		addressRepository.delete(address);
 		return new ApiResponse("Address "+addressId+" Deleted Successfully");
+	}
+
+
+	@Override
+	public DetachedAddressDTO getAddressById(Long addressId, Long customerId) {
+		Address address = addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("inconsistent data error"));
+		DetachedAddressDTO detachedAddress = mapper.map(address, DetachedAddressDTO.class);
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		if(customer.getDefaultAddress().getId() == detachedAddress.getId()) {
+			detachedAddress.setIsDefault("true");
+		}
+		return detachedAddress;
 	}
 }

@@ -5,15 +5,15 @@
 {
   .customWidthSmall
     {
-      width: 90%;
+      width: 90%
     }
 }
 
-@media (min-width : 1000px) and (max-width : 2000px)
+@media (min-width : 700px) and (max-width : 2000px)
 {
   .customWidthBig
     {
-      width: 30%;
+      width: 400px;
     }
 }
 
