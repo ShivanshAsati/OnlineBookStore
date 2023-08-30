@@ -16,7 +16,7 @@ function AdminHeader() {
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <h1 class="navbar-brand">Welcome : {firstName} {lastName}</h1>
+                    <h1 class="navbar-brand">Welcome {firstName} !</h1>
                     <Link className="btn btn-danger" to="/logout">LOGOUT</Link>
                     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
@@ -36,15 +36,14 @@ function AdminHeader() {
                                         Manage Books
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><Link class="dropdown-item" to="#">Add Book</Link></li>
+                                        <li><Link class="dropdown-item" to="/adminAddBook">Add Book</Link></li>
                                         <hr class="dropdown-divider"/>
-                                        <li><Link class="dropdown-item" to="#">Update Book</Link></li>
+                                        <li><Link class="dropdown-item" to="/adminShowBooks">Update Book</Link></li>
                                         <hr class="dropdown-divider"/>
-                                        <li><Link class="dropdown-item" to="#">Delete Book</Link></li>
+                                        <li><Link class="dropdown-item" to="/adminShowBooks">Delete Book</Link></li>
                                         <li>
                                             <hr class="dropdown-divider"/>
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     </ul>
                                 </li>
                             </ul>
