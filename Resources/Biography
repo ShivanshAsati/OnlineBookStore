@@ -1,0 +1,39 @@
+
+
+insert into author(biography,image_path,name) values("Walter Seff Isaacson is an American author, journalist, and professor. He has been the President and CEO of the Aspen Institute, a nonpartisan policy studies organization based in Washington, D.C., the chair and CEO of CNN, and the editor of Time","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_W0VIl07V1C20ADJt-cBzfr_vDev7hkziQ&usqp=CAU","Walter Isaacson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("BIOGRAPHY","When Elon Musk was a kid in South Africa, he was regularly beaten by bullies. One day a group pushed him down some concrete steps and kicked him until his face was a swollen ball of flesh. He was in the hospital for a week. But the physical scars were minor compared to the emotional ones inflicted by his father, an engineer, rogue, and charismatic fantasist.",365,"https://m.media-amazon.com/images/I/51M+z-t6QFL.jpg",1020,800,6,"Elon Musk",19);
+
+
+
+
+insert into author(biography,image_path,name) values("Walter Seff Isaacson is an American author, journalist, and professor. He has been the President and CEO of the Aspen Institute, a nonpartisan policy studies organization based in Washington, D.C., the chair and CEO of CNN, and the editor of Time","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_W0VIl07V1C20ADJt-cBzfr_vDev7hkziQ&usqp=CAU","Walter Isaacson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("BIOGRAPHY","How did his mind work? What made him a genius? Isaacson’s biography shows how his scientific imagination sprang from the rebellious nature of his personality. His fascinating story is a testament to the connection between creativity and freedom.",365,"https://m.media-amazon.com/images/I/510RQE9G+AL.jpg",1021,870,6,"Einstein: His Life and Universe",20);
+
+
+
+
+insert into author(biography,image_path,name) values("Walter Seff Isaacson is an American author, journalist, and professor. He has been the President and CEO of the Aspen Institute, a nonpartisan policy studies organization based in Washington, D.C., the chair and CEO of CNN, and the editor of Time","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_W0VIl07V1C20ADJt-cBzfr_vDev7hkziQ&usqp=CAU","Walter Isaacson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("BIOGRAPHY","Based on thousands of pages from Leonardo da Vinci’s astonishing notebooks and new discoveries about his life and work, Walter Isaacson “deftly reveals an intimate Leonardo” (San Francisco Chronicle) in a narrative that connects his art to his science. He shows how Leonardo’s genius was based on skills we can improve in ourselves, such as passionate curiosity, careful observation, and an imagination so playful that it flirted with fantasy.",365,"https://m.media-amazon.com/images/I/51gFt86kFAL.jpg",1022,870,6,"Leonardo da Vinci",21);
+
+
+
+
+insert into author(biography,image_path,name) values("Walter Seff Isaacson is an American author, journalist, and professor. He has been the President and CEO of the Aspen Institute, a nonpartisan policy studies organization based in Washington, D.C., the chair and CEO of CNN, and the editor of Time","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_W0VIl07V1C20ADJt-cBzfr_vDev7hkziQ&usqp=CAU","Walter Isaacson");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("BIOGRAPHY","Based on more than forty interviews with Steve Jobs conducted over two years—as well as interviews with more than 100 family members, friends, adversaries, competitors, and colleagues—Walter Isaacson has written a riveting story of the roller-coaster life and searingly intense personality of a creative entrepreneur whose passion for perfection and ferocious drive revolutionized six industries: personal computers, animated movies, music, phones, tablet computing, and digital publishing",365,"https://m.media-amazon.com/images/I/51gFt86kFAL.jpg",1023,870,6,"Steve Jobs",22);
+
+
+
+
+
+
+
+
+
+
+
+
+

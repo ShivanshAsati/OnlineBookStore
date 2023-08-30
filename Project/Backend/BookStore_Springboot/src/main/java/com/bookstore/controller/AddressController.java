@@ -50,5 +50,10 @@ public class AddressController {
 		return ResponseEntity.status(HttpStatus.OK).body(addressService.getAddressById(addressId, customerId));
 	}
 	
+	@GetMapping("/default/{customerId}")
+	public ResponseEntity<?> getDefaultAddress(@PathVariable Long customerId) {
+		return ResponseEntity.status(HttpStatus.OK).body(addressService.getDefaultAddress(customerId));
+	}
+	
 
 }

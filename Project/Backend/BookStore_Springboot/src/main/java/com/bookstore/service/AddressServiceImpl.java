@@ -116,8 +116,16 @@ public class AddressServiceImpl implements AddressService {
 		}
 		return detachedAddress;
 	}
-	
+
+	@Override
 	public DetachedAddressDTO getDefaultAddress(Long customerId) {
-		return null;
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		Address defaultAddress = customer.getDefaultAddress();
+		if(defaultAddress == null) {
+			return null;
+		}
+		DetachedAddressDTO defAdr = mapper.map(defaultAddress, DetachedAddressDTO.class);
+		defAdr.setIsDefault("true");
+		return defAdr;
 	}
 }
