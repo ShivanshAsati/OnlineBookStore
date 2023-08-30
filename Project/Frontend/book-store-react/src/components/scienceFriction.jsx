@@ -6,7 +6,7 @@ import Book from './bookDetails';
 import { useSelector } from 'react-redux';
 
 
-function CarouselBooks() {
+function ScienceBooks() {
 
 
         const [books,setBooks] = useState([]);
@@ -44,7 +44,7 @@ const selectBooks = async () =>
                 var j = 0;
                 console.log(books)
                 for(var i = 0; i < books.length; i++){
-                        if(books[i]['category'] === 'PATRIOTIC'){
+                        if(books[i]['category'] === 'SCIENCE_FICTION'){
                                 arr[j] = books[i];
                                 j++;
                         }
@@ -117,4 +117,4 @@ const dataObj = {
         </>)
 }
 
-export default CarouselBooks;
+export default ScienceBooks;
