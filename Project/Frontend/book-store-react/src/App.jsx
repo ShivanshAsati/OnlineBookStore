@@ -22,6 +22,11 @@ import Order from "./components/order";
 import Address from "./components/address/addresses";
 import AddAddress from "./components/address/addAddress";
 import EditAddress from "./components/address/editAddress";
+import Address from "./components/address";
+import Dashboard from "./components/dashboard";
+import BestSelling from "./components/bestselling";
+import CarouselBooks from "./components/carouselBooks";
+import Test from "./components/test";
 
 function App() {
 
@@ -51,9 +56,14 @@ function App() {
                         {/* Other routes */}
                     </>
                 )}
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/signup" element={<Register />}/>
-        <Route exact path="/" element={<BookGallery />} />
+
+        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/carouselBooks" element={<CarouselBooks />} />
+        <Route exact path="/bestSelling" element={<BestSelling />} />
+        <Route exact path="/signup" element={<Register />}/>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/allBooks" element={<BookGallery />} />
         <Route exact path="/bookDetails" element={<Book />} />
         <Route exact path="/authorDetails" element={<Author />} />
         <Route exact path="/faq" element={<Faq />} />
