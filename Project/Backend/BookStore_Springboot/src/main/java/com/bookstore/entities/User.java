@@ -26,8 +26,10 @@ public class User extends BaseEntity{
 
 	@OneToOne(mappedBy = "user")
 	private Customer customer;
+	
 	@OneToOne(mappedBy = "user")
 	private Admin admin;
+	
 	@Override
 	public String toString() {
 		return "ema";

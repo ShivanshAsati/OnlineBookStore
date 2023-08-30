@@ -6,6 +6,7 @@ import java.util.List;
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.CartItemDTO;
+import com.bookstore.dto.CartItemQtyDTO;
 import com.bookstore.dto.DisplayCartItemDTO;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.CartItem;
@@ -15,6 +16,14 @@ public interface CartItemService {
 	public ApiResponse addItem(CartItemDTO cartItemDTO);
 
 	public List<DisplayCartItemDTO> getCartItems(Long customerId);
+
+	public ApiResponse updateItemQty(Long cartItemId, CartItemQtyDTO cartItemQtyDTO);
+
+	public ApiResponse deleteItem(Long cartItemId);
+
+	public ApiResponse deleteCart(Long bookId, Long customerId);
+
+	public Boolean isCartExists(Long bookId, Long customerId);
 
 //	public CartItem createCartItem(CartItem cartItem);
 //	

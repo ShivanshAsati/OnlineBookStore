@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +12,14 @@ import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.CartBookDTO;
 import com.bookstore.dto.CartItemDTO;
-import com.bookstore.dto.DetachedAddressDTO;
+import com.bookstore.dto.CartItemQtyDTO;
 import com.bookstore.dto.DisplayCartItemDTO;
-import com.bookstore.entities.Address;
 import com.bookstore.entities.Book;
 import com.bookstore.entities.CartItem;
 import com.bookstore.entities.Customer;
-import com.bookstore.entities.User;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.CartItemRepository;
 import com.bookstore.repository.CustomerRepository;
-import com.bookstore.repository.UserRepository;
 
 @Service
 @Transactional
@@ -31,30 +27,37 @@ public class CartItemServiceImpl implements CartItemService {
 	
 	@Autowired
 	private CartItemRepository cartItemRepository;
-	@Autowired
-	private CustomerService customerService;
+//	@Autowired
+//	private CustomerService customerService;
 	@Autowired
 	private CustomerRepository customerRepository;
 	@Autowired
 	private BookRepository bookRepository;
-	@Autowired
-	private ModelMapper mapper;
 	
 	@Override
 	public ApiResponse addItem(CartItemDTO cartItemDTO) {
 		System.out.println(cartItemDTO);
 		Customer customer = customerRepository.findById(cartItemDTO.getCustomerId()).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		Book book = bookRepository.findById(cartItemDTO.getBookId()).orElseThrow(() -> new ResourceNotFoundException("invalid book id!"));
-		System.out.println("<--------------------");
-		double tPrice = book.getPrice();
-		double tDiscPrice = book.getDiscountedPrice();
-//		CartItem cartItem = new CartItem(book, user, qty, book.getPrice()*qty, book.getDiscountedPrice()*qty);
-		CartItem cartItem = new CartItem(book, customer, tPrice, tDiscPrice);
-		cartItem.setQuantity(1);
-//		System.out.println("Cart item: " + cartItem.toString());
-		cartItemRepository.save(cartItem);
-		System.out.println("Added success");
-		ApiResponse apiResponse = new ApiResponse("Cart Item ADDED");
+		System.out.println("book.getQuantity() = " + book.getQuantity());
+		int bookQty = book.getQuantity();
+		ApiResponse apiResponse = null;
+		if(bookQty > 0) {
+			double tPrice = book.getPrice();
+			double tDiscPrice = book.getDiscountedPrice();
+			CartItem cartItem = new CartItem(book, customer, tPrice, tDiscPrice);
+			cartItem.setQuantity(1);
+			cartItemRepository.save(cartItem);
+			System.out.println("Added success");
+//			book.setQuantity(bookQty - 1);
+//			bookRepository.save(book);
+			System.out.println("book: " + book.getTitle() + " "+ book.getQuantity());
+			apiResponse = new ApiResponse("Cart Item ADDED");			
+		}
+		else {
+			apiResponse = new ApiResponse("Book is OUT of STOCK");
+		}
+		
 		return apiResponse;
 	}
 
@@ -62,8 +65,56 @@ public class CartItemServiceImpl implements CartItemService {
 	public List<DisplayCartItemDTO> getCartItems(Long customerId) {
 		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
 		List<DisplayCartItemDTO> cartItemList = new ArrayList<>();
-		customer.getCartItems().forEach(i -> cartItemList.add(new DisplayCartItemDTO(i.getId(), new CartBookDTO(i.getBook().getId(),i.getBook().getTitle(),i.getBook().getAuthor().getName(),i.getBook().getImagePath()) , customerId, i.getQuantity(), i.getTotalPrice(), i.getTotalDiscountedPrice())));
+		customer.getCartItems().forEach(i -> cartItemList.add(new DisplayCartItemDTO(i.getId(), new CartBookDTO(i.getBook().getId(),i.getBook().getTitle(),i.getBook().getAuthor().getName(),i.getBook().getImagePath(), i.getBook().getDiscountedPrice(), i.getBook().getQuantity()) , customerId, i.getQuantity(), i.getTotalPrice(), i.getTotalDiscountedPrice())));
 		return cartItemList;
+	}
+
+	@Override
+	public ApiResponse updateItemQty(Long cartItemId, CartItemQtyDTO cartItemQtyDTO) {
+		CartItem cartItem = cartItemRepository.findById(cartItemId).orElseThrow(() -> new ResourceNotFoundException("invalid cart item id!"));
+		int qty = cartItemQtyDTO.getQuantity();
+		
+		if(qty == 0) {
+			cartItemRepository.delete(cartItem);
+		}
+		else {
+			cartItem.setQuantity(qty);
+			cartItem.setTotalPrice(qty*cartItem.getBook().getPrice());
+			cartItem.setTotalDiscountedPrice(qty*cartItem.getBook().getDiscountedPrice());
+			cartItemRepository.save(cartItem);
+		}
+		
+		ApiResponse apiResponse = new ApiResponse("Cart Item Quantity Updated!!");
+		return apiResponse;			
+		
+	}
+
+	@Override
+	public ApiResponse deleteItem(Long cartItemId) {
+		CartItem cartItem = cartItemRepository.findById(cartItemId).orElseThrow(() -> new ResourceNotFoundException("invalid cart item id!"));
+		cartItemRepository.delete(cartItem);
+		ApiResponse apiResponse = new ApiResponse("Cart Item Deleted!!");
+		return apiResponse;
+	}
+
+	@Override
+	public ApiResponse deleteCart(Long bookId, Long customerId) {
+		CartItem cartItem = cartItemRepository.findCartItemByBookIdAndCustomerId(bookId, customerId);
+		cartItemRepository.delete(cartItem);
+		ApiResponse apiResponse = new ApiResponse("Cart Item Deleted!!");
+		return apiResponse;
+	}
+
+	@Override
+	public Boolean isCartExists(Long bookId, Long customerId) {
+		Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("invalid user id!"));
+		List<CartItem> cartItemList = customer.getCartItems();
+
+		for(CartItem i : cartItemList) {
+			if(i.getBook().getId() == bookId)
+				return true;
+		}
+		return false;
 	}
 
 	

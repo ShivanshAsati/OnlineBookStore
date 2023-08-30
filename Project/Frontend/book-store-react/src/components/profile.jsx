@@ -7,51 +7,93 @@ function MyProfile() {
     const firstName = useSelector((state) => state.user.firstName);
     const lastName = useSelector((state) => state.user.lastName);
     const email = useSelector((state) => state.user.email);
+    const mobile = useSelector((state) => state.user.mobile);
     const id = useSelector((state) => state.user.id);
-    
+
+    const [profile, setProfile] = useState({
+        firstName: "",
+        lastName : "",
+        email: "",
+        mobile : ""
+    });
+
+    useEffect(() => {
+        console.log("isDefault state - " + profile);
+    },[profile])
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setProfile((prevState => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        }))
+    }
+
+    console.log(profile);
 
     return (
         <>
             <div class="container-fluid d-flex align-items-center justify-content-center bg-gradient" style={{paddingTop:"120px"}}>
                 <div className='table-responsive p-3 mb-5 bg-body-tertiary rounded w-50   '  style={{border : "2px solid red", boxShadow: "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",}}>
                     <h6 class="display-6   fw-bold   text-center" style={{color : 'red'}}>My Profile</h6>
+                    <div className='text-success'>
+                        <hr/>
+                    </div>
                     <br/><br/>
+
                     <div class="mb-3 row">
                         <label for="staticName" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control border border-success-subtle" id="staticEmail" value={firstName} readonly/>
+                            <input 
+                                type="text" 
+                                class="form-control border border-success-subtle" 
+                                id="staticName" 
+                                value={firstName}
+                                onChange={(e) => handleChange(e)}
+                            />
                         </div>
                     </div>
-
-                    {/* <div className='text-success'>
-                        <hr/>
-                    </div> */}
 
                     <div class="mb-3 row">
                         <label for="staticUsername" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control border border-success-subtle" id="staticUsername" value={lastName} readonly/>
+                            <input type="text" 
+                                class="form-control border border-success-subtle" 
+                                id="staticUsername" 
+                                value={lastName}
+                                onChange={(e) => handleChange(e)}                            />
                         </div>
                     </div>
                     
                     <div class="mb-3 row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control border border-success-subtle" id="staticEmail" value={email} readonly/>
+                            <input type="text" 
+                                class="form-control border border-success-subtle" 
+                                id="staticEmail" 
+                                value={email} 
+                                onChange={(e) => handleChange(e)}                            />
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
+                    {/* <div class="mb-3 row">
                         <label for="staticPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control border border-success-subtle" id="staticPassword" value="***********" readonly/>
+                            <input type="text" class="form-control border border-success-subtle" id="staticPassword" value="***********" />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div class="mb-3 row">
                         <label for="staticMobile" class="col-sm-2 col-form-label">Mobile</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control border border-success-subtle" id="staticMobile" value={id} readonly/>
+                            <input type="text" 
+                                class="form-control border border-success-subtle" i
+                                d="staticMobile" 
+                                value={mobile} 
+                                onChange={(e) => handleChange(e)}                            />
                         </div>
                     </div>
 
