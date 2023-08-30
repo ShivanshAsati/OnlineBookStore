@@ -22,7 +22,6 @@ import Order from "./components/order";
 import Address from "./components/address/addresses";
 import AddAddress from "./components/address/addAddress";
 import EditAddress from "./components/address/editAddress";
-import Address from "./components/address";
 import Dashboard from "./components/dashboard";
 import BestSelling from "./components/bestselling";
 import CarouselBooks from "./components/carouselBooks";
