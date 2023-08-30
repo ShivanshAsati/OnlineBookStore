@@ -43,6 +43,7 @@ function App() {
                         <Route exact path="/userProfile" element={<Login/>}/>
                         <Route exact path="/cart" element={<Login/>} />
                         <Route exact path="/address" element={<Login/>} />
+                        <Route exact path="/bookDetails" element={<Login />} />
                         {/* Other routes */}
                     </>
                 )}
