@@ -53,7 +53,7 @@ public class SecurityConfig {
 																								// no authentication n
 																								// authorization needed
 				//.antMatchers("/book").hasRole("USER")// CUSTOMERonly customer can purchase the products //"/products/purchase", "/address/user/*", 
-				.antMatchers("/cart_items/add/").hasRole("USER")
+				.antMatchers("/cart_items/add/", "address/addtocustomer/*/","address/customer/*/").hasRole("USER")
 				.antMatchers("/cart_items/get_cart/").hasRole("USER")
 				//.antMatchers("/cart_items/**").hasRole("USER")
 				.antMatchers("/book/add").hasRole("ADMIN") // only admin can add the products

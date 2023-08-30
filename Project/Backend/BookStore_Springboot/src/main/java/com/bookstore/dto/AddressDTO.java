@@ -11,10 +11,13 @@ import lombok.ToString;
 @ToString
 public class AddressDTO 
 {
+	private String city;	
 	private String street;
 	private String landmark;	
-	private String city;	
-	private String state;	
-	private String country;	
+	private String state;
 	private String zipcode;
+	private String mobile;
+	private String isDefault = "false";
+	private String fullName;
+	private String houseInfo;
 }
