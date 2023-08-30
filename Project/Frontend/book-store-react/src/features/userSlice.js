@@ -7,6 +7,7 @@ export const userSlice = createSlice({
         firstName : "Account",
         lastName: "",
         email: "",
+        mobile: "",
         role: "",
     },
     reducers: {
@@ -15,6 +16,7 @@ export const userSlice = createSlice({
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;
             state.email = action.payload.email;
+            state.mobile = action.payload.mobile;
             state.role = action.payload.role;
         },
         clearUser: (state) => {
@@ -22,6 +24,7 @@ export const userSlice = createSlice({
             state.firstName = "Account";
             state.lastName = "";
             state.email = "";
+            state.mobile = "";
             state.role = "";
         }
     }
