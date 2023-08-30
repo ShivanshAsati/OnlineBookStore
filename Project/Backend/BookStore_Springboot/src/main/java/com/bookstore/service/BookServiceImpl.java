@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.bookstore.custom_exceptions.ResourceNotFoundException;
 import com.bookstore.dto.AddBookDTO;
+import com.bookstore.dto.AdminBookDTO;
 import com.bookstore.dto.ApiResponse;
 import com.bookstore.dto.BookDTO;
 import com.bookstore.dto.GetAuthorDTO;
@@ -103,6 +104,20 @@ public class BookServiceImpl implements BookService{
 	public Book findBookById(Long id) {
 		Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author id invalid!"));
 		return book;
+	}
+
+	@Override
+	public ApiResponse updateBookById(Long bookId, AdminBookDTO adminBookDTO) {
+		Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id invalid!"));
+		book.setIsbn(adminBookDTO.getIsbn());
+		book.setTitle(adminBookDTO.getTitle());
+		book.setPrice(adminBookDTO.getPrice());
+		book.setDiscountedPrice(adminBookDTO.getDiscountedPrice());
+		book.setDescription(adminBookDTO.getDescription());
+		book.setQuantity(adminBookDTO.getQuantity());
+		bookRepository.save(book);
+		return new ApiResponse("BOOK UPDATED successfully");
+		
 	}
 
 

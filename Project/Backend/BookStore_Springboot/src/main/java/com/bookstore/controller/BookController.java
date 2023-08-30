@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.dto.AddBookDTO;
+import com.bookstore.dto.AdminBookDTO;
 import com.bookstore.dto.GetBookDTO;
 import com.bookstore.dto.OnlyBookDTO;
 import com.bookstore.service.BookService;
@@ -37,6 +38,12 @@ public class BookController {
 	public ResponseEntity<?> updateBook(@RequestBody OnlyBookDTO detachedBook) {
 		return ResponseEntity.status(HttpStatus.OK).body(bookService.updateBook(detachedBook));
 	}
+	
+	@PutMapping("/update/{bookId}")
+	public ResponseEntity<?> updateBookById(@PathVariable Long bookId ,@RequestBody AdminBookDTO adminBookDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(bookService.updateBookById(bookId,adminBookDTO));
+	}
+	
 	
 	@GetMapping("/getall")
 	public List<OnlyBookDTO> getAllBook() {
@@ -64,7 +71,7 @@ public class BookController {
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteBook(@PathVariable Long id) {
-		return ResponseEntity.status(HttpStatus.FOUND).body(bookService.deleteBook(id));
+		return ResponseEntity.status(HttpStatus.OK).body(bookService.deleteBook(id));
 	}
 	
 //	@PutMapping("/update")
