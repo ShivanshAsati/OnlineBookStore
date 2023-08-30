@@ -57,5 +57,8 @@ public class Address extends BaseEntity{
 	
 	@OneToOne(mappedBy = "defaultAddress")
 	private Customer cust;
+	
+	@OneToOne(mappedBy = "shippingAddress")
+	private Order order;
 
 }

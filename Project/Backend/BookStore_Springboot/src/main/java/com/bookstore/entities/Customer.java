@@ -66,6 +66,9 @@ public class Customer extends BaseEntity{
 	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<CartItem> cartItems = new ArrayList<>(); 
 	
+	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Order> orders = new ArrayList<>();
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;

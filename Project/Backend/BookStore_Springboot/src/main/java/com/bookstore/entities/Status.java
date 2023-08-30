@@ -2,5 +2,5 @@ package com.bookstore.entities;
 
 public enum Status {
 
-	PENDING, DELIVERED
+	ORDER_PLACED, DISPATCHED, OUT_FOR_DELIVERY, DELIVERED
 }
