@@ -1,0 +1,108 @@
+insert into author(biography,image_path,name) values("George Peabody Gooch OM CH FBA (21 October 1873 – 31 August 1968) was a British journalist, historian and Liberal Party politician. A follower of Lord Acton who was independently wealthy, he never held an academic position, but knew the work of historians of continental Europe.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCiz7HHGqBQCYM6E_zoCgM81W8LE3BXK2Zig&usqp=CAU","G.P. Gooch");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. This work was reproduced from the original artifact, and remains as true to the original work as possible.",325,"https://books.google.co.in/books/content?id=U_4zrgEACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72KRxOkMIlnWhaG_K0866aZLGkeGsbGX4FdbKrcqyHHoTAztOY11yeyliBKaKEBMb5ZzKiXKlqgwxFnmsa8yiEvuioEPi8XCSxLwn18o-KkIRTpx6ThmyZxkls-jSERXrfR43-5",1008,799,3,"Nationalism",7);
+
+
+
+
+insert into author(biography,image_path,name) values("Avul Pakir Jainulabdeen Abdul Kalam was born on 15 October 1931, to a Tamil Muslim family in the pilgrimage centre of Rameswaram on Pamban Island, then in the Madras Presidency and now in the State of Tamil Nadu.","https://duskydawn.com/wp-content/uploads/2020/07/apjabdul-kalam-best-hd-photos-1080p-2km-1080x771-1-1024x731.jpg","Dr. A. P. J. Abdul Kalam");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","Ignited Minds: Unleashing the Power Within India is a book written by Dr. A. P. J. Abdul Kalam, President of India from 2002 to 2007. Dr. Kalam dedicated Ignited Minds to an intermediate school child he met at a school. While talking to students, a question came up: “Who is our enemy?”.",305,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYgoqn4J72TNctfQJiZ2qL7xrriT5WJGMSNeEAUcFBN3kYFMlF",1009,899,2,"Ignited Minds",8);
+
+
+
+
+insert into author(biography,image_path,name) values("Sugata Bose is an Indian historian and politician who has taught and worked in the United States since the mid-1980s. His fields of study are South Asian and Indian Ocean history. Bose taught at Tufts University until 2001, when he accepted the Gardiner Chair of Oceanic History and Affairs at Harvard University.","https://pbs.twimg.com/profile_images/1363477703916101634/sY-Lm4CN_400x400.jpg","Sugata Bose");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","His Majesty's Opponent or His Majesty's Opponent: Subhas Chandra Bose and India's Struggle Against Empire is an English book written by Sugata Bose. This is a biography of Subhas Chandra Bose. The book was first published in May 2011.",315,"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQjL5aKI98Wjla52wZt6GbS8DDo3752DyPgrNnelZyXepMkiua5",1010,899,4,"His Majesty's Opponent",9);
+
+
+
+
+insert into author(biography,image_path,name) values("Shashi Tharoor is the bestselling author of over twenty books, both fiction and non-fiction, besides being a noted critic and columnist. His books include the path-breaking satire The Great Indian Novel, the classic India: From Midnight to the Millennium, the bestselling An Era of Darkness: The British Empire in India, for which he won the Ramnath Goenka Award for Excellence in Books (Non-Fiction).","https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRt7RD__6Gv8vM5y7m2lJnrRJBpNdUG_3m7UrvMELu8ZQKN-6EEflE0ar8dueLPHd185afAS4hlnCLwGSc","Shashi Tharoor");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","But are some Indians more Indian than others? To answer this question, one that is central to the identity of every man, woman, and child who belongs to the modern Republic of India, eminent thinker and bestselling writer Shashi Tharoor explores hotly contested ideas of nationalism, patriotism, citizenship, and belonging. In the course of his study, he explains what nationalism is, and can be, reveals who is anti-national, what patriotism actually means, and explores the nature and future of Ind",415,"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSS2xdHI7TxqAAMhDs6THhMqQoYAjh2O-XcsBFzkJZw6wnLz5RI",1011,999,10,"The Battle of Belonging: On Nationalism, Patriotism, and what it Means to be Indian",10);
+
+
+insert into author(biography,image_path,name) values("Rishi Raj, the author of SIACHEN: PRIDE OF OUR NATION, is a dedicated researcher and historian specializing in military affairs and strategic studies. With a deep appreciation for the valor and sacrifices of the armed forces, Rishi Raj brings a comprehensive understanding of the Siachen conflict to his writing.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ-0b-jKPx8ugqCyJH5LlmutSAuya51sVVP38QuShozRTv6xv-EDCj-aQ13j3uBpXcZ_A&usqp=CAU","Rishi Raj");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","This book is an attempt to make our present generation aware of those great people; who sacrificed their lives to protect our Motherland; thereby facilitated us to breathe in the free environment. ",325,"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQiCp-MkUNPdi8bLgEgu2dtMPANrhvfDVlPQs0n15FeDsEQpSx9",1012,899,4,"Patriotic Pilgrimage Of India",11);
+
+
+
+
+insert into author(biography,image_path,name) values("Sugata Bose is an Indian historian and politician who has taught and worked in the United States since the mid-1980s. His fields of study are South Asian and Indian Ocean history. Bose taught at Tufts University until 2001, when he accepted the Gardiner Chair of Oceanic History and Affairs at Harvard University.","https://pbs.twimg.com/profile_images/1363477703916101634/sY-Lm4CN_400x400.jpg","Sugata Bose");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","On December 26, 2004, giant tsunami waves destroyed communities around the Indian Ocean, from Indonesia to Kenya. Beyond the horrific death toll, this wall of water brought a telling reminder of the interconnectedness of the many countries on the ocean rim, and the insignificance of national boundaries.",315,"https://m.media-amazon.com/images/I/71mqbusSmjL._AC_UF1000,1000_QL80_.jpg",1013,899,6,"A hundred horizons",12);
+
+
+
+insert into author(biography,image_path,name) values("Bankim Chandra Chattopadhyay CIE was an Indian novelist, poet, essayist and journalist. He was the author of the 1882 Bengali language novel Anandamath, which is one of the landmarks of modern Bengali and Indian literature.","https://upload.wikimedia.org/wikipedia/commons/7/72/Bankim_Chattapadhyay.jpg","Bankim Chandra Chatterjee");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","Vande Mataram is a poem written in Sanskrit and Sanskritised Bengali by Bankim Chandra Chatterjee in the 1870s. The first two verses of the poem were adopted as the National Song of India in October 1937 by the Congress. The poem was first published in 1882 as part of Chatterjee's Bengali novel Anandmath.",315,"https://cdn.exoticindia.com/images/products/original/books-2019/nau072.jpg",1014,899,6,"Vande Mataram",13);
+
+
+
+
+insert into author(biography,image_path,name) values("Jawaharlal Nehru was an Indian anti-colonial nationalist, secular humanist, social democrat, and author who was a central figure in India during the middle of the 20th century. Nehru was a principal leader of the Indian nationalist movement in the 1930s and 1940s.Born: 14 November 1889","https://cdn.britannica.com/49/9849-004-75880243/Jawaharlal-Nehru-photograph-Yousuf-Karsh-1956.jpg","Jawaharlal Nehru");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","The Discovery of India was written by the Indian Independence leader, Jawaharlal Nehru during his incarceration in 1942–1945 at Ahmadnagar Fort in present day Indian state of Maharashtra by British colonial authorities before the independence of India. The book was written in 1944 but published in 1946.",315,"https://5.imimg.com/data5/SELLER/Default/2021/1/UV/OY/KC/114532903/capture-500x500.JPG",1015,859,6,"The Discovery of India",14);
+
+
+
+
+insert into author(biography,image_path,name) values("Rabindranath Tagore was a Nobel Laureate for Literature (1913) as well as one of India’s greatest poets and the composer of independent India’s national anthem, as well as that of Bangladesh. He wrote successfully in all literary genres, but was first and foremost a poet.","https://m.media-amazon.com/images/I/41jdf5xsXSL._SX450_.jpg","Rabindranath Tagore");
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("PATRIOTIC","Nationalism is a comprehensive exploration of the historical, political, and cultural phenomenon of nationalism. Written by Rabindranath Tagore, a renowned poet and philosopher, this thought-provoking book delves into the complexities and consequences of nationalistic fervor. Engaging readers with insightful analysis, Tagore challenges prevailing notions of patriotism and encourages a broader understanding of humanity.",315,"https://m.media-amazon.com/images/I/81cd2YOY6iS._AC_UY218_.jpg",1016,859,8,"Nationalism-FINGERPRINT",15);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

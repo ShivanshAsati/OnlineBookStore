@@ -5,7 +5,7 @@ function Faq() {
     
     return ( 
         <>
-            <div className='text-danger f-2' style={{textAlign : 'center', marginTop : '50px'}}>
+            <div className='text-danger f-2' style={{textAlign : 'center', marginTop : '100px'}}>
                 <h3 style={{fontSize : 50}}>FAQs</h3>
         </div>
         <div className='container-fluid d-flex' style={{marginTop:"70px"}}>

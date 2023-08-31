@@ -1,11 +1,11 @@
 function ContactUs() {
     return (
         <>
-            <div className='text-danger f-2' style={{textAlign : 'center', marginTop : '50px'}}>
+            <div className='text-danger f-2' style={{textAlign : 'center', marginTop : '70px'}}>
                 <h3 style={{fontSize : 50}}>Contact Us</h3>
         </div>
-        <div className='container-fluid d-flex' style={{marginTop:"170px"}}>
-                <div className="col-md-4 col-lg-3 border  d-flex align-items-center justify-content-center" style={{padding: "25px", minHeight: "300px"}} >
+        <div className='container-fluid d-flex' style={{marginTop:"170px", marginLeft:"20px"}}>
+                <div className="col-md-4 col-lg-3  d-flex align-items-center justify-content-center" style={{padding: "25px", minHeight: "300px"}} >
                     <img src="https://us.123rf.com/450wm/279photo/279photo1706/279photo170600421/80191064-contact-us-for-company-feed-back-on-stone-office-desk-background-top-view-mock-up.jpg?ver=6" alt='contact_us' style={{height:300, width:500}} />
                 </div>  
 
