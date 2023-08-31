@@ -1,0 +1,51 @@
+
+
+
+
+insert into author(biography,image_path,name) values("Upinder Singh is an Indian historian who is Professor of History and Dean of Faculty at Ashoka University. She is the former head of the History Department at the University of Delhi. She is also the recipient of the inaugural Infosys Prize in the category of Social Sciences","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu1Kqh1VqvtBai0dCHB7-4Nttwit6nZwlGWA&usqp=CAU","Upinder Singh");
+
+
+
+
+insert into author(biography,image_path,name) values("Ram Sharan Sharma (26 November 1919 – 20 August 2011) was an Indian Marxist historian and Indologist who specialised in the history of Ancient and early ...
+Thesis: Sudras in Ancient India (1956).","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgCRLKSGRSiJR_Sv08Eehkn8_GhHtJDsExQasX5rcR1Tb1NxBmh6PlLmQSQxqi8yjxlhQ&usqp=CAU","R.S. Sharma");
+
+
+
+
+insert into author(biography,image_path,name) values("Sekhar Bandyopadhyay is an Indian historian and a Fellow of the Royal Society Te Apārangi. Bandyopadhyay is known for his research on the Dalit caste of Bengal.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiOLQzWOB7ozieRXD14OAFEBy_FUb3tKtbWQ&usqp=CAU","Sekhar Bandyopadhyay");
+
+
+
+
+
+
+
+insert into author(biography,image_path,name) values("Poonam Dalal Dahiya grew up in Delhi, and she is from a village called Jhajjar district, Haryana. Further, she started her career at a government school in Delhi as a primary teacher. Besides, she has also given many competitive exams like SBI PO, other banks' PO, SSC Graduate Level, etc.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRWK83kFwqBiZ7MZsWWwYXDvQMF6HQGgF30w&usqp=CAU","Poonam Dalal Dahiya");
+
+
+
+
+
+
+
+
+
+insert into author(biography,image_path,name) values("Chandrachur Ghose is an author, researcher and commentator on history, economics and environment, having graduated from Visva Bharati and the University of Sussex. Ghose has co-authored Conundrum: Subhas Bose's Life After Death, which features among the bestsellers in Amazon.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDvd5tp5aoaWZ_Xl0AtnlcB94nslvfv_s_wQ&usqp=CAU","Chandrachur Ghose");
+
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("HISTORY","A History of Ancient and Early Medieval India' is the great book written by Upinder Singh, A great historian. 'A History of Ancient and Early Medieval India' is the most complete textbook yet for undergraduate and postgraduate students. The book describes the original sources such as ancient texts, artefacts, inscriptions and coins. You will find excellent illustration of how historians compare history on their basis. It conveys the clear and balanced clarification of ideas and historical debates enables students to separately evaluate evidence, arguments and theories.",765,"https://m.media-amazon.com/images/I/51aspd2igzL._SX381_BO1,204,203,200_.jpg",1040,870,6,"A History of Ancient and Early Medieval India: From the Stone Age to the 12th Century",39);
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("HISTORY","India's Ancient Past is a comprehensive work that captures the historical strides from neolithic and chalcolithic times to Harappan civilization, Vedic times, rise of Mauryas, Gupta's. Satvahanas right up to the times of Harshavardhana. Rise and fall of empires and reign of kings has been placed in the context of the ancient social milieu, the existing varna system, developments in science and technology, commerce and trade and the cultural legacy that shaped society. The book takes the readers on a journey through time. ",365,"https://m.media-amazon.com/images/I/71QV6g38FdL._AC_UY218_.jpg",1041,870,6,"India's Ancient Past",40);
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("HISTORY","From Plassey to Partition is an eminently readable account of the emergence of India as a nation. It covers about two hundred years of political and socio-economic turbulence. Of particular interest to the contemporary reader will be sections such as Early Nationalism: Discontent and Dissension , Many Voices of a Nation and Freedom with Partition . On the one hand, it converses with students of Indian history and on the other, it engages general and curious readers. Few books on this crucial period of history have captured the rhythms of India s polyphonic nationalism as From Plassey to Partition",900,"https://m.media-amazon.com/images/I/71Q0piEqE5L._AC_UY218_.jpg",1042,870,6,"FROM PLASSEY TO PARTITION AND AFTER",41);
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("HISTORY","Combining storytelling and historical analysis, The book ancient and medieval India, second edition by PO on am Dalal Dahiya reveals fascinating legacy covering all important aspects meant for the aspirants of the Union Public Service Commission as well as various State Public Service examinations. This is the most popular credit-by-examination book that has helped many students targeting UPSC and state-level examinations. The revised second edition has been updated to assimilate latest data, information, questions, figures and maps in all the topics that are been asked in the examinations",1000,"https://m.media-amazon.com/images/I/51ibDeTnDrL._SX374_BO1,204,203,200_.jpg",1043,870,6,"Ancient and Medieval India",42);
+
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("HISTORY","The first decade after India's independence, 1947-1957, was probably the most crucial in the nation's history. Opening a window to this period, this book weaves a story out of the complex ideas and events that have largely remained beneath the surface of public discourse. The transfer of power, the framing of the Constitution and the formation of the governance machinery; the clash of ideas and ideologies among parties and personalities; the beginning of the disintegration of the Congress and the consolidation of political forces in the opposition; Nehru's grappling with existential problems at home and his quest for global peace; the interplay between democratic ideals and ruthless power play",987,"https://m.media-amazon.com/images/I/51IGe-ItmbL._SX326_BO1,204,203,200_.jpg",1044,870,6,"1947-1957, India: The Birth of a Republic ",43);
+
+
+
+
+
+

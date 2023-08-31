@@ -34,6 +34,7 @@ import MakePayment from "./components/order/makePayment";
 import AdminShowBooks from "./components/admin/adminShowBooks";
 import UpdateBook from "./components/admin/updateForm";
 import AdminAddBook from "./components/admin/adminAddBook";
+import Search from "./components/Search";
 
 
 function App() {
@@ -95,14 +96,15 @@ function App() {
           <Route exact path="/bookDetails" element={<Book />} />
           <Route exact path="/authorDetails" element={<Author />} />
           <Route exact path="/faq" element={<Faq />} />
-          <Route exact path="/aboutUs" element={<AboutUs />} />
-          <Route exact path="/paymentHelp" element={<PaymentHelp />} />
-          <Route exact path="/contactUs" element={<ContactUs />} />
+          <Route exact path="/about_us" element={<AboutUs />} />
+          <Route exact path="/payment_help" element={<PaymentHelp />} />
+          <Route exact path="/contact_us" element={<ContactUs />} />
           <Route exact path="/logout" element={<Logout />} />
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/order" element={<Order />}></Route>
           <Route exact path="/placeOrder" element={<PlaceOrder />}></Route>
           <Route exact path="/make_payment" element={<MakePayment />}></Route>
+          <Route exact path="/search" element={<Search/>}/>
         </Routes>
         <ToastContainer />
         <Footer />

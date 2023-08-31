@@ -111,33 +111,34 @@ return(<>
         </div><br></br>
 
         <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-                <ol class="carousel-indicators">
-                        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
-                </ol>
+        <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
                 <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                                 <Link to={'/carouselBooks'}>
                                         <img src="https://www.bookswagon.com/images/bannerimages/82_inr.jpg?v=1.8" class="w-100 d-block" alt="First slide"/>
                                 </Link>
-                                <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block" style={{color:"black"}}>
                                         <h3>Happy Independence Day</h3>
                                         <p>Best Books to Know More About India</p>
                                 </div>
                         </div>
                         <div class="carousel-item">
                                 <img src="https://www.bookswagon.com/images/bannerimages/79_inr.jpg?v=1.6" class="w-100 d-block" alt="Second slide"/>
-                                <div class="carousel-caption d-none d-md-block">
-                                        <h3>Title</h3>
-                                        <p>Description</p>
+                                <div class="carousel-caption d-none d-md-block" style={{color:"black"}}>
+                                        <h3>Sale</h3>
+                                        <p></p>
                                 </div>
                         </div>
                         <div class="carousel-item">
                                 <img src="https://www.bookswagon.com/images/bannerimages/81_inr.jpg?v=1.8" class="w-100 d-block" alt="Third slide"/>
-                                <div class="carousel-caption d-none d-md-block">
-                                        <h3>Title</h3>
-                                        <p>Description</p>
+                                <div class="carousel-caption d-none d-md-block" style={{color:"black"}}>
+                                        <h3>Manga</h3>
+                                        <p>Action, adventure, fantasy, mystery, romance, and more</p>
                                 </div>
                         </div>
                 </div>
@@ -382,7 +383,7 @@ return(<>
                                 <h5>Price : Price</h5>
                                 <br></br>
                                 {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Go somewhere</Link>
+                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</Link>
                         </div>
                 </div>
 
@@ -391,7 +392,7 @@ return(<>
                         <div className="card-body">
                                 <h5 className="card-title">Card title</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</Link>
                         </div>
                 </div>
 
@@ -400,7 +401,7 @@ return(<>
                         <div className="card-body">
                                 <h5 className="card-title">Card title</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</Link>
                         </div>
                 </div>
 
@@ -409,7 +410,7 @@ return(<>
                         <div className="card-body">
                                 <h5 className="card-title">Card title</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</Link>
                         </div>
                 </div>
 
@@ -418,7 +419,7 @@ return(<>
                         <div className="card-body">
                                 <h5 className="card-title">Card title</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                                <Link style={{backgroundColor : 'orangered', border : 'none'}} className="btn btn-primary">Quick View</Link>
                         </div>
                 </div>
 
@@ -554,7 +555,7 @@ return(<>
 {/* Friction Books Div end */}
         <hr></hr>
         <div className="divCard-WrapperTop">
-                <h3 style={{fontFamily : "", color : "orangered"}}>Friction</h3>
+                <h3 style={{fontFamily : "", color : "orangered"}}>Fiction</h3>
                 <button className="btn btn-link">See All</button>
         </div>
 {/* Friction Books Div end */}

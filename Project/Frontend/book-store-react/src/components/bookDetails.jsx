@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { addCartItem, deleteCrt ,cartExists} from '../services/cartService';
 
 function Book() {
@@ -158,6 +158,13 @@ function Book() {
 
                     <div>
                         {
+                        (token === null) ? (
+                            <div>
+                                    <Link to="/login" className='btn btn-danger' >Add to Cart</Link>&nbsp;&nbsp;&nbsp;
+                                    <Link to="/login" className='btn btn-outline-danger' disabled={true}>Add to Wishlist</Link>
+                                </div>
+                        ) : (
+
                             clicked===false && status === false  ? (
                                 <div>
                                     <button onClick={() => { insertCartItem(book) }} className='btn btn-danger'>Add to Cart</button>&nbsp;&nbsp;&nbsp;
@@ -169,6 +176,7 @@ function Book() {
                                     <button className='btn btn-outline-danger'>Add to Wishlist</button>
                                 </div>
                             )
+                        )
                         }
                     </div>
 

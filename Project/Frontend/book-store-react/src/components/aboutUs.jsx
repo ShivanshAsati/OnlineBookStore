@@ -4,12 +4,13 @@ function AboutUs() {
 
     return ( 
         <>
+        <br/>
         <div className='text-danger f-2' style={{textAlign : 'center', marginTop : '50px'}}>
             <h3 style={{fontSize : 50}}>About Us</h3>
         </div>
-        <div className='container-fluid d-flex' style={{marginTop:"170px"}}>
+        <div className='container-fluid d-flex' style={{marginTop:"80px", marginBottom:"155px"}}>
 
-                <div className="col-md-8 col-lg-9" style={{paddingLeft:"50px", display:"flex", flexDirection:"column", flexWrap:"wrap"}}>
+                <div className="col-md-8 col-lg-9" style={{width:"90%",paddingLeft:"50px", display:"flex", flexDirection:"column", flexWrap:"wrap"}}>
                     <h4 style={{display: "inline-block"}}>
                         <span className='text'>
                         Dear readers,<span><br/></span>
@@ -22,6 +23,7 @@ All the Publishers, Distributors and Authors around the country are welcome to p
                     
                 </div>
         </div>
+        
         </>
     );
 }

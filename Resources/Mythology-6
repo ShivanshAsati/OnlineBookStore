@@ -10,11 +10,7 @@ insert into book(category,description,discounted_price,image_path,isbn,price,qua
 
 insert into author(biography,image_path,name) values("Kevin Missal is a 21 year old graduate from St. Stephen’s College, who has written four novels till now ranging from crime to mythology to horror. He had written his first book at the age of 14, which was released by the Chief Minister of Delhi.","https://m.media-amazon.com/images/I/915IAWkRbVL._SX450_.jpg","Kevin Missal");
 
-insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","Narasimha has never been so furious in his life.
-
-He now rules Kashyapuri after Hiranyakashyap's death and spends his time planning revenge. Narasimha has vowed to kill Lord Indra, the man behind Chenchen's death.
-
-As Prahlad watches Nara's anger grow, he knows Nara must be stopped before he takes more innocent lives and everything is consumed by chaos.",365,"https://m.media-amazon.com/images/I/510nTL9WQJL.jpg",1030,870,6,"Prahlad (Book Three in the Narasimha Trilogy)",29);
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","Narasimha has never been so furious in his life.He now rules Kashyapuri after Hiranyakashyap's death and spends his time planning revenge. Narasimha has vowed to kill Lord Indra, the man behind Chenchen's death.As Prahlad watches Nara's anger grow, he knows Nara must be stopped before he takes more innocent lives and everything is consumed by chaos.",365,"https://m.media-amazon.com/images/I/510nTL9WQJL.jpg",1030,870,6,"Prahlad (Book Three in the Narasimha Trilogy)",29);
 
 
 
@@ -28,8 +24,7 @@ insert into book(category,description,discounted_price,image_path,isbn,price,qua
 
 insert into author(biography,image_path,name) values("Kevin Missal is a 21 year old graduate from St. Stephen’s College, who has written four novels till now ranging from crime to mythology to horror. He had written his first book at the age of 14, which was released by the Chief Minister of Delhi.","https://m.media-amazon.com/images/I/915IAWkRbVL._SX450_.jpg","Kevin Missal");
 
-insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","One king. A group of incorrigible women. Nine nights.
-The demon-king, Mahisha, rules Jambudvipa with an iron fist. He wears the horns of a buffalo and has the will of a bull. With allies far and wide, his kingdom—usurped from the Aryas—is prosperous. All seems well. But Jambudvipa’s underbelly rots. Teeming with crime, sin, and greed, the city and its people are not what they seem. Most of all, Mahisha himself. With his iron fist comes immense cruelty, horrific violence",365,"https://m.media-amazon.com/images/I/41EpyrasnrL.jpg",1032,870,6,"Durga",31);
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","One king. A group of incorrigible women. Nine nights.The demon-king, Mahisha, rules Jambudvipa with an iron fist. He wears the horns of a buffalo and has the will of a bull. With allies far and wide, his kingdom—usurped from the Aryas—is prosperous. All seems well. But Jambudvipa’s underbelly rots. Teeming with crime, sin, and greed, the city and its people are not what they seem. Most of all, Mahisha himself. With his iron fist comes immense cruelty, horrific violence",365,"https://m.media-amazon.com/images/I/41EpyrasnrL.jpg",1032,870,6,"Durga",31);
 
 
 
@@ -42,11 +37,7 @@ insert into book(category,description,discounted_price,image_path,isbn,price,qua
 
 insert into author(biography,image_path,name) values("Kevin Missal is a 21 year old graduate from St. Stephen’s College, who has written four novels till now ranging from crime to mythology to horror. He had written his first book at the age of 14, which was released by the Chief Minister of Delhi.","https://m.media-amazon.com/images/I/915IAWkRbVL._SX450_.jpg","Kevin Missal");
 
-insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","Born in the arms of the Ganga, Vasu grew up in the raging province of Anga. His life shaped by a fate that failed to be just—neglected by his own, stripped of his birthright—he was raised to be lost in an abyss of desires and disappointment.
-
-Cursed by his guru, hurt by the only woman he loved, ostracised from society for being the son of a suta. With his only armour—hope—he ventured on an unforgettable journey. Alone.
-
-This is Vasu’s tale of survival, of endurance, of abiding courage in the face of all adversities. And eventually, of blossoming into the greatest warrior of all time… KARNA.",365,"https://m.media-amazon.com/images/I/51tve1VQKFL.jpg",1034,870,6,"Karna: The King of Anga",33);
+insert into book(category,description,discounted_price,image_path,isbn,price,quantity,title,author_id) values("MYTHOLOGY","Born in the arms of the Ganga, Vasu grew up in the raging province of Anga. His life shaped by a fate that failed to be just—neglected by his own, stripped of his birthright—he was raised to be lost in an abyss of desires and disappointment.Cursed by his guru, hurt by the only woman he loved, ostracised from society for being the son of a suta. With his only armour—hope—he ventured on an unforgettable journey. Alone.This is Vasu’s tale of survival, of endurance, of abiding courage in the face of all adversities. And eventually, of blossoming into the greatest warrior of all time… KARNA.",365,"https://m.media-amazon.com/images/I/51tve1VQKFL.jpg",1034,870,6,"Karna: The King of Anga",33);
 
 
 

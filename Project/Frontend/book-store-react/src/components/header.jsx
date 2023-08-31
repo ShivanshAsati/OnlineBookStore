@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 
 // import "../node_modules/bootstrap/dist/js/bootstrap.js";
 
+
 function Header() {
   const nav = useNavigate();
   const BSearch = () => {
-    nav.push("/search");
+    nav("/search");
   };
   
   const firstName = useSelector((state) => state.user.firstName);
